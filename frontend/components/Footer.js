@@ -181,13 +181,15 @@ export default function Footer() {
               <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                 <span style={{ color: "#D4A373", fontSize: "18px" }}>📍</span>
                 <div style={{ color: "#b0b0b0", fontSize: "14px", lineHeight: "1.6" }}>
-                  Örnek Mahallesi, İnşaat Cad. No:123<br />Ankara, Türkiye
+                  Bahçeşehir 2. Kısım Mah. 12. Cadde<br />
+                  Cihan Doğa Sitesi, Villa No: 8/A<br />
+                  Başakşehir / İstanbul
                 </div>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 <span style={{ color: "#D4A373", fontSize: "18px" }}>📞</span>
                 <a
-                  href="tel:+905551234567"
+                  href="tel:+902124180909"
                   style={{
                     color: "#b0b0b0",
                     textDecoration: "none",
@@ -197,13 +199,29 @@ export default function Footer() {
                   onMouseOver={(e) => (e.currentTarget.style.color = "#D4A373")}
                   onMouseOut={(e) => (e.currentTarget.style.color = "#b0b0b0")}
                 >
-                  +90 555 123 45 67
+                  +90 212 418 09 09
+                </a>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <span style={{ color: "#D4A373", fontSize: "18px" }}>📱</span>
+                <a
+                  href="tel:+905358197764"
+                  style={{
+                    color: "#b0b0b0",
+                    textDecoration: "none",
+                    fontSize: "14px",
+                    transition: "color 0.3s ease"
+                  }}
+                  onMouseOver={(e) => (e.currentTarget.style.color = "#D4A373")}
+                  onMouseOut={(e) => (e.currentTarget.style.color = "#b0b0b0")}
+                >
+                  +90 535 819 77 64
                 </a>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 <span style={{ color: "#D4A373", fontSize: "18px" }}>📧</span>
                 <a
-                  href="mailto:info@gulmetay.com"
+                  href="mailto:bilgi@gulmetay.com.tr"
                   style={{
                     color: "#b0b0b0",
                     textDecoration: "none",
@@ -213,7 +231,7 @@ export default function Footer() {
                   onMouseOver={(e) => (e.currentTarget.style.color = "#D4A373")}
                   onMouseOut={(e) => (e.currentTarget.style.color = "#b0b0b0")}
                 >
-                  info@gulmetay.com
+                  bilgi@gulmetay.com.tr
                 </a>
               </div>
             </div>
