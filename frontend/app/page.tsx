@@ -138,8 +138,14 @@ export default function HomePage() {
                 backdropFilter: "blur(10px)"
               }}
             >
-              <span style={{ fontSize: "20px" }}>🏗️</span>
-              <span style={{ color: "#D4A373", fontSize: "14px", fontWeight: "600" }}>
+              <span style={{ 
+                color: "#D4A373", 
+                fontSize: "13px", 
+                fontWeight: "600",
+                fontFamily: "'DM Sans', sans-serif",
+                letterSpacing: "2px",
+                textTransform: "uppercase"
+              }}>
                 Güvenilir İnşaat Çözümleri
               </span>
             </div>
@@ -147,7 +153,8 @@ export default function HomePage() {
             <h1
               style={{
                 fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-                fontWeight: "800",
+                fontWeight: "600",
+                fontFamily: "'Playfair Display', Georgia, serif",
                 color: "white",
                 marginBottom: "25px",
                 lineHeight: "1.1",
@@ -169,11 +176,13 @@ export default function HomePage() {
 
             <p
               style={{
-                fontSize: "clamp(1rem, 2vw, 1.3rem)",
-                color: "rgba(255, 255, 255, 0.8)",
+                fontSize: "clamp(1rem, 2vw, 1.25rem)",
+                fontFamily: "'DM Sans', sans-serif",
+                color: "rgba(255, 255, 255, 0.85)",
                 marginBottom: "40px",
-                lineHeight: "1.7",
-                maxWidth: "650px"
+                lineHeight: "1.8",
+                maxWidth: "650px",
+                fontWeight: "400"
               }}
             >
               Modern mimari anlayışı, kaliteli işçilik ve yılların deneyimiyle projelerinizi
@@ -189,8 +198,10 @@ export default function HomePage() {
                     padding: "18px 40px",
                     border: "none",
                     borderRadius: "12px",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: "600",
+                    fontFamily: "'DM Sans', sans-serif",
+                    letterSpacing: "0.5px",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                     boxShadow: "0 8px 24px rgba(212, 163, 115, 0.4)",
@@ -208,7 +219,7 @@ export default function HomePage() {
                   }}
                 >
                   Projelerimizi İnceleyin
-                  <span style={{ fontSize: "20px" }}>→</span>
+                  <span style={{ fontSize: "18px" }}>→</span>
                 </button>
               </Link>
 
@@ -220,8 +231,10 @@ export default function HomePage() {
                     padding: "18px 40px",
                     border: "2px solid rgba(255, 255, 255, 0.3)",
                     borderRadius: "12px",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: "600",
+                    fontFamily: "'DM Sans', sans-serif",
+                    letterSpacing: "0.5px",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                     backdropFilter: "blur(10px)"
@@ -250,12 +263,14 @@ export default function HomePage() {
                 alignItems: "center",
                 gap: "10px",
                 color: "rgba(255, 255, 255, 0.6)",
-                fontSize: "14px",
+                fontSize: "13px",
+                fontFamily: "'DM Sans', sans-serif",
+                letterSpacing: "1px",
                 animation: "float 2s ease-in-out infinite"
               }}
             >
               <span>Aşağı kaydırın</span>
-              <span style={{ fontSize: "20px" }}>↓</span>
+              <span style={{ fontSize: "18px" }}>↓</span>
             </div>
           </div>
         </div>
@@ -291,7 +306,8 @@ export default function HomePage() {
               <div
                 style={{
                   fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-                  fontWeight: "800",
+                  fontWeight: "600",
+                  fontFamily: "'Playfair Display', Georgia, serif",
                   background: "linear-gradient(135deg, #0C1B33 0%, #D4A373 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -304,8 +320,10 @@ export default function HomePage() {
               <div
                 style={{
                   color: "#666",
-                  fontSize: "16px",
-                  fontWeight: "500"
+                  fontSize: "15px",
+                  fontWeight: "500",
+                  fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: "0.5px"
                 }}
               >
                 {stat.label}
@@ -326,10 +344,11 @@ export default function HomePage() {
           <div style={{ textAlign: "center", marginBottom: "70px" }}>
             <div
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 color: "#D4A373",
-                fontWeight: "700",
-                letterSpacing: "2px",
+                fontWeight: "600",
+                fontFamily: "'DM Sans', sans-serif",
+                letterSpacing: "3px",
                 textTransform: "uppercase",
                 marginBottom: "15px"
               }}
@@ -339,14 +358,22 @@ export default function HomePage() {
             <h2
               style={{
                 fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: "700",
+                fontWeight: "600",
+                fontFamily: "'Playfair Display', Georgia, serif",
                 color: "#0C1B33",
                 marginBottom: "20px"
               }}
             >
               Neler Yapıyoruz?
             </h2>
-            <p style={{ fontSize: "1.1rem", color: "#666", maxWidth: "600px", margin: "0 auto" }}>
+            <p style={{ 
+              fontSize: "1.1rem", 
+              color: "#666", 
+              maxWidth: "600px", 
+              margin: "0 auto",
+              fontFamily: "'DM Sans', sans-serif",
+              lineHeight: "1.7"
+            }}>
               Kapsamlı inşaat çözümlerimizle projelerinizi baştan sona yönetiyoruz
             </p>
           </div>
@@ -419,7 +446,8 @@ export default function HomePage() {
                 <h3
                   style={{
                     fontSize: "1.5rem",
-                    fontWeight: "700",
+                    fontWeight: "600",
+                    fontFamily: "'Playfair Display', Georgia, serif",
                     color: service.color,
                     marginBottom: "15px"
                   }}
@@ -429,8 +457,9 @@ export default function HomePage() {
                 <p
                   style={{
                     color: "#666",
-                    lineHeight: "1.7",
-                    fontSize: "15px"
+                    lineHeight: "1.8",
+                    fontSize: "15px",
+                    fontFamily: "'DM Sans', sans-serif"
                   }}
                 >
                   {service.description}
@@ -457,10 +486,11 @@ export default function HomePage() {
             <div>
               <div
                 style={{
-                  fontSize: "14px",
+                  fontSize: "13px",
                   color: "#D4A373",
-                  fontWeight: "700",
-                  letterSpacing: "2px",
+                  fontWeight: "600",
+                  fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: "3px",
                   textTransform: "uppercase",
                   marginBottom: "10px"
                 }}
@@ -470,7 +500,8 @@ export default function HomePage() {
               <h2
                 style={{
                   fontSize: "clamp(2rem, 4vw, 3rem)",
-                  fontWeight: "700",
+                  fontWeight: "600",
+                  fontFamily: "'Playfair Display', Georgia, serif",
                   color: "#0C1B33"
                 }}
               >
@@ -485,8 +516,10 @@ export default function HomePage() {
                   padding: "14px 30px",
                   border: "2px solid #0C1B33",
                   borderRadius: "10px",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: "600",
+                  fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: "0.5px",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   display: "flex",
@@ -602,7 +635,8 @@ export default function HomePage() {
                       <h3
                         style={{
                           fontSize: "1.5rem",
-                          fontWeight: "700",
+                          fontWeight: "600",
+                          fontFamily: "'Playfair Display', Georgia, serif",
                           color: "#0C1B33",
                           marginBottom: "15px",
                           lineHeight: "1.3"
@@ -613,9 +647,10 @@ export default function HomePage() {
                       <p
                         style={{
                           color: "#666",
-                          lineHeight: "1.7",
+                          lineHeight: "1.8",
                           marginBottom: "20px",
-                          fontSize: "15px"
+                          fontSize: "15px",
+                          fontFamily: "'DM Sans', sans-serif"
                         }}
                       >
                         {project.description?.[0]?.children?.[0]?.text?.substring(0, 100) ||
@@ -626,10 +661,12 @@ export default function HomePage() {
                         style={{
                           color: "#D4A373",
                           fontWeight: "600",
+                          fontFamily: "'DM Sans', sans-serif",
                           display: "flex",
                           alignItems: "center",
                           gap: "8px",
-                          fontSize: "15px"
+                          fontSize: "14px",
+                          letterSpacing: "0.5px"
                         }}
                       >
                         Detayları Gör
@@ -679,7 +716,8 @@ export default function HomePage() {
           <h2
             style={{
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
-              fontWeight: "800",
+              fontWeight: "600",
+              fontFamily: "'Playfair Display', Georgia, serif",
               color: "white",
               marginBottom: "25px",
               lineHeight: "1.2"
@@ -690,11 +728,13 @@ export default function HomePage() {
           </h2>
           <p
             style={{
-              fontSize: "1.2rem",
-              color: "rgba(255, 255, 255, 0.8)",
+              fontSize: "1.15rem",
+              fontFamily: "'DM Sans', sans-serif",
+              color: "rgba(255, 255, 255, 0.85)",
               marginBottom: "40px",
               maxWidth: "700px",
-              margin: "0 auto 40px"
+              margin: "0 auto 40px",
+              lineHeight: "1.8"
             }}
           >
             Uzman ekibimiz, hayalinizdeki projeyi gerçeğe dönüştürmek için sizinle
@@ -708,8 +748,10 @@ export default function HomePage() {
                 padding: "20px 50px",
                 border: "none",
                 borderRadius: "12px",
-                fontSize: "18px",
-                fontWeight: "700",
+                fontSize: "16px",
+                fontWeight: "600",
+                fontFamily: "'DM Sans', sans-serif",
+                letterSpacing: "0.5px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
                 boxShadow: "0 10px 30px rgba(212, 163, 115, 0.4)"

@@ -1,0 +1,37 @@
+<svg id="logo-horizontal" viewBox="0 0 920 200" xmlns="http://www.w3.org/2000/svg">
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&amp;family=Roboto:wght@500&amp;family=Michroma&amp;display=swap');
+                    /* Arial Narrow, font yüklenmese bile yazının dar kalmasını sağlar */
+                    .logo-text { font-family: 'Oswald', 'Arial Narrow', 'Impact', sans-serif; }
+                    .sub-text { font-family: 'Roboto', 'Arial', sans-serif; }
+                    .slogan { font-family: 'Michroma', 'Arial Black', sans-serif; }
+                </style>
+
+                <g transform="translate(10, 10)">
+                    
+                    <!-- GÜLMETAY -->
+                    <text x="0" y="90" class="logo-text" font-weight="600" font-size="110" fill="#005b9f" letter-spacing="-2">
+                        Gülmetay
+                    </text>
+
+                    <!-- KIRMIZI ÇİZGİ -->
+                    <!-- x=480: Yazıya yakın ama değmiyor -->
+                    <rect x="480" y="5" width="4" height="95" fill="#6d2e2e"/>
+
+                    <!-- SAĞDAKİ METİN GRUBU -->
+                    <!-- x=500: Çizgiye yakın -->
+                    <g transform="translate(500, 45)">
+                        <text x="0" y="0" class="sub-text" font-weight="500" font-size="24" fill="#333333">
+                            İNŞAAT, MÜHENDİSLİK,
+                        </text>
+                        <text x="0" y="32" class="sub-text" font-weight="500" font-size="24" fill="#333333">
+                            MİMARLIK SAN. VE TİC. LTD. ŞTİ.
+                        </text>
+                    </g>
+                </g>
+
+                <!-- ALT SLOGAN -->
+                <text x="460" y="170" class="slogan" font-weight="400" font-size="26" fill="#005b9f" text-anchor="middle" letter-spacing="4">
+                    proje, statik, İnşaat
+                </text>
+            </svg>
