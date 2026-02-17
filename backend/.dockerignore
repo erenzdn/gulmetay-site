@@ -1,0 +1,12 @@
+node_modules
+.tmp
+.cache
+build
+dist
+.env
+.env.*
+*.log
+.git
+.gitignore
+.editorconfig
+README.md

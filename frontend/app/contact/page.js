@@ -28,18 +28,44 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("sending");
     
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/iletisims`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            subject: formData.subject,
+            message: formData.message
+          }
+        }),
       });
-      
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: ""
+        });
+        setTimeout(() => setStatus(""), 5000);
+      } else {
+        const errorData = await response.json();
+        console.error("API Hatası:", errorData);
+        setStatus("error");
+        setTimeout(() => setStatus(""), 5000);
+      }
+    } catch (error) {
+      console.error("Bağlantı hatası:", error);
+      setStatus("error");
       setTimeout(() => setStatus(""), 5000);
-    }, 1500);
+    }
   };
 
   return (
@@ -573,6 +599,23 @@ export default function ContactPage() {
                   border: "2px solid #b1dfbb"
                 }}>
                   ✓ Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                </div>
+              )}
+              
+              {status === "error" && (
+                <div style={{
+                  marginTop: "25px",
+                  padding: "20px",
+                  background: "linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%)",
+                  color: "#721c24",
+                  borderRadius: "12px",
+                  textAlign: "center",
+                  fontSize: "15px",
+                  fontWeight: "600",
+                  animation: "fadeIn 0.5s ease",
+                  border: "2px solid #f5c6cb"
+                }}>
+                  ✗ Mesaj gönderilemedi. Lütfen tekrar deneyin veya bizi telefonla arayın.
                 </div>
               )}
             </form>

@@ -8,7 +8,7 @@ export default function AboutPage() {
   useEffect(() => {
     async function fetchAbout() {
       try {
-        const res = await fetch("http://localhost:1337/api/about");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/about`);
         const json = await res.json();
         setData(json.data);
       } catch (error) {

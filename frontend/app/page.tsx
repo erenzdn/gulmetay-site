@@ -17,7 +17,7 @@ export default function HomePage() {
     
     async function fetchLatest() {
       try {
-        const res = await fetch("http://localhost:1337/api/projects?populate=*&pagination[limit]=3&sort=createdAt:desc");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/projects?populate=*&pagination[limit]=3&sort=createdAt:desc`);
         const json = await res.json();
         setLatestProjects(json.data || []);
       } catch (error) {
@@ -58,14 +58,14 @@ export default function HomePage() {
       <section
         style={{
           position: "relative",
-          minHeight: "90vh",
+          minHeight: "100vh",
           display: "flex",
           alignItems: "center",
-          background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 50%, #0C1B33 100%)",
+          background: "#0a0a0b",
           overflow: "hidden"
         }}
       >
-        {/* Background Pattern */}
+        {/* Animated mesh gradient background */}
         <div
           style={{
             position: "absolute",
@@ -73,207 +73,593 @@ export default function HomePage() {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A373' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            opacity: 0.3
+            background: `
+              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
+              radial-gradient(ellipse 60% 50% at 80% 50%, rgba(212, 163, 115, 0.1), transparent),
+              radial-gradient(ellipse 50% 80% at 20% 80%, rgba(59, 130, 246, 0.08), transparent)
+            `
           }}
         />
 
-        {/* Animated Circles */}
+        {/* Subtle grid */}
         <div
           style={{
             position: "absolute",
-            top: "10%",
-            right: "10%",
-            width: "400px",
-            height: "400px",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `
+              linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
+            `,
+            backgroundSize: "60px 60px"
+          }}
+        />
+
+        {/* Floating orbs */}
+        <div
+          style={{
+            position: "absolute",
+            top: "20%",
+            right: "15%",
+            width: "300px",
+            height: "300px",
             borderRadius: "50%",
             background: "radial-gradient(circle, rgba(212, 163, 115, 0.15) 0%, transparent 70%)",
-            animation: "float 6s ease-in-out infinite",
-            filter: "blur(40px)"
+            filter: "blur(60px)",
+            animation: "float 8s ease-in-out infinite"
           }}
         />
         <div
           style={{
             position: "absolute",
             bottom: "10%",
-            left: "5%",
-            width: "300px",
-            height: "300px",
+            left: "10%",
+            width: "250px",
+            height: "250px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(212, 163, 115, 0.1) 0%, transparent 70%)",
-            animation: "float 8s ease-in-out infinite reverse",
-            filter: "blur(40px)"
+            background: "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
+            filter: "blur(50px)",
+            animation: "float 10s ease-in-out infinite reverse"
           }}
         />
 
+        {/* Ana içerik */}
         <div
           style={{
             position: "relative",
             zIndex: 2,
             maxWidth: "1400px",
             margin: "0 auto",
-            padding: "0 40px",
+            padding: "0 60px",
             width: "100%"
           }}
         >
           <div
             style={{
-              maxWidth: "800px",
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(30px)",
-              transition: "all 1s cubic-bezier(0.4, 0, 0.2, 1)"
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "100px",
+              alignItems: "center"
             }}
           >
-            {/* Badge */}
+            {/* Sol taraf - Metin içerik */}
             <div
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                background: "rgba(212, 163, 115, 0.15)",
-                border: "1px solid rgba(212, 163, 115, 0.3)",
-                borderRadius: "50px",
-                padding: "10px 20px",
-                marginBottom: "30px",
-                backdropFilter: "blur(10px)"
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(40px)",
+                transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
               }}
             >
-              <span style={{ 
-                color: "#D4A373", 
-                fontSize: "13px", 
-                fontWeight: "600",
-                fontFamily: "'DM Sans', sans-serif",
-                letterSpacing: "2px",
-                textTransform: "uppercase"
-              }}>
-                Güvenilir İnşaat Çözümleri
-              </span>
-            </div>
-
-            <h1
-              style={{
-                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-                fontWeight: "600",
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: "white",
-                marginBottom: "25px",
-                lineHeight: "1.1",
-                letterSpacing: "-1px"
-              }}
-            >
-              Hayalinizdeki Yaşam Alanları{" "}
-              <span
+              {/* Status indicator */}
+              <div
                 style={{
-                  background: "linear-gradient(135deg, #D4A373 0%, #f4d6b3 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text"
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  marginBottom: "40px"
                 }}
               >
-                Gerçek Oluyor
-              </span>
-            </h1>
-
-            <p
-              style={{
-                fontSize: "clamp(1rem, 2vw, 1.25rem)",
-                fontFamily: "'DM Sans', sans-serif",
-                color: "rgba(255, 255, 255, 0.85)",
-                marginBottom: "40px",
-                lineHeight: "1.8",
-                maxWidth: "650px",
-                fontWeight: "400"
-              }}
-            >
-              Modern mimari anlayışı, kaliteli işçilik ve yılların deneyimiyle projelerinizi
-              hayata geçiriyoruz. Her detayda mükemmellik için çalışıyoruz.
-            </p>
-
-            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-              <Link href="/projects" style={{ textDecoration: "none" }}>
-                <button
+                <div
                   style={{
-                    background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
-                    color: "white",
-                    padding: "18px 40px",
-                    border: "none",
-                    borderRadius: "12px",
-                    fontSize: "15px",
-                    fontWeight: "600",
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: "#22c55e",
+                    boxShadow: "0 0 12px rgba(34, 197, 94, 0.6)",
+                    animation: "pulse 2s ease-in-out infinite"
+                  }}
+                />
+                <span
+                  style={{
+                    color: "rgba(255, 255, 255, 0.5)",
+                    fontSize: "13px",
                     fontFamily: "'DM Sans', sans-serif",
-                    letterSpacing: "0.5px",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                    boxShadow: "0 8px 24px rgba(212, 163, 115, 0.4)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px"
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = "translateY(-3px)";
-                    e.currentTarget.style.boxShadow = "0 12px 32px rgba(212, 163, 115, 0.5)";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 8px 24px rgba(212, 163, 115, 0.4)";
+                    letterSpacing: "0.5px"
                   }}
                 >
-                  Projelerimizi İnceleyin
-                  <span style={{ fontSize: "18px" }}>→</span>
-                </button>
-              </Link>
+                  2009'dan beri aktif
+                </span>
+              </div>
 
-              <Link href="/contact" style={{ textDecoration: "none" }}>
-                <button
+              {/* Ana başlık */}
+              <h1
+                style={{
+                  fontSize: "clamp(3rem, 5vw, 4.5rem)",
+                  fontWeight: "400",
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  color: "#ffffff",
+                  marginBottom: "30px",
+                  lineHeight: "1.1",
+                  letterSpacing: "-2px"
+                }}
+              >
+                Geleceğin
+                <br />
+                <span
                   style={{
-                    background: "transparent",
-                    color: "white",
-                    padding: "18px 40px",
-                    border: "2px solid rgba(255, 255, 255, 0.3)",
-                    borderRadius: "12px",
-                    fontSize: "15px",
-                    fontWeight: "600",
-                    fontFamily: "'DM Sans', sans-serif",
-                    letterSpacing: "0.5px",
-                    cursor: "pointer",
-                    transition: "all 0.3s ease",
-                    backdropFilter: "blur(10px)"
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
-                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.5)";
-                    e.currentTarget.style.transform = "translateY(-3px)";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)";
-                    e.currentTarget.style.transform = "translateY(0)";
+                    background: "linear-gradient(135deg, #D4A373 0%, #f0d4b8 50%, #D4A373 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    backgroundSize: "200% auto",
+                    animation: "shimmer 3s linear infinite"
                   }}
                 >
-                  Bizimle İletişime Geçin
-                </button>
-              </Link>
+                  Yapılarını
+                </span>
+                <br />
+                Bugün İnşa Ediyoruz
+              </h1>
+
+              {/* Açıklama */}
+              <p
+                style={{
+                  fontSize: "1.1rem",
+                  fontFamily: "'DM Sans', sans-serif",
+                  color: "rgba(255, 255, 255, 0.6)",
+                  marginBottom: "50px",
+                  lineHeight: "1.9",
+                  maxWidth: "480px"
+                }}
+              >
+                Mühendislik hassasiyeti ve mimari vizyonla, 
+                sürdürülebilir ve estetik yaşam alanları tasarlıyoruz.
+              </p>
+
+              {/* Butonlar */}
+              <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+                <Link href="/projects" style={{ textDecoration: "none" }}>
+                  <button
+                    style={{
+                      background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
+                      color: "#0a0a0b",
+                      padding: "18px 40px",
+                      border: "none",
+                      borderRadius: "60px",
+                      fontSize: "14px",
+                      fontWeight: "600",
+                      fontFamily: "'DM Sans', sans-serif",
+                      letterSpacing: "0.5px",
+                      cursor: "pointer",
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px"
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.boxShadow = "0 20px 40px rgba(212, 163, 115, 0.3)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                  >
+                    Projeleri Keşfet
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </Link>
+
+                <Link href="/contact" style={{ textDecoration: "none" }}>
+                  <button
+                    style={{
+                      background: "transparent",
+                      color: "rgba(255, 255, 255, 0.8)",
+                      padding: "18px 40px",
+                      border: "1px solid rgba(255, 255, 255, 0.15)",
+                      borderRadius: "60px",
+                      fontSize: "14px",
+                      fontWeight: "500",
+                      fontFamily: "'DM Sans', sans-serif",
+                      letterSpacing: "0.5px",
+                      cursor: "pointer",
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      backdropFilter: "blur(10px)"
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(212, 163, 115, 0.5)";
+                      e.currentTarget.style.color = "#D4A373";
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.15)";
+                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                      e.currentTarget.style.transform = "translateY(0)";
+                    }}
+                  >
+                    Teklif Alın
+                  </button>
+                </Link>
+              </div>
+
+              {/* İstatistikler */}
+              <div
+                style={{
+                  marginTop: "80px",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gap: "30px"
+                }}
+              >
+                {[
+                  { number: "15+", label: "Yıl Tecrübe", suffix: "" },
+                  { number: "150+", label: "Proje", suffix: "" },
+                  { number: "100", label: "Memnuniyet", suffix: "%" }
+                ].map((stat, index) => (
+                  <div 
+                    key={index}
+                    style={{
+                      padding: "24px",
+                      background: "rgba(255, 255, 255, 0.03)",
+                      borderRadius: "16px",
+                      border: "1px solid rgba(255, 255, 255, 0.06)",
+                      backdropFilter: "blur(10px)"
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "2.2rem",
+                        fontWeight: "500",
+                        fontFamily: "'Playfair Display', Georgia, serif",
+                        color: "#ffffff",
+                        lineHeight: "1",
+                        marginBottom: "8px"
+                      }}
+                    >
+                      {stat.number}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "rgba(255, 255, 255, 0.4)",
+                        fontFamily: "'DM Sans', sans-serif",
+                        letterSpacing: "0.3px"
+                      }}
+                    >
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Scroll Indicator */}
+            {/* Sağ taraf - 3D Bento Grid */}
             <div
               style={{
-                marginTop: "60px",
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                color: "rgba(255, 255, 255, 0.6)",
-                fontSize: "13px",
-                fontFamily: "'DM Sans', sans-serif",
-                letterSpacing: "1px",
-                animation: "float 2s ease-in-out infinite"
+                position: "relative",
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(40px)",
+                transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s"
               }}
             >
-              <span>Aşağı kaydırın</span>
-              <span style={{ fontSize: "18px" }}>↓</span>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gridTemplateRows: "auto auto auto",
+                  gap: "16px"
+                }}
+              >
+                {/* Büyük kart - Proje */}
+                <div
+                  style={{
+                    gridColumn: "1 / 3",
+                    background: "linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+                    borderRadius: "24px",
+                    padding: "40px",
+                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    backdropFilter: "blur(20px)",
+                    position: "relative",
+                    overflow: "hidden"
+                  }}
+                >
+                  {/* Holografik shine efekti */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: "-100%",
+                      width: "100%",
+                      height: "100%",
+                      background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent)",
+                      animation: "shine 4s ease-in-out infinite"
+                    }}
+                  />
+                  
+                  <div style={{ position: "relative", zIndex: 1 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "flex-start",
+                        marginBottom: "30px"
+                      }}
+                    >
+                      <div>
+                        <div
+                          style={{
+                            fontSize: "11px",
+                            fontFamily: "'DM Sans', sans-serif",
+                            letterSpacing: "2px",
+                            textTransform: "uppercase",
+                            color: "rgba(255, 255, 255, 0.4)",
+                            marginBottom: "10px"
+                          }}
+                        >
+                          Uzmanlık Alanları
+                        </div>
+                        <div
+                          style={{
+                            fontSize: "1.6rem",
+                            fontFamily: "'Playfair Display', Georgia, serif",
+                            color: "#ffffff",
+                            fontWeight: "400"
+                          }}
+                        >
+                          Mühendislik & Mimarlık
+                        </div>
+                      </div>
+                      
+                      <div
+                        style={{
+                          width: "48px",
+                          height: "48px",
+                          borderRadius: "14px",
+                          background: "linear-gradient(135deg, rgba(212, 163, 115, 0.2) 0%, rgba(212, 163, 115, 0.05) 100%)",
+                          border: "1px solid rgba(212, 163, 115, 0.2)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center"
+                        }}
+                      >
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A373" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M2 20h20"/>
+                          <path d="M5 20V8.5L12 3l7 5.5V20"/>
+                          <path d="M9 20v-6h6v6"/>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                      {["Proje", "Statik", "İnşaat", "Taahhüt"].map((tag, i) => (
+                        <span
+                          key={i}
+                          style={{
+                            padding: "8px 16px",
+                            background: "rgba(255, 255, 255, 0.05)",
+                            borderRadius: "100px",
+                            fontSize: "13px",
+                            fontFamily: "'DM Sans', sans-serif",
+                            color: "rgba(255, 255, 255, 0.6)",
+                            border: "1px solid rgba(255, 255, 255, 0.08)"
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sol alt kart */}
+                <div
+                  style={{
+                    background: "linear-gradient(145deg, rgba(212, 163, 115, 0.15) 0%, rgba(212, 163, 115, 0.05) 100%)",
+                    borderRadius: "24px",
+                    padding: "30px",
+                    border: "1px solid rgba(212, 163, 115, 0.15)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    minHeight: "180px"
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "12px",
+                      background: "rgba(212, 163, 115, 0.2)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        fontSize: "1.8rem",
+                        fontFamily: "'Playfair Display', Georgia, serif",
+                        color: "#D4A373",
+                        fontWeight: "500",
+                        marginBottom: "4px"
+                      }}
+                    >
+                      Güvenilir
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "rgba(255, 255, 255, 0.5)",
+                        fontFamily: "'DM Sans', sans-serif"
+                      }}
+                    >
+                      Kalite garantisi
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sağ alt kart */}
+                <div
+                  style={{
+                    background: "linear-gradient(145deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.03) 100%)",
+                    borderRadius: "24px",
+                    padding: "30px",
+                    border: "1px solid rgba(99, 102, 241, 0.1)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    minHeight: "180px"
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "12px",
+                      background: "rgba(99, 102, 241, 0.15)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        fontSize: "1.8rem",
+                        fontFamily: "'Playfair Display', Georgia, serif",
+                        color: "#818cf8",
+                        fontWeight: "500",
+                        marginBottom: "4px"
+                      }}
+                    >
+                      Zamanında
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "rgba(255, 255, 255, 0.5)",
+                        fontFamily: "'DM Sans', sans-serif"
+                      }}
+                    >
+                      Teslim garantisi
+                    </div>
+                  </div>
+                </div>
+
+                {/* En alt kart - CTA */}
+                <div
+                  style={{
+                    gridColumn: "1 / 3",
+                    background: "rgba(255, 255, 255, 0.03)",
+                    borderRadius: "20px",
+                    padding: "24px 30px",
+                    border: "1px solid rgba(255, 255, 255, 0.06)",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "15px",
+                      color: "rgba(255, 255, 255, 0.6)",
+                      fontFamily: "'DM Sans', sans-serif"
+                    }}
+                  >
+                    Projeniz için ücretsiz danışmanlık alın
+                  </div>
+                  <Link 
+                    href="/contact"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      color: "#D4A373",
+                      textDecoration: "none",
+                      fontSize: "14px",
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontWeight: "600",
+                      transition: "gap 0.3s ease"
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.gap = "12px";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.gap = "8px";
+                    }}
+                  >
+                    Başlayın
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "40px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "12px"
+          }}
+        >
+          <div
+            style={{
+              width: "20px",
+              height: "32px",
+              borderRadius: "10px",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              display: "flex",
+              justifyContent: "center",
+              paddingTop: "6px"
+            }}
+          >
+            <div
+              style={{
+                width: "3px",
+                height: "8px",
+                borderRadius: "2px",
+                background: "rgba(212, 163, 115, 0.8)",
+                animation: "scrollDown 1.5s ease-in-out infinite"
+              }}
+            />
+          </div>
+        </div>
+
       </section>
 
       {/* STATS SECTION */}
@@ -381,89 +767,176 @@ export default function HomePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "30px"
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "0",
+              border: "1px solid rgba(0, 0, 0, 0.08)",
+              borderRadius: "24px",
+              overflow: "hidden",
+              background: "white",
+              boxShadow: "0 10px 60px rgba(0, 0, 0, 0.08)"
             }}
           >
             {[
               {
-                icon: "🏗️",
                 title: "İnşaat & Taahhüt",
-                description: "Anahtar teslim projeler ve profesyonel inşaat hizmetleri",
-                color: "#0C1B33"
+                description: "Anahtar teslim projeler ve profesyonel inşaat hizmetleri ile hayalinizdeki yapıları inşa ediyoruz.",
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 20h20"/>
+                    <path d="M5 20V8.5L12 3l7 5.5V20"/>
+                    <path d="M9 20v-6h6v6"/>
+                    <path d="M9 10h.01"/>
+                    <path d="M15 10h.01"/>
+                  </svg>
+                ),
+                number: "01"
               },
               {
-                icon: "📐",
                 title: "Mimari Tasarım",
-                description: "Modern ve estetik mimari çizimler, proje danışmanlığı",
-                color: "#D4A373"
+                description: "Modern ve estetik mimari çizimler, 3D modelleme ve profesyonel proje danışmanlığı hizmetleri.",
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="M7 16l4-4 4 4 5-6"/>
+                    <circle cx="19" cy="10" r="2"/>
+                  </svg>
+                ),
+                number: "02"
               },
               {
-                icon: "🏠",
                 title: "Kentsel Dönüşüm",
-                description: "Eski yapıları yenileyerek değer katıyoruz",
-                color: "#0C1B33"
+                description: "Eski yapıları yenileyerek değer katıyor, güvenli ve modern yaşam alanları oluşturuyoruz.",
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/>
+                    <path d="M1 21h22"/>
+                    <path d="M9 7h1"/>
+                    <path d="M9 11h1"/>
+                    <path d="M9 15h1"/>
+                    <path d="M14 7h1"/>
+                    <path d="M14 11h1"/>
+                    <path d="M14 15h1"/>
+                  </svg>
+                ),
+                number: "03"
               },
               {
-                icon: "⚙️",
                 title: "Proje Yönetimi",
-                description: "Baştan sona profesyonel proje takibi ve yönetimi",
-                color: "#D4A373"
+                description: "Baştan sona profesyonel proje takibi, maliyet kontrolü ve zamanında teslim garantisi.",
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 20V10"/>
+                    <path d="M18 20V4"/>
+                    <path d="M6 20v-4"/>
+                    <circle cx="12" cy="7" r="3"/>
+                  </svg>
+                ),
+                number: "04"
               }
             ].map((service, index) => (
               <div
                 key={index}
                 style={{
-                  background: "white",
-                  padding: "40px",
-                  borderRadius: "20px",
-                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)",
-                  transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                  cursor: "pointer",
-                  border: "1px solid rgba(0, 0, 0, 0.05)",
+                  padding: "50px 40px",
+                  borderRight: index < 3 ? "1px solid rgba(0, 0, 0, 0.06)" : "none",
+                  borderBottom: "1px solid rgba(0, 0, 0, 0.06)",
                   position: "relative",
-                  overflow: "hidden"
+                  cursor: "pointer",
+                  transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                  background: "transparent"
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "translateY(-10px)";
-                  e.currentTarget.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.12)";
+                  e.currentTarget.style.background = "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)";
+                  const title = e.currentTarget.querySelector('h3') as HTMLElement;
+                  const desc = e.currentTarget.querySelector('p') as HTMLElement;
+                  const icon = e.currentTarget.querySelector('.service-icon') as HTMLElement;
+                  const number = e.currentTarget.querySelector('.service-number') as HTMLElement;
+                  if (title) title.style.color = "white";
+                  if (desc) desc.style.color = "rgba(255,255,255,0.8)";
+                  if (icon) icon.style.color = "#D4A373";
+                  if (number) number.style.color = "rgba(212, 163, 115, 0.3)";
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.06)";
+                  e.currentTarget.style.background = "transparent";
+                  const title = e.currentTarget.querySelector('h3') as HTMLElement;
+                  const desc = e.currentTarget.querySelector('p') as HTMLElement;
+                  const icon = e.currentTarget.querySelector('.service-icon') as HTMLElement;
+                  const number = e.currentTarget.querySelector('.service-number') as HTMLElement;
+                  if (title) title.style.color = "#0C1B33";
+                  if (desc) desc.style.color = "#666";
+                  if (icon) icon.style.color = "#D4A373";
+                  if (number) number.style.color = "rgba(12, 27, 51, 0.08)";
                 }}
               >
-                <div
+                {/* Numara - Arka planda */}
+                <div 
+                  className="service-number"
                   style={{
-                    fontSize: "50px",
-                    marginBottom: "20px",
-                    display: "inline-block",
-                    transition: "transform 0.3s ease"
+                    position: "absolute",
+                    top: "20px",
+                    right: "25px",
+                    fontSize: "5rem",
+                    fontWeight: "800",
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    color: "rgba(12, 27, 51, 0.08)",
+                    lineHeight: "1",
+                    transition: "color 0.4s ease"
+                  }}
+                >
+                  {service.number}
+                </div>
+
+                {/* İkon */}
+                <div
+                  className="service-icon"
+                  style={{
+                    color: "#D4A373",
+                    marginBottom: "25px",
+                    transition: "all 0.3s ease"
                   }}
                 >
                   {service.icon}
                 </div>
+
+                {/* Başlık */}
                 <h3
                   style={{
-                    fontSize: "1.5rem",
+                    fontSize: "1.4rem",
                     fontWeight: "600",
                     fontFamily: "'Playfair Display', Georgia, serif",
-                    color: service.color,
-                    marginBottom: "15px"
+                    color: "#0C1B33",
+                    marginBottom: "15px",
+                    transition: "color 0.4s ease",
+                    position: "relative",
+                    zIndex: 1
                   }}
                 >
                   {service.title}
                 </h3>
+
+                {/* Açıklama */}
                 <p
                   style={{
                     color: "#666",
                     lineHeight: "1.8",
                     fontSize: "15px",
-                    fontFamily: "'DM Sans', sans-serif"
+                    fontFamily: "'DM Sans', sans-serif",
+                    transition: "color 0.4s ease",
+                    position: "relative",
+                    zIndex: 1,
+                    marginBottom: "20px"
                   }}
                 >
                   {service.description}
                 </p>
+
+                {/* Alt çizgi */}
+                <div style={{
+                  width: "40px",
+                  height: "3px",
+                  background: "linear-gradient(90deg, #D4A373 0%, transparent 100%)",
+                  borderRadius: "2px"
+                }} />
               </div>
             ))}
           </div>
@@ -598,7 +1071,7 @@ export default function HomePage() {
                       {project.mainImage && (
                         <>
                           <img
-                            src={`http://localhost:1337${project.mainImage.url}`}
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${project.mainImage.url}`}
                             alt={project.title}
                             style={{
                               width: "100%",
@@ -773,13 +1246,28 @@ export default function HomePage() {
 
       <style jsx>{`
         @keyframes float {
-          0%,
-          100% {
+          0%, 100% {
             transform: translateY(0px);
           }
           50% {
             transform: translateY(-20px);
           }
+        }
+        @keyframes shimmer {
+          0% { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
+        @keyframes shine {
+          0% { left: -100%; }
+          50%, 100% { left: 100%; }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        @keyframes scrollDown {
+          0%, 100% { transform: translateY(0); opacity: 1; }
+          50% { transform: translateY(6px); opacity: 0.5; }
         }
       `}</style>
     </div>

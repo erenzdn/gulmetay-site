@@ -14,10 +14,10 @@ export default function ProjectsPage() {
     
     async function fetchData() {
       try {
-        const resProjects = await fetch("http://localhost:1337/api/projects?populate=*");
+        const resProjects = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/projects?populate=*`);
         const jsonProjects = await resProjects.json();
         
-        const resCategories = await fetch("http://localhost:1337/api/categories");
+        const resCategories = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/categories`);
         const jsonCategories = await resCategories.json();
 
         setProjects(jsonProjects.data || []);
@@ -310,7 +310,7 @@ export default function ProjectsPage() {
                       {project.mainImage ? (
                         <>
                           <img
-                            src={`http://localhost:1337${project.mainImage.url}`}
+                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${project.mainImage.url}`}
                             alt={project.title}
                             style={{
                               width: "100%",

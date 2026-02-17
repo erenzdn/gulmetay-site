@@ -16,7 +16,7 @@ export default function ProjectDetailPage() {
     async function fetchProject() {
       if (!slug) return;
       try {
-        const res = await fetch(`http://localhost:1337/api/projects?filters[slug][$eq]=${slug}&populate=*`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/projects?filters[slug][$eq]=${slug}&populate=*`);
         const json = await res.json();
         if (json.data && json.data.length > 0) {
           setProject(json.data[0]);
@@ -106,7 +106,7 @@ export default function ProjectDetailPage() {
         {project.mainImage && (
           <>
             <img
-              src={`http://localhost:1337${project.mainImage.url}`}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${project.mainImage.url}`}
               alt={project.title}
               style={{
                 width: "100%",
@@ -338,7 +338,7 @@ export default function ProjectDetailPage() {
                     }}
                   >
                     <img
-                      src={`http://localhost:1337${img.url}`}
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${img.url}`}
                       alt={`Galeri Görseli ${index + 1}`}
                       style={{
                         width: "100%",
@@ -451,7 +451,7 @@ export default function ProjectDetailPage() {
           }}
         >
           <img
-            src={`http://localhost:1337${selectedImage.url}`}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${selectedImage.url}`}
             alt="Büyük Görsel"
             style={{
               maxWidth: "100%",
