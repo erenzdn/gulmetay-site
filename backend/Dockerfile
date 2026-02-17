@@ -33,8 +33,9 @@ COPY --from=build /app/public ./public
 COPY --from=build /app/types ./types
 COPY --from=build /app/tsconfig.json ./tsconfig.json
 
-# uploads klasoru icin volume
-RUN mkdir -p /app/public/uploads && chown -R strapi:strapi /app/public/uploads
+# uploads ve database klasorleri icin izinler
+RUN mkdir -p /app/public/uploads /app/database/migrations && \
+    chown -R strapi:strapi /app/public/uploads /app/database
 
 USER strapi
 

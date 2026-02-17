@@ -36,7 +36,7 @@ services:
       - strapi-uploads:/app/public/uploads
     networks:
       - gulmetay-internal
-      - nginx-proxy-network
+      - nginx_internal
     depends_on:
       postgres:
         condition: service_healthy
@@ -47,14 +47,14 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - NEXT_PUBLIC_STRAPI_URL=
+        - NEXT_PUBLIC_STRAPI_URL=https://gulmetay.mehmeterenozden.com
     container_name: gulmetay-frontend
     restart: unless-stopped
     environment:
       - NODE_ENV=production
     networks:
       - gulmetay-internal
-      - nginx-proxy-network
+      - nginx_internal
     depends_on:
       - backend
 
@@ -67,5 +67,6 @@ volumes:
 networks:
   gulmetay-internal:
     driver: bridge
-  nginx-proxy-network:
+  nginx_internal:
     external: true
+    name: nginx_internal

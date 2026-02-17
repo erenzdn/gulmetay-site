@@ -2,3 +2,6 @@
 .env
 .env.*
 !.env.example
+
+# Database backup (gizlilik / boyut)
+gulmetay_backup.sql
