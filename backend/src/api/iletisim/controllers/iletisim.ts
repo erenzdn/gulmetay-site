@@ -25,7 +25,8 @@ export default factories.createCoreController('api::iletisim.iletisim', ({ strap
     const verifyUrl =
       process.env.TURNSTILE_VERIFY_URL || 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
-    const body = (ctx.request?.body || {}) as Record<string, any>;
+    const req = ctx.request as typeof ctx.request & { body?: Record<string, unknown> };
+    const body = (req.body || {}) as Record<string, any>;
     const turnstileToken = body.turnstileToken as string | undefined;
     if (!turnstileToken) {
       ctx.throw(400, 'captcha_failed');
@@ -55,7 +56,7 @@ export default factories.createCoreController('api::iletisim.iletisim', ({ strap
 
     // Do not persist token; only use it for verification.
     delete body.turnstileToken;
-    ctx.request.body = body;
+    req.body = body;
 
     // Continue with default Strapi create behavior.
     return await (baseController as any).create(ctx);

@@ -19,13 +19,17 @@
     "@strapi/plugin-users-permissions": "5.31.0",
     "@strapi/strapi": "5.31.0",
     "better-sqlite3": "12.4.1",
+    "http-errors": "^2.0.1",
     "pg": "^8.16.3",
+    "rate-limiter-flexible": "^11.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
+    "@types/http-errors": "^2.0.5",
+    "@types/koa": "^3.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
