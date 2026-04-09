@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Script from "next/script";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,55 @@ export default function ContactPage() {
     message: ""
   });
   const [status, setStatus] = useState("");
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible] = useState(true);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileError, setTurnstileError] = useState("");
+  const [turnstileWidgetId, setTurnstileWidgetId] = useState(null);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const renderTurnstile = () => {
+    try {
+      const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+      if (!siteKey) {
+        // Prod'da teknik detayı kullanıcıya göstermeyelim.
+        if (process.env.NODE_ENV !== "production") {
+          setTurnstileError("Turnstile site key eksik (NEXT_PUBLIC_TURNSTILE_SITE_KEY).");
+        } else {
+          setTurnstileError("Doğrulama şu anda kullanılamıyor.");
+        }
+        return;
+      }
+
+      if (typeof window === "undefined") return;
+      if (!window.turnstile) return;
+
+      const container = document.getElementById("cf-turnstile");
+      if (!container) return;
+
+      // If already rendered, do nothing.
+      if (turnstileWidgetId !== null) return;
+
+      const widgetId = window.turnstile.render(container, {
+        sitekey: siteKey,
+        callback: (token) => {
+          setTurnstileError("");
+          setTurnstileToken(token || "");
+        },
+        "error-callback": () => {
+          setTurnstileToken("");
+          setTurnstileError("Doğrulama sırasında hata oluştu. Lütfen tekrar deneyin.");
+        },
+        "expired-callback": () => {
+          setTurnstileToken("");
+          setTurnstileError("Doğrulama süresi doldu. Lütfen tekrar doğrulayın.");
+        },
+      });
+
+      setTurnstileWidgetId(widgetId);
+    } catch {
+      setTurnstileToken("");
+      setTurnstileError("Doğrulama yüklenemedi. Lütfen sayfayı yenileyin.");
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +72,14 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
+    setTurnstileError("");
+
+    if (!turnstileToken) {
+      setStatus("error");
+      setTurnstileError("Lütfen robot olmadığınızı doğrulayın.");
+      setTimeout(() => setStatus(""), 5000);
+      return;
+    }
     
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/iletisims`, {
@@ -35,6 +88,7 @@ export default function ContactPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          turnstileToken,
           data: {
             name: formData.name,
             email: formData.email,
@@ -54,6 +108,12 @@ export default function ContactPage() {
           subject: "",
           message: ""
         });
+        setTurnstileToken("");
+        if (typeof window !== "undefined" && window.turnstile && turnstileWidgetId !== null) {
+          try {
+            window.turnstile.reset(turnstileWidgetId);
+          } catch {}
+        }
         setTimeout(() => setStatus(""), 5000);
       } else {
         const errorData = await response.json();
@@ -70,6 +130,11 @@ export default function ContactPage() {
 
   return (
     <div style={{ marginTop: "80px" }}>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+        strategy="afterInteractive"
+        onLoad={renderTurnstile}
+      />
       {/* Hero Section */}
       <section style={{
         position: "relative",
@@ -547,6 +612,27 @@ export default function ContactPage() {
                     e.target.style.boxShadow = "none";
                   }}
                 />
+              </div>
+
+              {/* Turnstile */}
+              <div style={{ marginBottom: "20px" }}>
+                <div
+                  id="cf-turnstile"
+                  style={{
+                    minHeight: "65px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: turnstileError ? "2px solid #f5c6cb" : "2px solid #e0e0e0",
+                    borderRadius: "12px",
+                    padding: "12px",
+                  }}
+                />
+                {turnstileError && (
+                  <div style={{ marginTop: "10px", color: "#721c24", fontSize: "14px", fontWeight: "600" }}>
+                    {turnstileError}
+                  </div>
+                )}
               </div>
 
               {/* Submit Button */}

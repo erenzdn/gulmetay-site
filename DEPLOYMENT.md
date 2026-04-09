@@ -220,6 +220,7 @@ Docker kurulumu production icin optimize edilmistir. Lokal gelistirme icin:
 1. Frontend klasorunde `.env.local` dosyasi olusturun:
    ```
    NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+   NEXT_PUBLIC_TURNSTILE_SITE_KEY=<turnstile_site_key>
    ```
 
 2. Backend ve frontend'i ayri ayri baslatin:
@@ -232,6 +233,22 @@ Docker kurulumu production icin optimize edilmistir. Lokal gelistirme icin:
    cd frontend
    npm run dev
    ```
+
+## Turnstile (Robot Degilim) Ayarlari
+
+Cloudflare Turnstile icin Cloudflare panelinden bir site olusturun ve anahtarlarinizi alin.
+
+### Gerekli Environment Variable'lar
+
+- Frontend (Next.js):
+  - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+- Backend (Strapi):
+  - `TURNSTILE_SECRET_KEY`
+  - (opsiyonel) `TURNSTILE_VERIFY_URL` (varsayilan: `https://challenges.cloudflare.com/turnstile/v0/siteverify`)
+
+### Strapi Public Izin
+
+Iletisim formu Strapi’ye `POST /api/iletisims` ile kayit atiyor. Bu endpoint public olacaksa Strapi Admin panelinde ilgili content type icin `create` izninin acik oldugunu kontrol edin.
 
 ---
 

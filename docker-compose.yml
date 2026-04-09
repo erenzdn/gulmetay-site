@@ -48,6 +48,7 @@ services:
       dockerfile: Dockerfile
       args:
         - NEXT_PUBLIC_STRAPI_URL=https://gulmetay.mehmeterenozden.com
+        - NEXT_PUBLIC_TURNSTILE_SITE_KEY=${NEXT_PUBLIC_TURNSTILE_SITE_KEY}
     container_name: gulmetay-frontend
     restart: unless-stopped
     environment:
