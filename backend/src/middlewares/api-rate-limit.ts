@@ -1,6 +1,8 @@
 /**
- * Global API rate limit: /api altı için genel pencere + POST /api/iletisims için sıkı pencere.
- * OPTIONS (CORS preflight) sayılmaz. IP: CF-Connecting-IP > X-Forwarded-For (sol) > X-Real-IP > ctx.ip
+ * Global API rate limit (rate-limiter-flexible + Strapi 5 factory).
+ * - POST /api/iletisims (yol normalize): dakikada 5; diğer /api/*: dakikada 100 (env ile değişir).
+ * - OPTIONS (CORS preflight) sayılmaz.
+ * - IP: Cloudflare CF-Connecting-IP; yoksa X-Forwarded-For sol (Nginx $proxy_add_x_forwarded_for ile uyumlu); yoksa ctx.ip (proxy.koa).
  */
 import type { Core } from '@strapi/strapi';
 import type { Context, Next } from 'koa';
@@ -36,9 +38,6 @@ function getClientIp(ctx: Context): string {
 
   const xff = headerFirstValue(ctx.get('x-forwarded-for'));
   if (xff) return xff;
-
-  const realIp = headerFirstValue(ctx.get('x-real-ip'));
-  if (realIp) return realIp;
 
   return ctx.ip || ctx.request.ip || '0.0.0.0';
 }
