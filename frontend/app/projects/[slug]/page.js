@@ -2,6 +2,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import {
+  XCircle,
+  ArrowLeft,
+  Check,
+  Hammer,
+  ClipboardList,
+  Calendar,
+  Flag,
+  FileText,
+  Images,
+  Search,
+} from "lucide-react";
 
 export default function ProjectDetailPage() {
   const { slug } = useParams();
@@ -72,7 +84,9 @@ export default function ProjectDetailPage() {
         textAlign: "center",
         minHeight: "100vh"
       }}>
-        <div style={{ fontSize: "80px", marginBottom: "20px", opacity: 0.3 }}>❌</div>
+        <div style={{ marginBottom: "20px", opacity: 0.3, display: "flex", justifyContent: "center" }}>
+          <XCircle size={72} strokeWidth={1.6} />
+        </div>
         <h2 style={{ fontSize: "2rem", color: "#333", marginBottom: "15px" }}>Proje Bulunamadı</h2>
         <p style={{ color: "#666", marginBottom: "30px" }}>Aradığınız proje mevcut değil.</p>
         <Link href="/projects" style={{ textDecoration: "none" }}>
@@ -86,7 +100,10 @@ export default function ProjectDetailPage() {
             fontWeight: "600",
             cursor: "pointer"
           }}>
-            ← Projelere Dön
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <ArrowLeft size={16} />
+              Projelere Dön
+            </span>
           </button>
         </Link>
       </div>
@@ -155,7 +172,7 @@ export default function ProjectDetailPage() {
             e.currentTarget.style.background = "rgba(255, 255, 255, 0.95)";
             e.currentTarget.style.transform = "translateX(0)";
           }}>
-            <span>←</span>
+            <ArrowLeft size={16} />
             <span>Tüm Projeler</span>
           </div>
         </Link>
@@ -217,9 +234,9 @@ export default function ProjectDetailPage() {
                   color: "white",
                   fontSize: "15px"
                 }}>
-                  <span style={{ fontSize: "20px" }}>
-                    {project.status_deneme === "Completed" ? "✓" :
-                     project.status_deneme === "Ongoing" ? "🔨" : "📋"}
+                  <span style={{ display: "inline-flex", alignItems: "center" }}>
+                    {project.status_deneme === "Completed" ? <Check size={18} /> :
+                     project.status_deneme === "Ongoing" ? <Hammer size={18} /> : <ClipboardList size={18} />}
                   </span>
                   <span style={{ fontWeight: "600" }}>
                     {project.status_deneme === "Completed" ? "Tamamlandı" :
@@ -235,7 +252,7 @@ export default function ProjectDetailPage() {
                   color: "rgba(255, 255, 255, 0.9)",
                   fontSize: "15px"
                 }}>
-                  <span>📅</span>
+                  <Calendar size={16} />
                   <span>Başlangıç: {project.startDate}</span>
                 </div>
               )}
@@ -247,7 +264,7 @@ export default function ProjectDetailPage() {
                   color: "rgba(255, 255, 255, 0.9)",
                   fontSize: "15px"
                 }}>
-                  <span>🏁</span>
+                  <Flag size={16} />
                   <span>Bitiş: {project.endDate}</span>
                 </div>
               )}
@@ -279,7 +296,7 @@ export default function ProjectDetailPage() {
               alignItems: "center",
               gap: "15px"
             }}>
-              <span style={{ fontSize: "30px" }}>📋</span>
+              <FileText size={26} />
               Proje Hakkında
             </h2>
             <p style={{
@@ -304,7 +321,7 @@ export default function ProjectDetailPage() {
                 alignItems: "center",
                 gap: "15px"
               }}>
-                <span style={{ fontSize: "30px" }}>🖼️</span>
+                <Images size={26} />
                 Proje Galerisi
               </h2>
               
@@ -368,7 +385,7 @@ export default function ProjectDetailPage() {
                         transition: "transform 0.3s ease"
                       }}
                       className="zoom-icon">
-                        🔍
+                        <Search size={34} />
                       </span>
                     </div>
                   </div>

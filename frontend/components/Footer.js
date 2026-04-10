@@ -1,7 +1,26 @@
 "use client";
 import Link from "next/link";
+import {
+  Globe,
+  Camera,
+  Send,
+  BriefcaseBusiness,
+  ArrowRight,
+  CircleDot,
+  MapPin,
+  Phone,
+  Smartphone,
+  Mail,
+} from "lucide-react";
 
 export default function Footer() {
+  const socialIcons = {
+    facebook: Globe,
+    instagram: Camera,
+    twitter: Send,
+    linkedin: BriefcaseBusiness,
+  };
+
   return (
     <footer
       style={{
@@ -55,6 +74,9 @@ export default function Footer() {
             {/* Social Links */}
             <div style={{ display: "flex", gap: "15px", marginTop: "20px" }}>
               {["facebook", "instagram", "twitter", "linkedin"].map((social) => (
+                (() => {
+                  const SocialIcon = socialIcons[social];
+                  return (
                 <a
                   key={social}
                   href="#"
@@ -82,11 +104,10 @@ export default function Footer() {
                     e.currentTarget.style.transform = "translateY(0)";
                   }}
                 >
-                  {social === "facebook" && "f"}
-                  {social === "instagram" && "📷"}
-                  {social === "twitter" && "🐦"}
-                  {social === "linkedin" && "in"}
+                  <SocialIcon size={18} strokeWidth={2} />
                 </a>
+                  );
+                })()
               ))}
             </div>
           </div>
@@ -130,7 +151,10 @@ export default function Footer() {
                     e.currentTarget.style.paddingLeft = "0";
                   }}
                 >
-                  → {link.label}
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                    <ArrowRight size={14} />
+                    {link.label}
+                  </span>
                 </Link>
               ))}
             </div>
@@ -158,7 +182,10 @@ export default function Footer() {
                       fontSize: "14px"
                     }}
                   >
-                    • {service}
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                      <CircleDot size={12} />
+                      {service}
+                    </span>
                   </div>
                 )
               )}
@@ -179,7 +206,7 @@ export default function Footer() {
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                <span style={{ color: "#D4A373", fontSize: "18px" }}>📍</span>
+                <MapPin color="#D4A373" size={18} />
                 <div style={{ color: "#b0b0b0", fontSize: "14px", lineHeight: "1.6" }}>
                   Bahçeşehir 2. Kısım Mah. 12. Cadde<br />
                   Cihan Doğa Sitesi, Villa No: 8/A<br />
@@ -187,7 +214,7 @@ export default function Footer() {
                 </div>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <span style={{ color: "#D4A373", fontSize: "18px" }}>📞</span>
+                <Phone color="#D4A373" size={18} />
                 <a
                   href="tel:+902124180909"
                   style={{
@@ -203,7 +230,7 @@ export default function Footer() {
                 </a>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <span style={{ color: "#D4A373", fontSize: "18px" }}>📱</span>
+                <Smartphone color="#D4A373" size={18} />
                 <a
                   href="tel:+905358197764"
                   style={{
@@ -219,7 +246,7 @@ export default function Footer() {
                 </a>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <span style={{ color: "#D4A373", fontSize: "18px" }}>📧</span>
+                <Mail color="#D4A373" size={18} />
                 <a
                   href="mailto:bilgi@gulmetay.com.tr"
                   style={{

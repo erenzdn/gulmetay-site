@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { FolderOpen, Eye, Check, Hammer, ClipboardList } from "lucide-react";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
@@ -260,7 +261,9 @@ export default function ProjectsPage() {
               borderRadius: "20px",
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)"
             }}>
-              <div style={{ fontSize: "80px", marginBottom: "20px", opacity: 0.3 }}>📁</div>
+              <div style={{ marginBottom: "20px", opacity: 0.3, display: "flex", justifyContent: "center" }}>
+                <FolderOpen size={72} strokeWidth={1.5} />
+              </div>
               <p style={{ fontSize: "1.2rem", color: "#666", fontWeight: "500" }}>
                 Bu kategoride henüz proje bulunmuyor.
               </p>
@@ -337,7 +340,10 @@ export default function ProjectsPage() {
                           }}
                           className="project-overlay">
                             <div style={{ color: "white", fontSize: "14px", fontWeight: "600" }}>
-                              Detayları Görüntüle →
+                              <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                                <Eye size={15} />
+                                Detayları Görüntüle
+                              </span>
                             </div>
                           </div>
                         </>
@@ -411,8 +417,12 @@ export default function ProjectsPage() {
                             fontSize: "13px",
                             fontWeight: "600"
                           }}>
-                            {project.status_deneme === "Completed" ? "✓ Tamamlandı" :
-                             project.status_deneme === "Ongoing" ? "🔨 Devam Ediyor" : "📋 Planlandı"}
+                            <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                              {project.status_deneme === "Completed" ? <Check size={14} /> :
+                               project.status_deneme === "Ongoing" ? <Hammer size={14} /> : <ClipboardList size={14} />}
+                              {project.status_deneme === "Completed" ? "Tamamlandı" :
+                               project.status_deneme === "Ongoing" ? "Devam Ediyor" : "Planlandı"}
+                            </span>
                           </span>
                         </div>
                       )}

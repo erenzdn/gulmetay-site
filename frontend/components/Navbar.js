@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -90,7 +91,7 @@ export default function Navbar() {
                 color: isActive(link.href) ? "#0C1B33" : "#555",
                 fontSize: "15px",
                 fontWeight: isActive(link.href) ? "600" : "500",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', system-ui, sans-serif",
                 letterSpacing: "0.3px",
                 padding: "10px 20px",
                 borderRadius: "8px",
@@ -140,7 +141,7 @@ export default function Navbar() {
                 borderRadius: "10px",
                 fontSize: "14px",
                 fontWeight: "600",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', system-ui, sans-serif",
                 letterSpacing: "0.5px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
@@ -159,9 +160,7 @@ export default function Navbar() {
               }}
             >
               Teklif Al
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+              <ArrowRight size={16} strokeWidth={2.2} />
             </button>
           </Link>
         </div>

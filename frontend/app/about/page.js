@@ -84,7 +84,7 @@ export default function AboutPage() {
           <h1 style={{
             fontSize: "3.2rem",
             fontWeight: "600",
-            fontFamily: "'Playfair Display', Georgia, serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -102,7 +102,7 @@ export default function AboutPage() {
             whiteSpace: "pre-line",
             borderLeft: "4px solid #D4A373",
             paddingLeft: "30px",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             fontWeight: "400"
           }}>
             {data.content}
@@ -158,7 +158,7 @@ export default function AboutPage() {
             marginBottom: "25px",
             fontSize: "0.75rem",
             fontWeight: "600",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             color: "#fff",
             letterSpacing: "1.5px",
             textTransform: "uppercase"
@@ -169,7 +169,7 @@ export default function AboutPage() {
           <h3 style={{
             fontSize: "1.9rem",
             fontWeight: "600",
-            fontFamily: "'Playfair Display', Georgia, serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             color: "#0C1B33",
             marginBottom: "20px",
             lineHeight: "1.3"
@@ -180,7 +180,7 @@ export default function AboutPage() {
           <p style={{
             fontSize: "1.05rem",
             lineHeight: "1.9",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             color: "#4a5568",
             margin: 0
           }}>
@@ -227,7 +227,7 @@ export default function AboutPage() {
             marginBottom: "25px",
             fontSize: "0.75rem",
             fontWeight: "600",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             color: "#fff",
             letterSpacing: "1.5px",
             textTransform: "uppercase"
@@ -238,7 +238,7 @@ export default function AboutPage() {
           <h3 style={{
             fontSize: "1.9rem",
             fontWeight: "600",
-            fontFamily: "'Playfair Display', Georgia, serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             color: "#0C1B33",
             marginBottom: "20px",
             lineHeight: "1.3"
@@ -249,7 +249,7 @@ export default function AboutPage() {
           <p style={{
             fontSize: "1.05rem",
             lineHeight: "1.9",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Roboto', system-ui, sans-serif",
             color: "#4a5568",
             margin: 0
           }}>

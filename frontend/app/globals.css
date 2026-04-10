@@ -10,9 +10,9 @@
   --foreground: #171717;
   
   /* Font Families */
-  --font-heading: 'Playfair Display', 'Georgia', serif;
-  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
-  --font-accent: 'Cormorant Garamond', 'Georgia', serif;
+  --font-heading: 'Roboto', system-ui, sans-serif;
+  --font-body: 'Roboto', system-ui, sans-serif;
+  --font-accent: 'Roboto', system-ui, sans-serif;
 }
 
 @theme inline {

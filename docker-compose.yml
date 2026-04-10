@@ -1,3 +1,9 @@
+# Not: Bu dosyadaki ${...} degiskenleri icin Docker Compose varsayilan olarak
+# proje kokundeki `.env` dosyasini okur. `.env.production` sadece `backend.env_file`
+# ile konteynere verilir; build arg interpolasyonuna OTOMATIK dahil OLMAZ.
+# Turnstile site key icin: `docker compose --env-file .env.production build --no-cache frontend`
+# veya kokte `.env` icine `NEXT_PUBLIC_TURNSTILE_SITE_KEY=...` yazin.
+
 services:
   # --- PostgreSQL Veritabani ---
   postgres:

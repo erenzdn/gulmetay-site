@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ArrowRight, Building2, ShieldCheck, Clock3, HardHat, PenTool, Building, BriefcaseBusiness, Mouse } from "lucide-react";
 
 export default function HomePage() {
   const [latestProjects, setLatestProjects] = useState([]);
@@ -175,7 +176,7 @@ export default function HomePage() {
                   style={{
                     color: "rgba(255, 255, 255, 0.5)",
                     fontSize: "13px",
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', system-ui, sans-serif",
                     letterSpacing: "0.5px"
                   }}
                 >
@@ -188,7 +189,7 @@ export default function HomePage() {
                 style={{
                   fontSize: "clamp(3rem, 5vw, 4.5rem)",
                   fontWeight: "400",
-                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
                   color: "#ffffff",
                   marginBottom: "30px",
                   lineHeight: "1.1",
@@ -217,7 +218,7 @@ export default function HomePage() {
               <p
                 style={{
                   fontSize: "1.1rem",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
                   color: "rgba(255, 255, 255, 0.6)",
                   marginBottom: "50px",
                   lineHeight: "1.9",
@@ -240,7 +241,7 @@ export default function HomePage() {
                       borderRadius: "60px",
                       fontSize: "14px",
                       fontWeight: "600",
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Roboto', system-ui, sans-serif",
                       letterSpacing: "0.5px",
                       cursor: "pointer",
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -258,9 +259,7 @@ export default function HomePage() {
                     }}
                   >
                     Projeleri Keşfet
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                    <ArrowRight size={18} strokeWidth={2.5} />
                   </button>
                 </Link>
 
@@ -274,7 +273,7 @@ export default function HomePage() {
                       borderRadius: "60px",
                       fontSize: "14px",
                       fontWeight: "500",
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Roboto', system-ui, sans-serif",
                       letterSpacing: "0.5px",
                       cursor: "pointer",
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -324,7 +323,7 @@ export default function HomePage() {
                       style={{
                         fontSize: "2.2rem",
                         fontWeight: "500",
-                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontFamily: "'Roboto', system-ui, sans-serif",
                         color: "#ffffff",
                         lineHeight: "1",
                         marginBottom: "8px"
@@ -336,7 +335,7 @@ export default function HomePage() {
                       style={{
                         fontSize: "13px",
                         color: "rgba(255, 255, 255, 0.4)",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Roboto', system-ui, sans-serif",
                         letterSpacing: "0.3px"
                       }}
                     >
@@ -403,7 +402,7 @@ export default function HomePage() {
                         <div
                           style={{
                             fontSize: "11px",
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'Roboto', system-ui, sans-serif",
                             letterSpacing: "2px",
                             textTransform: "uppercase",
                             color: "rgba(255, 255, 255, 0.4)",
@@ -415,7 +414,7 @@ export default function HomePage() {
                         <div
                           style={{
                             fontSize: "1.6rem",
-                            fontFamily: "'Playfair Display', Georgia, serif",
+                            fontFamily: "'Roboto', system-ui, sans-serif",
                             color: "#ffffff",
                             fontWeight: "400"
                           }}
@@ -436,11 +435,7 @@ export default function HomePage() {
                           justifyContent: "center"
                         }}
                       >
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A373" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M2 20h20"/>
-                          <path d="M5 20V8.5L12 3l7 5.5V20"/>
-                          <path d="M9 20v-6h6v6"/>
-                        </svg>
+                        <Building2 size={22} color="#D4A373" strokeWidth={1.8} />
                       </div>
                     </div>
 
@@ -453,7 +448,7 @@ export default function HomePage() {
                             background: "rgba(255, 255, 255, 0.05)",
                             borderRadius: "100px",
                             fontSize: "13px",
-                            fontFamily: "'DM Sans', sans-serif",
+                            fontFamily: "'Roboto', system-ui, sans-serif",
                             color: "rgba(255, 255, 255, 0.6)",
                             border: "1px solid rgba(255, 255, 255, 0.08)"
                           }}
@@ -489,16 +484,13 @@ export default function HomePage() {
                       justifyContent: "center"
                     }}
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                      <path d="M9 12l2 2 4-4"/>
-                    </svg>
+                    <ShieldCheck size={20} color="#D4A373" strokeWidth={1.8} />
                   </div>
                   <div>
                     <div
                       style={{
                         fontSize: "1.8rem",
-                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontFamily: "'Roboto', system-ui, sans-serif",
                         color: "#D4A373",
                         fontWeight: "500",
                         marginBottom: "4px"
@@ -510,7 +502,7 @@ export default function HomePage() {
                       style={{
                         fontSize: "13px",
                         color: "rgba(255, 255, 255, 0.5)",
-                        fontFamily: "'DM Sans', sans-serif"
+                        fontFamily: "'Roboto', system-ui, sans-serif"
                       }}
                     >
                       Kalite garantisi
@@ -542,16 +534,13 @@ export default function HomePage() {
                       justifyContent: "center"
                     }}
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <polyline points="12 6 12 12 16 14"/>
-                    </svg>
+                    <Clock3 size={20} color="#818cf8" strokeWidth={1.8} />
                   </div>
                   <div>
                     <div
                       style={{
                         fontSize: "1.8rem",
-                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontFamily: "'Roboto', system-ui, sans-serif",
                         color: "#818cf8",
                         fontWeight: "500",
                         marginBottom: "4px"
@@ -563,7 +552,7 @@ export default function HomePage() {
                       style={{
                         fontSize: "13px",
                         color: "rgba(255, 255, 255, 0.5)",
-                        fontFamily: "'DM Sans', sans-serif"
+                        fontFamily: "'Roboto', system-ui, sans-serif"
                       }}
                     >
                       Teslim garantisi
@@ -588,7 +577,7 @@ export default function HomePage() {
                     style={{
                       fontSize: "15px",
                       color: "rgba(255, 255, 255, 0.6)",
-                      fontFamily: "'DM Sans', sans-serif"
+                      fontFamily: "'Roboto', system-ui, sans-serif"
                     }}
                   >
                     Projeniz için ücretsiz danışmanlık alın
@@ -602,7 +591,7 @@ export default function HomePage() {
                       color: "#D4A373",
                       textDecoration: "none",
                       fontSize: "14px",
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "'Roboto', system-ui, sans-serif",
                       fontWeight: "600",
                       transition: "gap 0.3s ease"
                     }}
@@ -614,9 +603,7 @@ export default function HomePage() {
                     }}
                   >
                     Başlayın
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                    <ArrowRight size={18} strokeWidth={2} />
                   </Link>
                 </div>
               </div>
@@ -637,27 +624,7 @@ export default function HomePage() {
             gap: "12px"
           }}
         >
-          <div
-            style={{
-              width: "20px",
-              height: "32px",
-              borderRadius: "10px",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              display: "flex",
-              justifyContent: "center",
-              paddingTop: "6px"
-            }}
-          >
-            <div
-              style={{
-                width: "3px",
-                height: "8px",
-                borderRadius: "2px",
-                background: "rgba(212, 163, 115, 0.8)",
-                animation: "scrollDown 1.5s ease-in-out infinite"
-              }}
-            />
-          </div>
+          <Mouse size={24} strokeWidth={1.8} color="rgba(255, 255, 255, 0.55)" />
         </div>
 
       </section>
@@ -693,7 +660,7 @@ export default function HomePage() {
                 style={{
                   fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
                   fontWeight: "600",
-                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
                   background: "linear-gradient(135deg, #0C1B33 0%, #D4A373 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -708,7 +675,7 @@ export default function HomePage() {
                   color: "#666",
                   fontSize: "15px",
                   fontWeight: "500",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
                   letterSpacing: "0.5px"
                 }}
               >
@@ -733,7 +700,7 @@ export default function HomePage() {
                 fontSize: "13px",
                 color: "#D4A373",
                 fontWeight: "600",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', system-ui, sans-serif",
                 letterSpacing: "3px",
                 textTransform: "uppercase",
                 marginBottom: "15px"
@@ -745,7 +712,7 @@ export default function HomePage() {
               style={{
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 fontWeight: "600",
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "'Roboto', system-ui, sans-serif",
                 color: "#0C1B33",
                 marginBottom: "20px"
               }}
@@ -757,7 +724,7 @@ export default function HomePage() {
               color: "#666", 
               maxWidth: "600px", 
               margin: "0 auto",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', system-ui, sans-serif",
               lineHeight: "1.7"
             }}>
               Kapsamlı inşaat çözümlerimizle projelerinizi baştan sona yönetiyoruz
@@ -781,13 +748,7 @@ export default function HomePage() {
                 title: "İnşaat & Taahhüt",
                 description: "Anahtar teslim projeler ve profesyonel inşaat hizmetleri ile hayalinizdeki yapıları inşa ediyoruz.",
                 icon: (
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M2 20h20"/>
-                    <path d="M5 20V8.5L12 3l7 5.5V20"/>
-                    <path d="M9 20v-6h6v6"/>
-                    <path d="M9 10h.01"/>
-                    <path d="M15 10h.01"/>
-                  </svg>
+                  <HardHat size={32} strokeWidth={1.7} />
                 ),
                 number: "01"
               },
@@ -795,11 +756,7 @@ export default function HomePage() {
                 title: "Mimari Tasarım",
                 description: "Modern ve estetik mimari çizimler, 3D modelleme ve profesyonel proje danışmanlığı hizmetleri.",
                 icon: (
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 3v18h18"/>
-                    <path d="M7 16l4-4 4 4 5-6"/>
-                    <circle cx="19" cy="10" r="2"/>
-                  </svg>
+                  <PenTool size={32} strokeWidth={1.7} />
                 ),
                 number: "02"
               },
@@ -807,16 +764,7 @@ export default function HomePage() {
                 title: "Kentsel Dönüşüm",
                 description: "Eski yapıları yenileyerek değer katıyor, güvenli ve modern yaşam alanları oluşturuyoruz.",
                 icon: (
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/>
-                    <path d="M1 21h22"/>
-                    <path d="M9 7h1"/>
-                    <path d="M9 11h1"/>
-                    <path d="M9 15h1"/>
-                    <path d="M14 7h1"/>
-                    <path d="M14 11h1"/>
-                    <path d="M14 15h1"/>
-                  </svg>
+                  <Building size={32} strokeWidth={1.7} />
                 ),
                 number: "03"
               },
@@ -824,12 +772,7 @@ export default function HomePage() {
                 title: "Proje Yönetimi",
                 description: "Baştan sona profesyonel proje takibi, maliyet kontrolü ve zamanında teslim garantisi.",
                 icon: (
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 20V10"/>
-                    <path d="M18 20V4"/>
-                    <path d="M6 20v-4"/>
-                    <circle cx="12" cy="7" r="3"/>
-                  </svg>
+                  <BriefcaseBusiness size={32} strokeWidth={1.7} />
                 ),
                 number: "04"
               }
@@ -877,7 +820,7 @@ export default function HomePage() {
                     right: "25px",
                     fontSize: "5rem",
                     fontWeight: "800",
-                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontFamily: "'Roboto', system-ui, sans-serif",
                     color: "rgba(12, 27, 51, 0.08)",
                     lineHeight: "1",
                     transition: "color 0.4s ease"
@@ -903,7 +846,7 @@ export default function HomePage() {
                   style={{
                     fontSize: "1.4rem",
                     fontWeight: "600",
-                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontFamily: "'Roboto', system-ui, sans-serif",
                     color: "#0C1B33",
                     marginBottom: "15px",
                     transition: "color 0.4s ease",
@@ -920,7 +863,7 @@ export default function HomePage() {
                     color: "#666",
                     lineHeight: "1.8",
                     fontSize: "15px",
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Roboto', system-ui, sans-serif",
                     transition: "color 0.4s ease",
                     position: "relative",
                     zIndex: 1,
@@ -962,7 +905,7 @@ export default function HomePage() {
                   fontSize: "13px",
                   color: "#D4A373",
                   fontWeight: "600",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
                   letterSpacing: "3px",
                   textTransform: "uppercase",
                   marginBottom: "10px"
@@ -974,7 +917,7 @@ export default function HomePage() {
                 style={{
                   fontSize: "clamp(2rem, 4vw, 3rem)",
                   fontWeight: "600",
-                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
                   color: "#0C1B33"
                 }}
               >
@@ -991,7 +934,7 @@ export default function HomePage() {
                   borderRadius: "10px",
                   fontSize: "14px",
                   fontWeight: "600",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
                   letterSpacing: "0.5px",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
@@ -1009,7 +952,7 @@ export default function HomePage() {
                 }}
               >
                 Tüm Projeler
-                <span>→</span>
+                <ArrowRight size={16} />
               </button>
             </Link>
           </div>
@@ -1109,7 +1052,7 @@ export default function HomePage() {
                         style={{
                           fontSize: "1.5rem",
                           fontWeight: "600",
-                          fontFamily: "'Playfair Display', Georgia, serif",
+                          fontFamily: "'Roboto', system-ui, sans-serif",
                           color: "#0C1B33",
                           marginBottom: "15px",
                           lineHeight: "1.3"
@@ -1123,7 +1066,7 @@ export default function HomePage() {
                           lineHeight: "1.8",
                           marginBottom: "20px",
                           fontSize: "15px",
-                          fontFamily: "'DM Sans', sans-serif"
+                          fontFamily: "'Roboto', system-ui, sans-serif"
                         }}
                       >
                         {project.description?.[0]?.children?.[0]?.text?.substring(0, 100) ||
@@ -1134,7 +1077,7 @@ export default function HomePage() {
                         style={{
                           color: "#D4A373",
                           fontWeight: "600",
-                          fontFamily: "'DM Sans', sans-serif",
+                          fontFamily: "'Roboto', system-ui, sans-serif",
                           display: "flex",
                           alignItems: "center",
                           gap: "8px",
@@ -1143,7 +1086,7 @@ export default function HomePage() {
                         }}
                       >
                         Detayları Gör
-                        <span style={{ transition: "transform 0.3s ease" }}>→</span>
+                        <ArrowRight size={16} />
                       </div>
                     </div>
                   </div>
@@ -1190,7 +1133,7 @@ export default function HomePage() {
             style={{
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: "600",
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Roboto', system-ui, sans-serif",
               color: "white",
               marginBottom: "25px",
               lineHeight: "1.2"
@@ -1202,7 +1145,7 @@ export default function HomePage() {
           <p
             style={{
               fontSize: "1.15rem",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', system-ui, sans-serif",
               color: "rgba(255, 255, 255, 0.85)",
               marginBottom: "40px",
               maxWidth: "700px",
@@ -1223,7 +1166,7 @@ export default function HomePage() {
                 borderRadius: "12px",
                 fontSize: "16px",
                 fontWeight: "600",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Roboto', system-ui, sans-serif",
                 letterSpacing: "0.5px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
@@ -1264,10 +1207,6 @@ export default function HomePage() {
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.5; }
-        }
-        @keyframes scrollDown {
-          0%, 100% { transform: translateY(0); opacity: 1; }
-          50% { transform: translateY(6px); opacity: 0.5; }
         }
       `}</style>
     </div>

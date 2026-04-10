@@ -250,6 +250,26 @@ Cloudflare Turnstile icin Cloudflare panelinden bir site olusturun ve anahtarlar
 
 Iletisim formu Strapi’ye `POST /api/iletisims` ile kayit atiyor. Bu endpoint public olacaksa Strapi Admin panelinde ilgili content type icin `create` izninin acik oldugunu kontrol edin.
 
+### Sunucuda (Docker) Turnstile gorunmuyor
+
+1. **`.env.production` Git’te yok** — sunucuda proje kokunde bu dosyayi elle olusturup `TURNSTILE_SECRET_KEY`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` ve diger degerleri doldurun.
+
+2. **`NEXT_PUBLIC_*` degiskenleri frontend imaji BUILD sirasinda pakete gomulur.** Sadece konteyneri yeniden baslatmak yetmez; **frontend’i yeniden build** etmeniz gerekir:
+   ```bash
+   docker compose build --no-cache frontend
+   docker compose up -d
+   ```
+
+3. **Kritik:** `docker-compose.yml` icindeki `${NEXT_PUBLIC_TURNSTILE_SITE_KEY}` ifadesi, Compose tarafindan **varsayilan olarak sadece kok `.env`** dosyasindan (veya shell ortamindan) okunur. `.env.production` backend’e verilir ama bu interpolasyona **otomatik girmez**. Cozumlerden biri:
+   - Proje kokunde `.env` dosyasina satir ekleyin: `NEXT_PUBLIC_TURNSTILE_SITE_KEY=0x...` — sonra yukaridaki gibi `frontend` build edin; veya
+   - Tum degiskenleri `.env.production`’dan Compose’a yukleyerek build edin:
+     ```bash
+     docker compose --env-file .env.production build --no-cache frontend
+     docker compose --env-file .env.production up -d
+     ```
+
+4. Cloudflare Turnstile sitede **production domain** (ve gerekiyorsa `www`) ile tanimli olmali; aksi halde widget yuklenmeyebilir.
+
 ---
 
 ## Sorun Giderme

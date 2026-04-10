@@ -1,8 +1,62 @@
 "use client";
 import { useState } from "react";
 import Script from "next/script";
+import {
+  MapPin,
+  Phone,
+  Smartphone,
+  Mail,
+  Clock3,
+  Globe,
+  Camera,
+  Send,
+  BriefcaseBusiness,
+  ExternalLink,
+  CheckCircle,
+  CircleX,
+} from "lucide-react";
 
 export default function ContactPage() {
+  const contactItems = [
+    {
+      icon: MapPin,
+      title: "Adres",
+      content: "Bahçeşehir 2. Kısım Mah. 12. Cadde\nCihan Doğa Sitesi, Villa No: 8/A\nBaşakşehir / İstanbul / Türkiye",
+      link: null
+    },
+    {
+      icon: Phone,
+      title: "Telefon",
+      content: "+90 212 418 09 09",
+      link: "tel:+902124180909"
+    },
+    {
+      icon: Smartphone,
+      title: "GSM",
+      content: "+90 535 819 77 64",
+      link: "tel:+905358197764"
+    },
+    {
+      icon: Mail,
+      title: "E-posta",
+      content: "bilgi@gulmetay.com.tr",
+      link: "mailto:bilgi@gulmetay.com.tr"
+    },
+    {
+      icon: Clock3,
+      title: "Çalışma Saatleri",
+      content: "Pazartesi - Cuma: 09:00 - 18:00\nCumartesi: 09:00 - 14:00\nPazar: Kapalı",
+      link: null
+    }
+  ];
+
+  const socialItems = [
+    { name: "Facebook", Icon: Globe },
+    { name: "Instagram", Icon: Camera },
+    { name: "Twitter", Icon: Send },
+    { name: "LinkedIn", Icon: BriefcaseBusiness },
+  ];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -223,38 +277,7 @@ export default function ContactPage() {
             </h2>
             
             {/* Contact Cards */}
-            {[
-              {
-                icon: "📍",
-                title: "Adres",
-                content: "Bahçeşehir 2. Kısım Mah. 12. Cadde\nCihan Doğa Sitesi, Villa No: 8/A\nBaşakşehir / İstanbul / Türkiye",
-                link: null
-              },
-              {
-                icon: "📞",
-                title: "Telefon",
-                content: "+90 212 418 09 09",
-                link: "tel:+902124180909"
-              },
-              {
-                icon: "📱",
-                title: "GSM",
-                content: "+90 535 819 77 64",
-                link: "tel:+905358197764"
-              },
-              {
-                icon: "📧",
-                title: "E-posta",
-                content: "bilgi@gulmetay.com.tr",
-                link: "mailto:bilgi@gulmetay.com.tr"
-              },
-              {
-                icon: "🕒",
-                title: "Çalışma Saatleri",
-                content: "Pazartesi - Cuma: 09:00 - 18:00\nCumartesi: 09:00 - 14:00\nPazar: Kapalı",
-                link: null
-              }
-            ].map((item, index) => (
+            {contactItems.map((item, index) => (
               <div
                 key={index}
                 style={{
@@ -295,7 +318,7 @@ export default function ContactPage() {
                     justifyContent: "center",
                     flexShrink: 0
                   }}>
-                    {item.icon}
+                    <item.icon size={28} color="#D4A373" />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
@@ -357,7 +380,7 @@ export default function ContactPage() {
                 gap: "15px",
                 flexWrap: "wrap"
               }}>
-                {["Facebook", "Instagram", "Twitter", "LinkedIn"].map((social, index) => (
+                {socialItems.map((social, index) => (
                   <a
                     key={index}
                     href="#"
@@ -387,7 +410,7 @@ export default function ContactPage() {
                       e.currentTarget.style.transform = "translateY(0) rotate(0deg)";
                     }}
                   >
-                    {social[0]}
+                    <social.Icon size={20} strokeWidth={2} />
                   </a>
                 ))}
               </div>
@@ -614,27 +637,6 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Turnstile */}
-              <div style={{ marginBottom: "20px" }}>
-                <div
-                  id="cf-turnstile"
-                  style={{
-                    minHeight: "65px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border: turnstileError ? "2px solid #f5c6cb" : "2px solid #e0e0e0",
-                    borderRadius: "12px",
-                    padding: "12px",
-                  }}
-                />
-                {turnstileError && (
-                  <div style={{ marginTop: "10px", color: "#721c24", fontSize: "14px", fontWeight: "600" }}>
-                    {turnstileError}
-                  </div>
-                )}
-              </div>
-
               {/* Submit Button */}
               <button
                 type="submit"
@@ -670,6 +672,59 @@ export default function ContactPage() {
                 {status === "sending" ? "Gönderiliyor..." : "Mesajı Gönder"}
               </button>
 
+              {/* Turnstile (managed: çoğu kullanıcıda ek tıklama gerekmez) */}
+              <div
+                id="turnstile-card"
+                style={{
+                  marginTop: "18px",
+                  marginBottom: "8px",
+                  padding: "12px 14px",
+                  borderRadius: "12px",
+                  border: turnstileError ? "1px solid #f5c6cb" : "1px solid #ececec",
+                  background: turnstileError ? "#fff8f8" : "#f9fafb",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    color: "#64748b",
+                    marginBottom: "8px",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  Güvenlik (Cloudflare)
+                </div>
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "#94a3b8",
+                    lineHeight: "1.45",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Çoğu ziyaretçide ek bir işlem gerekmez; gerekirse kısa bir kontrol gösterilebilir.
+                </div>
+                <div
+                  id="cf-turnstile"
+                  style={{
+                    minHeight: "65px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: turnstileError ? "1px solid #f1aeb5" : "1px solid #e5e7eb",
+                    borderRadius: "10px",
+                    padding: "8px",
+                    background: "white",
+                  }}
+                />
+                {turnstileError && (
+                  <div style={{ marginTop: "8px", color: "#b91c1c", fontSize: "12px", fontWeight: "600" }}>
+                    {turnstileError}
+                  </div>
+                )}
+              </div>
+
               {/* Status Message */}
               {status === "success" && (
                 <div style={{
@@ -684,7 +739,10 @@ export default function ContactPage() {
                   animation: "fadeIn 0.5s ease",
                   border: "2px solid #b1dfbb"
                 }}>
-                  ✓ Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                    <CheckCircle size={18} />
+                    Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                  </span>
                 </div>
               )}
               
@@ -701,7 +759,10 @@ export default function ContactPage() {
                   animation: "fadeIn 0.5s ease",
                   border: "2px solid #f5c6cb"
                 }}>
-                  ✗ Mesaj gönderilemedi. Lütfen tekrar deneyin veya bizi telefonla arayın.
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                    <CircleX size={18} />
+                    Mesaj gönderilemedi. Lütfen tekrar deneyin veya bizi telefonla arayın.
+                  </span>
                 </div>
               )}
             </form>
@@ -716,7 +777,7 @@ export default function ContactPage() {
             <h2 style={{
               fontSize: "2rem",
               fontWeight: "600",
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Roboto', system-ui, sans-serif",
               color: "#0C1B33",
               marginBottom: "15px"
             }}>
@@ -724,7 +785,7 @@ export default function ContactPage() {
             </h2>
             <p style={{
               color: "#666",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Roboto', system-ui, sans-serif",
               fontSize: "1rem"
             }}>
               Ofisimize gelip projelerinizi yüz yüze görüşebilirsiniz
@@ -732,106 +793,62 @@ export default function ContactPage() {
           </div>
           
           <div style={{
-            borderRadius: "25px",
-            height: "450px",
+            borderRadius: "16px",
+            height: "420px",
             overflow: "hidden",
-            boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
-            position: "relative",
-            border: "4px solid white"
+            boxShadow: "0 4px 24px rgba(12, 27, 51, 0.08)",
+            border: "1px solid rgba(12, 27, 51, 0.08)",
           }}>
-            {/* OpenStreetMap - Başakşehir Bahçeşehir 2. Kısım konumu */}
             <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=28.66%2C41.06%2C28.69%2C41.075&layer=mapnik&marker=41.0675%2C28.675"
               style={{
                 width: "100%",
                 height: "100%",
-                border: "none"
+                border: "none",
+                display: "block",
               }}
               loading="lazy"
-              title="Gülmetay İnşaat Konum - Başakşehir"
+              title="Gülmetay İnşaat konumu — Başakşehir"
             />
-            
-            {/* Konum Kartı Overlay */}
-            <div style={{
-              position: "absolute",
-              bottom: "30px",
-              left: "30px",
-              background: "rgba(255, 255, 255, 0.98)",
-              backdropFilter: "blur(10px)",
-              padding: "25px 30px",
-              borderRadius: "16px",
-              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
-              maxWidth: "350px",
-              border: "1px solid rgba(255, 255, 255, 0.5)"
-            }}>
-              <div style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                marginBottom: "12px"
-              }}>
-                <div style={{
-                  width: "40px",
-                  height: "40px",
-                  background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
-                  borderRadius: "10px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
-                </div>
-                <h3 style={{
-                  fontSize: "1.1rem",
-                  fontWeight: "700",
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  color: "#0C1B33",
-                  margin: 0
-                }}>
-                  Gülmetay İnşaat
-                </h3>
-              </div>
-              <p style={{
-                color: "#666",
-                fontSize: "14px",
-                lineHeight: "1.7",
-                fontFamily: "'DM Sans', sans-serif",
-                margin: "0 0 15px 0"
-              }}>
-                Bahçeşehir 2. Kısım Mah. 12. Cadde<br />
-                Cihan Doğa Sitesi, Villa No: 8/A<br />
-                Başakşehir / İstanbul
-              </p>
-              <a
-                href="https://www.openstreetmap.org/?mlat=41.0675&mlon=28.675#map=17/41.0675/28.675"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  color: "#D4A373",
-                  textDecoration: "none",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  fontFamily: "'DM Sans', sans-serif",
-                  transition: "color 0.3s ease"
-                }}
-                onMouseOver={(e) => e.currentTarget.style.color = "#c49363"}
-                onMouseOut={(e) => e.currentTarget.style.color = "#D4A373"}
-              >
-                Yol Tarifi Al
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
-              </a>
-            </div>
           </div>
+          <p
+            style={{
+              textAlign: "center",
+              marginTop: "18px",
+              marginBottom: 0,
+              fontSize: "14px",
+              color: "#666",
+              fontFamily: "'Roboto', system-ui, sans-serif",
+            }}
+          >
+            <a
+              href="https://www.openstreetmap.org/?mlat=41.0675&mlon=28.675#map=17/41.0675/28.675"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                color: "#0C1B33",
+                textDecoration: "none",
+                fontWeight: "600",
+                borderBottom: "1px solid rgba(212, 163, 115, 0.5)",
+                paddingBottom: "2px",
+                transition: "color 0.2s ease, border-color 0.2s ease",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.color = "#D4A373";
+                e.currentTarget.style.borderBottomColor = "#D4A373";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.color = "#0C1B33";
+                e.currentTarget.style.borderBottomColor = "rgba(212, 163, 115, 0.5)";
+              }}
+            >
+              Haritada aç ve yol tarifi al
+              <ExternalLink size={15} aria-hidden />
+            </a>
+          </p>
         </div>
       </section>
 
@@ -854,6 +871,28 @@ export default function ContactPage() {
         @media (max-width: 992px) {
           section > div {
             grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (max-width: 576px) {
+          #turnstile-card {
+            padding: 12px !important;
+            margin-bottom: 18px !important;
+          }
+
+          #turnstile-card > div:first-child {
+            font-size: 12px !important;
+            margin-bottom: 8px !important;
+          }
+
+          #turnstile-card > div:nth-child(2) {
+            font-size: 12px !important;
+            margin-bottom: 10px !important;
+          }
+
+          #cf-turnstile {
+            min-height: 64px !important;
+            padding: 8px !important;
           }
         }
       `}</style>
