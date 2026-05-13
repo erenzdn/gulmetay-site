@@ -285,14 +285,58 @@ p, span, a, li {
   left: 100%;
 }
 
+/* Container Definitions */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  max-width: 1400px;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
 /* Section Spacing */
 .section-padding {
-  padding: 80px 20px;
+  padding: 100px 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 60px 20px;
+    padding: 60px 0;
   }
 }
 
@@ -301,6 +345,13 @@ p, span, a, li {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 /* Image Overlay Effect */

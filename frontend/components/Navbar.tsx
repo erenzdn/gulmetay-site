@@ -39,10 +39,6 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 1000,
-        display: "flex", 
-        justifyContent: "space-between", 
-        alignItems: "center", 
-        padding: scrolled ? "12px 50px" : "20px 50px",
         background: scrolled 
           ? "rgba(255, 255, 255, 0.95)" 
           : "rgba(255, 255, 255, 0.9)",
@@ -54,169 +50,180 @@ export default function Navbar() {
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         borderBottom: scrolled ? "none" : "1px solid rgba(0, 0, 0, 0.05)"
       }}>
-        {/* Logo Alanı */}
-        <Link href="/" style={{ 
-          textDecoration: "none", 
+        <div style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          width: "100%",
           display: "flex", 
-          alignItems: "center",
-          transition: "transform 0.3s ease"
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.02)"}
-        onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
-        >
-          <Image 
-            src="/logo.svg" 
-            alt="Gülmetay İnşaat Logo" 
-            width={280}
-            height={60}
-            style={{ 
-              objectFit: "contain",
-              transition: "all 0.3s ease"
-            }}
-            priority
-          />
-        </Link>
-
-        {/* Desktop Menü */}
-        <div style={{ 
-          display: "flex", 
-          alignItems: "center",
-          gap: "8px"
+          justifyContent: "space-between", 
+          alignItems: "center", 
+          padding: scrolled ? "12px 24px" : "20px 24px",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
         }}>
-          {navLinks.map((link) => (
-            <Link 
-              key={link.href}
-              href={link.href} 
-              style={{ 
-                textDecoration: "none", 
-                color: isActive(link.href) ? "#0C1B33" : "#555",
-                fontSize: "15px",
-                fontWeight: isActive(link.href) ? "600" : "500",
-                fontFamily: "'Roboto', system-ui, sans-serif",
-                letterSpacing: "0.3px",
-                padding: "10px 20px",
-                borderRadius: "8px",
-                position: "relative",
-                transition: "all 0.3s ease",
-                background: isActive(link.href) 
-                  ? "linear-gradient(135deg, rgba(12, 27, 51, 0.08) 0%, rgba(212, 163, 115, 0.08) 100%)"
-                  : "transparent"
-              }}
-              onMouseEnter={(e) => {
-                if (!isActive(link.href)) {
-                  e.currentTarget.style.color = "#0C1B33";
-                  e.currentTarget.style.background = "rgba(0, 0, 0, 0.04)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isActive(link.href)) {
-                  e.currentTarget.style.color = "#555";
-                  e.currentTarget.style.background = "transparent";
-                }
-              }}
-            >
-              {link.label}
-              {isActive(link.href) && (
-                <span style={{
-                  position: "absolute",
-                  bottom: "6px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "20px",
-                  height: "3px",
-                  background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
-                  borderRadius: "2px"
-                }} />
-              )}
-            </Link>
-          ))}
-
-          {/* CTA Button */}
-          <Link href="/contact" style={{ textDecoration: "none", marginLeft: "15px" }}>
-            <button
-              style={{
-                background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-                color: "white",
-                padding: "12px 24px",
-                border: "none",
-                borderRadius: "10px",
-                fontSize: "14px",
-                fontWeight: "600",
-                fontFamily: "'Roboto', system-ui, sans-serif",
-                letterSpacing: "0.5px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                boxShadow: "0 4px 15px rgba(12, 27, 51, 0.3)",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 6px 20px rgba(12, 27, 51, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 15px rgba(12, 27, 51, 0.3)";
-              }}
-            >
-              Teklif Al
-              <ArrowRight size={16} strokeWidth={2.2} />
-            </button>
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          style={{
-            display: "none",
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            padding: "10px",
-            borderRadius: "8px",
-            transition: "background 0.2s ease"
+          {/* Logo Alanı */}
+          <Link href="/" style={{ 
+            textDecoration: "none", 
+            display: "flex", 
+            alignItems: "center",
+            transition: "transform 0.3s ease"
           }}
-          aria-label="Menü"
-        >
-          <div style={{
-            width: "24px",
-            height: "18px",
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between"
+          onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.02)"}
+          onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+          >
+            <Image 
+              src="/logo.svg" 
+              alt="Gülmetay İnşaat Logo" 
+              width={240}
+              height={50}
+              style={{ 
+                objectFit: "contain",
+                transition: "all 0.3s ease"
+              }}
+              priority
+            />
+          </Link>
+
+          {/* Desktop Menü */}
+          <div style={{ 
+            display: "flex", 
+            alignItems: "center",
+            gap: "8px"
           }}>
-            <span style={{
-              display: "block",
-              width: "100%",
-              height: "2px",
-              background: "#0C1B33",
-              borderRadius: "2px",
-              transition: "all 0.3s ease",
-              transform: mobileMenuOpen ? "rotate(45deg) translateY(8px)" : "none"
-            }} />
-            <span style={{
-              display: "block",
-              width: "100%",
-              height: "2px",
-              background: "#0C1B33",
-              borderRadius: "2px",
-              transition: "all 0.3s ease",
-              opacity: mobileMenuOpen ? 0 : 1
-            }} />
-            <span style={{
-              display: "block",
-              width: "100%",
-              height: "2px",
-              background: "#0C1B33",
-              borderRadius: "2px",
-              transition: "all 0.3s ease",
-              transform: mobileMenuOpen ? "rotate(-45deg) translateY(-8px)" : "none"
-            }} />
+            {navLinks.map((link) => (
+              <Link 
+                key={link.href}
+                href={link.href} 
+                style={{ 
+                  textDecoration: "none", 
+                  color: isActive(link.href) ? "#0C1B33" : "#555",
+                  fontSize: "15px",
+                  fontWeight: isActive(link.href) ? "600" : "500",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
+                  letterSpacing: "0.3px",
+                  padding: "10px 20px",
+                  borderRadius: "8px",
+                  position: "relative",
+                  transition: "all 0.3s ease",
+                  background: isActive(link.href) 
+                    ? "linear-gradient(135deg, rgba(12, 27, 51, 0.08) 0%, rgba(212, 163, 115, 0.08) 100%)"
+                    : "transparent"
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive(link.href)) {
+                    e.currentTarget.style.color = "#0C1B33";
+                    e.currentTarget.style.background = "rgba(0, 0, 0, 0.04)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive(link.href)) {
+                    e.currentTarget.style.color = "#555";
+                    e.currentTarget.style.background = "transparent";
+                  }
+                }}
+              >
+                {link.label}
+                {isActive(link.href) && (
+                  <span style={{
+                    position: "absolute",
+                    bottom: "6px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: "20px",
+                    height: "3px",
+                    background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
+                    borderRadius: "2px"
+                  }} />
+                )}
+              </Link>
+            ))}
+
+            {/* CTA Button */}
+            <Link href="/contact" style={{ textDecoration: "none", marginLeft: "15px" }}>
+              <button
+                style={{
+                  background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
+                  color: "white",
+                  padding: "12px 24px",
+                  border: "none",
+                  borderRadius: "10px",
+                  fontSize: "14px",
+                  fontWeight: "600",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
+                  letterSpacing: "0.5px",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 4px 15px rgba(12, 27, 51, 0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(12, 27, 51, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(12, 27, 51, 0.3)";
+                }}
+              >
+                Teklif Al
+                <ArrowRight size={16} strokeWidth={2.2} />
+              </button>
+            </Link>
           </div>
-        </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{
+              display: "none",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              padding: "10px",
+              borderRadius: "8px",
+              transition: "background 0.2s ease"
+            }}
+            aria-label="Menü"
+          >
+            <div style={{
+              width: "24px",
+              height: "18px",
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between"
+            }}>
+              <span style={{
+                display: "block",
+                width: "100%",
+                height: "2px",
+                background: "#0C1B33",
+                borderRadius: "2px",
+                transition: "all 0.3s ease",
+                transform: mobileMenuOpen ? "rotate(45deg) translateY(8px)" : "none"
+              }} />
+              <span style={{
+                display: "block",
+                width: "100%",
+                height: "2px",
+                background: "#0C1B33",
+                borderRadius: "2px",
+                transition: "all 0.3s ease",
+                opacity: mobileMenuOpen ? 0 : 1
+              }} />
+              <span style={{
+                display: "block",
+                width: "100%",
+                height: "2px",
+                background: "#0C1B33",
+                borderRadius: "2px",
+                transition: "all 0.3s ease",
+                transform: mobileMenuOpen ? "rotate(-45deg) translateY(-8px)" : "none"
+              }} />
+            </div>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu Overlay */}

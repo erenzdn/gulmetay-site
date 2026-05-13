@@ -222,10 +222,8 @@ export default function ContactClient() {
           opacity: 0.3
         }} />
 
-        <div style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "80px 40px",
+        <div className="container" style={{
+          padding: "clamp(40px, 8vw, 80px) 0",
           position: "relative",
           zIndex: 2,
           textAlign: "center"
@@ -246,7 +244,7 @@ export default function ContactClient() {
               İLETİŞİM
             </div>
             <h1 style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2.2rem, 5vw, 4rem)",
               color: "white",
               marginBottom: "25px",
               fontWeight: "800",
@@ -255,7 +253,7 @@ export default function ContactClient() {
               Bizimle İletişime Geçin
             </h1>
             <p style={{
-              fontSize: "clamp(1rem, 2vw, 1.2rem)",
+              fontSize: "clamp(0.95rem, 2vw, 1.2rem)",
               color: "rgba(255, 255, 255, 0.8)",
               maxWidth: "700px",
               margin: "0 auto",
@@ -268,13 +266,11 @@ export default function ContactClient() {
       </header>
 
       {/* Main Content */}
-      <section style={{ padding: "100px 40px", background: "#f8f9fa" }}>
-        <div style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
+      <section style={{ padding: "80px 0", background: "#f8f9fa" }}>
+        <div className="container" style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1.2fr",
-          gap: "60px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 550px), 1fr))",
+          gap: "clamp(30px, 6vw, 60px)",
           alignItems: "start"
         }}>
           
@@ -433,7 +429,7 @@ export default function ContactClient() {
           {/* Contact Form */}
           <div style={{
             background: "white",
-            padding: "50px",
+            padding: "clamp(20px, 5vw, 50px)",
             borderRadius: "25px",
             boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
             border: "1px solid rgba(0, 0, 0, 0.05)"
@@ -784,8 +780,8 @@ export default function ContactClient() {
       </section>
 
       {/* Map Section */}
-      <section style={{ padding: "0 40px 100px", background: "#f8f9fa" }}>
-        <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <section style={{ padding: "0 0 100px", background: "#f8f9fa" }}>
+        <div className="container">
           <div style={{ textAlign: "center", marginBottom: "40px" }}>
             <h2 style={{
               fontSize: "2rem",

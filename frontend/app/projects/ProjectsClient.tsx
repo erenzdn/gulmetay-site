@@ -92,7 +92,7 @@ export default function ProjectsClient() {
       <header
         style={{
           background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-          padding: "120px 40px 80px",
+          padding: "clamp(60px, 10vw, 120px) 0 clamp(40px, 8vw, 80px)",
           position: "relative",
           overflow: "hidden"
         }}
@@ -110,9 +110,7 @@ export default function ProjectsClient() {
           }}
         />
 
-        <div style={{ 
-          maxWidth: "1400px", 
-          margin: "0 auto", 
+        <div className="container" style={{ 
           textAlign: "center",
           position: "relative",
           zIndex: 2
@@ -135,7 +133,7 @@ export default function ProjectsClient() {
               PORTFOLİO
             </div>
             <h1 style={{ 
-              fontSize: "clamp(2.5rem, 5vw, 4rem)", 
+              fontSize: "clamp(2.2rem, 5vw, 4rem)", 
               color: "white", 
               marginBottom: "25px",
               fontWeight: "800",
@@ -144,7 +142,7 @@ export default function ProjectsClient() {
               Projelerimiz
             </h1>
             <p style={{ 
-              fontSize: "clamp(1rem, 2vw, 1.2rem)", 
+              fontSize: "clamp(0.95rem, 2vw, 1.2rem)", 
               color: "rgba(255, 255, 255, 0.8)", 
               maxWidth: "700px", 
               margin: "0 auto",
@@ -160,31 +158,29 @@ export default function ProjectsClient() {
       {/* Filter Section */}
       <section style={{ 
         background: "white",
-        padding: "50px 40px",
+        padding: "30px 0",
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
         position: "sticky",
         top: "80px",
         zIndex: 100
       }}>
-        <div style={{ 
-          maxWidth: "1400px", 
-          margin: "0 auto",
+        <div className="container" style={{ 
           display: "flex",
           justifyContent: "center",
-          gap: "15px",
+          gap: "12px",
           flexWrap: "wrap"
         }}>
           <button
             onClick={() => setSelectedCategory("Tümü")}
             style={{
-              padding: "14px 30px",
+              padding: "10px 24px",
               borderRadius: "50px",
               border: selectedCategory === "Tümü" ? "2px solid #0C1B33" : "2px solid #e0e0e0",
               backgroundColor: selectedCategory === "Tümü" ? "#0C1B33" : "white",
               color: selectedCategory === "Tümü" ? "white" : "#666",
               cursor: "pointer",
               fontWeight: "600",
-              fontSize: "15px",
+              fontSize: "14px",
               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               boxShadow: selectedCategory === "Tümü" 
                 ? "0 8px 20px rgba(12, 27, 51, 0.3)" 
@@ -207,11 +203,11 @@ export default function ProjectsClient() {
             }}
           >
             Tümü <span style={{ 
-              marginLeft: "8px",
+              marginLeft: "6px",
               background: selectedCategory === "Tümü" ? "rgba(255,255,255,0.2)" : "#f0f0f0",
               padding: "2px 8px",
               borderRadius: "12px",
-              fontSize: "13px"
+              fontSize: "12px"
             }}>
               {projects.length}
             </span>
@@ -224,14 +220,14 @@ export default function ProjectsClient() {
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.name)}
                 style={{
-                  padding: "14px 30px",
+                  padding: "10px 24px",
                   borderRadius: "50px",
                   border: selectedCategory === cat.name ? "2px solid #0C1B33" : "2px solid #e0e0e0",
                   backgroundColor: selectedCategory === cat.name ? "#0C1B33" : "white",
                   color: selectedCategory === cat.name ? "white" : "#666",
                   cursor: "pointer",
                   fontWeight: "600",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   boxShadow: selectedCategory === cat.name
                     ? "0 8px 20px rgba(12, 27, 51, 0.3)"
@@ -254,11 +250,11 @@ export default function ProjectsClient() {
                 }}
               >
                 {cat.name} <span style={{
-                  marginLeft: "8px",
+                  marginLeft: "6px",
                   background: selectedCategory === cat.name ? "rgba(255,255,255,0.2)" : "#f0f0f0",
                   padding: "2px 8px",
                   borderRadius: "12px",
-                  fontSize: "13px"
+                  fontSize: "12px"
                 }}>
                   {projectCount}
                 </span>
@@ -269,13 +265,13 @@ export default function ProjectsClient() {
       </section>
 
       {/* Projects Grid */}
-      <section aria-label="Proje Listesi" style={{ padding: "80px 40px 120px", background: "#f8f9fa" }}>
-        <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <section aria-label="Proje Listesi" style={{ padding: "80px 0 120px", background: "#f8f9fa" }}>
+        <div className="container">
           <h2 className="sr-only">Tüm Projelerimiz</h2>
           {filteredProjects.length === 0 ? (
             <div style={{
               textAlign: "center",
-              padding: "100px 20px",
+              padding: "80px 20px",
               background: "white",
               borderRadius: "20px",
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)"
@@ -290,8 +286,8 @@ export default function ProjectsClient() {
           ) : (
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(380px, 1fr))",
-              gap: "35px"
+              gridTemplateColumns: "repeat(auto-fill, minmax(clamp(280px, 100%, 380px), 1fr))",
+              gap: "30px"
             }}>
               {filteredProjects.map((project, index) => (
                 <Link

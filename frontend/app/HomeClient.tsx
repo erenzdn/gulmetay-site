@@ -130,20 +130,18 @@ export default function HomeClient() {
         />
 
         <div
+          className="container"
           style={{
             position: "relative",
             zIndex: 2,
-            maxWidth: "1400px",
-            margin: "0 auto",
-            padding: "0 60px",
             width: "100%"
           }}
         >
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "100px",
+              gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 600px), 1fr))",
+              gap: "clamp(40px, 6vw, 100px)",
               alignItems: "center"
             }}
           >
@@ -291,8 +289,8 @@ export default function HomeClient() {
                 style={{
                   marginTop: "80px",
                   display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: "30px"
+                  gridTemplateColumns: "repeat(auto-fit, minmax(clamp(110px, 100%, 1fr), 1fr))",
+                  gap: "15px"
                 }}
               >
                 {[
@@ -346,14 +344,13 @@ export default function HomeClient() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gridTemplateRows: "auto auto auto",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(clamp(140px, 100%, 1fr), 1fr))",
                   gap: "16px"
                 }}
               >
                 <div
                   style={{
-                    gridColumn: "1 / 3",
+                    gridColumn: "1 / -1",
                     background: "linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
                     borderRadius: "24px",
                     padding: "40px",
@@ -539,7 +536,7 @@ export default function HomeClient() {
 
                 <div
                   style={{
-                    gridColumn: "1 / 3",
+                    gridColumn: "1 / -1",
                     background: "rgba(255, 255, 255, 0.03)",
                     borderRadius: "20px",
                     padding: "24px 30px",
@@ -607,16 +604,15 @@ export default function HomeClient() {
         aria-label="İstatistikler"
         style={{
           background: "white",
-          padding: "60px 40px",
+          padding: "60px 0",
           boxShadow: "0 -10px 40px rgba(0, 0, 0, 0.05)"
         }}
       >
         <div
+          className="container"
           style={{
-            maxWidth: "1400px",
-            margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(clamp(150px, 100%, 250px), 1fr))",
             gap: "40px",
             textAlign: "center"
           }}
@@ -662,11 +658,11 @@ export default function HomeClient() {
       <section
         aria-label="Hizmetlerimiz"
         style={{
-          padding: "100px 40px",
+          padding: "80px 0",
           background: "linear-gradient(180deg, white 0%, #f8f9fa 100%)"
         }}
       >
-        <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+        <div className="container">
           <div style={{ textAlign: "center", marginBottom: "70px" }}>
             <div
               style={{
@@ -704,13 +700,8 @@ export default function HomeClient() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "0",
-              border: "1px solid rgba(0, 0, 0, 0.08)",
-              borderRadius: "24px",
-              overflow: "hidden",
-              background: "white",
-              boxShadow: "0 10px 60px rgba(0, 0, 0, 0.08)"
+              gridTemplateColumns: "repeat(auto-fit, minmax(clamp(250px, 100%, 320px), 1fr))",
+              gap: "24px"
             }}
           >
             {[
@@ -742,13 +733,14 @@ export default function HomeClient() {
               <article
                 key={index}
                 style={{
-                  padding: "50px 40px",
-                  borderRight: index < 3 ? "1px solid rgba(0, 0, 0, 0.06)" : "none",
-                  borderBottom: "1px solid rgba(0, 0, 0, 0.06)",
+                  padding: "clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px)",
+                  border: "1px solid rgba(0, 0, 0, 0.06)",
+                  borderRadius: "20px",
                   position: "relative",
                   cursor: "pointer",
                   transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                  background: "transparent"
+                  background: "white",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.02)"
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.background = "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)";
@@ -762,7 +754,7 @@ export default function HomeClient() {
                   if (number) number.style.color = "rgba(212, 163, 115, 0.3)";
                 }}
                 onMouseOut={(e) => {
-                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.background = "white";
                   const title = e.currentTarget.querySelector('h3') as HTMLElement;
                   const desc = e.currentTarget.querySelector('p') as HTMLElement;
                   const icon = e.currentTarget.querySelector('.service-icon') as HTMLElement;
@@ -841,8 +833,8 @@ export default function HomeClient() {
       </section>
 
       {/* FEATURED PROJECTS SECTION */}
-      <section aria-label="Öne Çıkan Projeler" style={{ padding: "100px 40px", background: "white" }}>
-        <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <section aria-label="Öne Çıkan Projeler" style={{ padding: "80px 0", background: "white" }}>
+        <div className="container">
           <div
             style={{
               display: "flex",
@@ -923,7 +915,7 @@ export default function HomeClient() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 380px), 1fr))",
                 gap: "35px"
               }}
             >
@@ -1048,7 +1040,7 @@ export default function HomeClient() {
         aria-label="İletişime Geçin"
         style={{
           background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-          padding: "100px 40px",
+          padding: "100px 0",
           position: "relative",
           overflow: "hidden"
         }}
@@ -1068,9 +1060,9 @@ export default function HomeClient() {
         />
 
         <div
+          className="container"
           style={{
             maxWidth: "1000px",
-            margin: "0 auto",
             textAlign: "center",
             position: "relative",
             zIndex: 2

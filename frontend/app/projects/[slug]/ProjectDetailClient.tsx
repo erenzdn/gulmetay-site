@@ -171,7 +171,7 @@ export default function ProjectDetailClient() {
           <div style={{
             position: "absolute",
             top: "120px",
-            left: "40px",
+            left: "clamp(15px, 4vw, 40px)",
             background: "rgba(255, 255, 255, 0.95)",
             backdropFilter: "blur(10px)",
             padding: "12px 24px",
@@ -205,12 +205,10 @@ export default function ProjectDetailClient() {
           bottom: "0",
           left: "0",
           right: "0",
-          padding: "60px 40px 40px",
+          padding: "60px 0 40px",
           zIndex: 2
         }}>
-          <div style={{
-            maxWidth: "1400px",
-            margin: "0 auto",
+          <div className="container" style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(30px)",
             transition: "all 0.8s ease"
@@ -232,7 +230,7 @@ export default function ProjectDetailClient() {
               </div>
             )}
             <h1 style={{
-              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontSize: "clamp(2.2rem, 5vw, 4rem)",
               fontWeight: "800",
               color: "white",
               marginBottom: "20px",
@@ -295,14 +293,11 @@ export default function ProjectDetailClient() {
       </header>
 
       {/* Project Details */}
-      <section style={{ background: "white", padding: "80px 40px" }}>
-        <div style={{
-          maxWidth: "1200px",
-          margin: "0 auto"
-        }}>
+      <section style={{ background: "white", padding: "80px 0" }}>
+        <div className="container">
           <div style={{
             background: "#f8f9fa",
-            padding: "50px",
+            padding: "clamp(20px, 5vw, 50px)",
             borderRadius: "20px",
             marginBottom: "60px",
             borderLeft: "5px solid #D4A373"
@@ -346,7 +341,7 @@ export default function ProjectDetailClient() {
               
               <div style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fill, minmax(clamp(250px, 100%, 300px), 1fr))",
                 gap: "25px"
               }}>
                 {project.gallery.map((img, index) => (
@@ -419,10 +414,10 @@ export default function ProjectDetailClient() {
       {/* CTA Section */}
       <section style={{
         background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-        padding: "80px 40px",
+        padding: "80px 0",
         textAlign: "center"
       }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+        <div className="container" style={{ maxWidth: "800px" }}>
           <h2 style={{
             fontSize: "clamp(2rem, 4vw, 2.8rem)",
             fontWeight: "700",

@@ -31,10 +31,10 @@ export default function Footer() {
     >
       {/* Main Footer Content */}
       <div
+        className="container"
         style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "80px 40px 40px"
+          paddingTop: "80px",
+          paddingBottom: "40px"
         }}
       >
         <div
