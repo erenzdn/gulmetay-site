@@ -25,7 +25,8 @@ export default function Navbar() {
     { href: "/contact", label: "İletişim" }
   ];
 
-  const isActive = (href) => {
+  const isActive = (href: string) => {
+    if (!pathname) return false;
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };

@@ -1,11 +1,29 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FolderOpen, Eye, Check, Hammer, ClipboardList } from "lucide-react";
 
-export default function ProjectsPage() {
-  const [projects, setProjects] = useState([]);
-  const [categories, setCategories] = useState([]);
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
+
+interface ProjectItem {
+  id: number;
+  title: string;
+  slug: string;
+  description?: { children: { text: string }[] }[];
+  mainImage?: { url: string };
+  category?: { name: string };
+  status_deneme?: string;
+}
+
+interface Category {
+  id: number;
+  name: string;
+}
+
+export default function ProjectsClient() {
+  const [projects, setProjects] = useState<ProjectItem[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("Tümü");
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -71,7 +89,7 @@ export default function ProjectsPage() {
   return (
     <div style={{ marginTop: "80px" }}>
       {/* Hero Section */}
-      <section
+      <header
         style={{
           background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
           padding: "120px 40px 80px",
@@ -137,7 +155,7 @@ export default function ProjectsPage() {
             </p>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Filter Section */}
       <section style={{ 
@@ -175,16 +193,16 @@ export default function ProjectsPage() {
             }}
             onMouseOver={(e) => {
               if (selectedCategory !== "Tümü") {
-                e.target.style.borderColor = "#0C1B33";
-                e.target.style.transform = "translateY(-2px)";
-                e.target.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.1)";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "#0C1B33";
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.1)";
               }
             }}
             onMouseOut={(e) => {
               if (selectedCategory !== "Tümü") {
-                e.target.style.borderColor = "#e0e0e0";
-                e.target.style.transform = "translateY(0)";
-                e.target.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "#e0e0e0";
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
               }
             }}
           >
@@ -222,16 +240,16 @@ export default function ProjectsPage() {
                 }}
                 onMouseOver={(e) => {
                   if (selectedCategory !== cat.name) {
-                    e.target.style.borderColor = "#0C1B33";
-                    e.target.style.transform = "translateY(-2px)";
-                    e.target.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.1)";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "#0C1B33";
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.1)";
                   }
                 }}
                 onMouseOut={(e) => {
                   if (selectedCategory !== cat.name) {
-                    e.target.style.borderColor = "#e0e0e0";
-                    e.target.style.transform = "translateY(0)";
-                    e.target.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = "#e0e0e0";
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
                   }
                 }}
               >
@@ -251,8 +269,9 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section style={{ padding: "80px 40px 120px", background: "#f8f9fa" }}>
+      <section aria-label="Proje Listesi" style={{ padding: "80px 40px 120px", background: "#f8f9fa" }}>
         <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+          <h2 className="sr-only">Tüm Projelerimiz</h2>
           {filteredProjects.length === 0 ? (
             <div style={{
               textAlign: "center",
@@ -312,17 +331,16 @@ export default function ProjectsPage() {
                     }}>
                       {project.mainImage ? (
                         <>
-                          <img
-                            src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${project.mainImage.url}`}
+                          <Image
+                            src={`${STRAPI_URL}${project.mainImage.url}`}
                             alt={project.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             style={{
-                              width: "100%",
-                              height: "100%",
                               objectFit: "cover",
                               transition: "transform 0.5s ease"
                             }}
-                            onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.1)"}
-                            onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+                            loading="lazy"
                           />
                           {/* Overlay on hover */}
                           <div style={{

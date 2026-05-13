@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   XCircle,
   ArrowLeft,
@@ -15,11 +16,31 @@ import {
   Search,
 } from "lucide-react";
 
-export default function ProjectDetailPage() {
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
+
+interface ProjectImage {
+  id: number;
+  url: string;
+  alternativeText?: string;
+}
+
+interface Project {
+  title: string;
+  slug: string;
+  description?: { children: { text: string }[] }[];
+  mainImage?: ProjectImage;
+  gallery?: ProjectImage[];
+  category?: { name: string };
+  status_deneme?: string;
+  startDate?: string;
+  endDate?: string;
+}
+
+export default function ProjectDetailClient() {
   const { slug } = useParams();
-  const [project, setProject] = useState(null);
+  const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<ProjectImage | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -27,8 +48,10 @@ export default function ProjectDetailPage() {
     
     async function fetchProject() {
       if (!slug) return;
+      const slugStr = typeof slug === "string" ? slug : Array.isArray(slug) ? slug[0] : "";
+      if (!slugStr) return;
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/projects?filters[slug][$eq]=${slug}&populate=*`);
+        const res = await fetch(`${STRAPI_URL}/api/projects?filters[slug][$eq]=${encodeURIComponent(slugStr)}&populate=*`);
         const json = await res.json();
         if (json.data && json.data.length > 0) {
           setProject(json.data[0]);
@@ -111,9 +134,9 @@ export default function ProjectDetailPage() {
   }
 
   return (
-    <div style={{ marginTop: "80px" }}>
+    <article style={{ marginTop: "80px" }}>
       {/* Hero Section with Project Image */}
-      <section style={{
+      <header style={{
         position: "relative",
         height: "70vh",
         minHeight: "500px",
@@ -122,12 +145,13 @@ export default function ProjectDetailPage() {
       }}>
         {project.mainImage && (
           <>
-            <img
-              src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${project.mainImage.url}`}
+            <Image
+              src={`${STRAPI_URL}${project.mainImage.url}`}
               alt={project.title}
+              fill
+              sizes="100vw"
+              priority
               style={{
-                width: "100%",
-                height: "100%",
                 objectFit: "cover",
                 opacity: 0.7
               }}
@@ -143,7 +167,6 @@ export default function ProjectDetailPage() {
           </>
         )}
 
-        {/* Back Button */}
         <Link href="/projects" style={{ textDecoration: "none" }}>
           <div style={{
             position: "absolute",
@@ -177,7 +200,6 @@ export default function ProjectDetailPage() {
           </div>
         </Link>
 
-        {/* Project Title Overlay */}
         <div style={{
           position: "absolute",
           bottom: "0",
@@ -220,7 +242,6 @@ export default function ProjectDetailPage() {
               {project.title}
             </h1>
 
-            {/* Project Meta Info */}
             <div style={{
               display: "flex",
               gap: "30px",
@@ -271,7 +292,7 @@ export default function ProjectDetailPage() {
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Project Details */}
       <section style={{ background: "white", padding: "80px 40px" }}>
@@ -279,7 +300,6 @@ export default function ProjectDetailPage() {
           maxWidth: "1200px",
           margin: "0 auto"
         }}>
-          {/* Description */}
           <div style={{
             background: "#f8f9fa",
             padding: "50px",
@@ -309,7 +329,6 @@ export default function ProjectDetailPage() {
             </p>
           </div>
 
-          {/* Gallery Section */}
           {project.gallery && project.gallery.length > 0 && (
             <div>
               <h2 style={{
@@ -354,15 +373,16 @@ export default function ProjectDetailPage() {
                       e.currentTarget.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)";
                     }}
                   >
-                    <img
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${img.url}`}
-                      alt={`Galeri Görseli ${index + 1}`}
+                    <Image
+                      src={`${STRAPI_URL}${img.url}`}
+                      alt={`${project.title} - Galeri ${index + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       style={{
-                        width: "100%",
-                        height: "100%",
                         objectFit: "cover",
                         transition: "transform 0.3s ease"
                       }}
+                      loading="lazy"
                     />
                     <div style={{
                       position: "absolute",
@@ -467,9 +487,10 @@ export default function ProjectDetailPage() {
             animation: "fadeIn 0.3s ease"
           }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}${selectedImage.url}`}
-            alt="Büyük Görsel"
+            src={`${STRAPI_URL}${selectedImage.url}`}
+            alt={project.title}
             style={{
               maxWidth: "100%",
               maxHeight: "100%",
@@ -481,6 +502,7 @@ export default function ProjectDetailPage() {
           />
           <button
             onClick={() => setSelectedImage(null)}
+            aria-label="Galeriyi kapat"
             style={{
               position: "absolute",
               top: "30px",
@@ -535,6 +557,6 @@ export default function ProjectDetailPage() {
           transform: scale(1) !important;
         }
       `}</style>
-    </div>
+    </article>
   );
 }

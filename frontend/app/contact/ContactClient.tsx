@@ -1,4 +1,17 @@
 "use client";
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: Record<string, unknown>
+      ) => string;
+      reset: (widgetId: string) => void;
+    };
+  }
+}
+
 import { useState } from "react";
 import Script from "next/script";
 import {
@@ -16,7 +29,7 @@ import {
   CircleX,
 } from "lucide-react";
 
-export default function ContactPage() {
+export default function ContactClient() {
   const contactItems = [
     {
       icon: MapPin,
@@ -68,7 +81,7 @@ export default function ContactPage() {
   const [isVisible] = useState(true);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileError, setTurnstileError] = useState("");
-  const [turnstileWidgetId, setTurnstileWidgetId] = useState(null);
+  const [turnstileWidgetId, setTurnstileWidgetId] = useState<string | null>(null);
 
   const renderTurnstile = () => {
     try {
@@ -94,7 +107,7 @@ export default function ContactPage() {
 
       const widgetId = window.turnstile.render(container, {
         sitekey: siteKey,
-        callback: (token) => {
+        callback: (token: string) => {
           setTurnstileError("");
           setTurnstileToken(token || "");
         },
@@ -115,7 +128,7 @@ export default function ContactPage() {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -123,7 +136,7 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
     setTurnstileError("");
@@ -190,7 +203,7 @@ export default function ContactPage() {
         onLoad={renderTurnstile}
       />
       {/* Hero Section */}
-      <section style={{
+      <header style={{
         position: "relative",
         minHeight: "50vh",
         display: "flex",
@@ -252,7 +265,7 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Main Content */}
       <section style={{ padding: "100px 40px", background: "#f8f9fa" }}>
@@ -613,7 +626,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="6"
+                  rows={6}
                   placeholder="Mesajınızı buraya yazın..."
                   style={{
                     width: "100%",

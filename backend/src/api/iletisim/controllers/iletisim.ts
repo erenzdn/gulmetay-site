@@ -54,6 +54,13 @@ export default factories.createCoreController('api::iletisim.iletisim', ({ strap
       ctx.throw(400, 'captcha_failed');
     }
 
+    // Optional hardening: Verify hostname if TURNSTILE_EXPECTED_HOSTNAME is configured
+    const expectedHostname = process.env.TURNSTILE_EXPECTED_HOSTNAME;
+    if (expectedHostname && verifyJson.hostname !== expectedHostname) {
+      strapi.log.warn(`Turnstile verification hostname mismatch: expected ${expectedHostname}, got ${verifyJson.hostname}`);
+      ctx.throw(400, 'captcha_failed');
+    }
+
     // Do not persist token; only use it for verification.
     delete body.turnstileToken;
     req.body = body;

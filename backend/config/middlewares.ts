@@ -2,7 +2,12 @@ export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: env.array('CORS_ORIGINS', ['*']),
+    },
+  },
   {
     name: 'global::api-rate-limit',
     config: {

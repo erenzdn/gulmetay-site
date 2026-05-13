@@ -13,6 +13,7 @@
   --font-heading: 'Roboto', system-ui, sans-serif;
   --font-body: 'Roboto', system-ui, sans-serif;
   --font-accent: 'Roboto', system-ui, sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @theme inline {
@@ -336,4 +337,17 @@ p, span, a, li {
 
 .pulse-animation {
   animation: pulse 2s infinite;
+}
+
+/* Screen-reader only (visually hidden H2 etc.) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

@@ -14,12 +14,12 @@ import {
 } from "lucide-react";
 
 export default function Footer() {
-  const socialIcons = {
-    facebook: Globe,
-    instagram: Camera,
-    twitter: Send,
-    linkedin: BriefcaseBusiness,
-  };
+  const socialLinks = [
+    { name: "facebook", icon: Globe, href: "https://www.facebook.com" },
+    { name: "instagram", icon: Camera, href: "https://www.instagram.com" },
+    { name: "twitter", icon: Send, href: "https://twitter.com" },
+    { name: "linkedin", icon: BriefcaseBusiness, href: "https://www.linkedin.com" },
+  ];
 
   return (
     <footer
@@ -73,42 +73,42 @@ export default function Footer() {
             
             {/* Social Links */}
             <div style={{ display: "flex", gap: "15px", marginTop: "20px" }}>
-              {["facebook", "instagram", "twitter", "linkedin"].map((social) => (
-                (() => {
-                  const SocialIcon = socialIcons[social];
-                  return (
-                <a
-                  key={social}
-                  href="#"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "8px",
-                    background: "rgba(212, 163, 115, 0.1)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#D4A373",
-                    textDecoration: "none",
-                    transition: "all 0.3s ease",
-                    fontSize: "18px"
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.background = "#D4A373";
-                    e.currentTarget.style.color = "#0C1B33";
-                    e.currentTarget.style.transform = "translateY(-3px)";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.background = "rgba(212, 163, 115, 0.1)";
-                    e.currentTarget.style.color = "#D4A373";
-                    e.currentTarget.style.transform = "translateY(0)";
-                  }}
-                >
-                  <SocialIcon size={18} strokeWidth={2} />
-                </a>
-                  );
-                })()
-              ))}
+              {socialLinks.map((social) => {
+                const SocialIcon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Gülmetay İnşaat ${social.name} hesabı`}
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "8px",
+                      background: "rgba(212, 163, 115, 0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#D4A373",
+                      textDecoration: "none",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.background = "#D4A373";
+                      e.currentTarget.style.color = "#0C1B33";
+                      e.currentTarget.style.transform = "translateY(-3px)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.background = "rgba(212, 163, 115, 0.1)";
+                      e.currentTarget.style.color = "#D4A373";
+                      e.currentTarget.style.transform = "translateY(0)";
+                    }}
+                  >
+                    <SocialIcon size={18} strokeWidth={2} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -281,8 +281,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Gülmetay İnşaat. Tüm hakları saklıdır.
           </p>
           <div style={{ display: "flex", gap: "25px" }}>
-            <a
-              href="#"
+            <Link
+              href="/privacy-policy"
               style={{
                 color: "#888",
                 textDecoration: "none",
@@ -293,9 +293,9 @@ export default function Footer() {
               onMouseOut={(e) => (e.currentTarget.style.color = "#888")}
             >
               Gizlilik Politikası
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/terms-of-use"
               style={{
                 color: "#888",
                 textDecoration: "none",
@@ -306,7 +306,7 @@ export default function Footer() {
               onMouseOut={(e) => (e.currentTarget.style.color = "#888")}
             >
               Kullanım Koşulları
-            </a>
+            </Link>
           </div>
         </div>
       </div>
