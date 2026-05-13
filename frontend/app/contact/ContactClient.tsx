@@ -196,7 +196,7 @@ export default function ContactClient() {
   };
 
   return (
-    <div style={{ marginTop: "80px" }}>
+    <div style={{ marginTop: "70px" }}>
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
         strategy="afterInteractive"
@@ -205,7 +205,7 @@ export default function ContactClient() {
       {/* Hero Section */}
       <header style={{
         position: "relative",
-        minHeight: "50vh",
+        minHeight: "38vh",
         display: "flex",
         alignItems: "center",
         background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
@@ -219,45 +219,45 @@ export default function ContactClient() {
           right: 0,
           bottom: 0,
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A373' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          opacity: 0.3
+          opacity: 0.25
         }} />
 
         <div className="container" style={{
-          padding: "clamp(40px, 8vw, 80px) 0",
+          padding: "50px 0",
           position: "relative",
           zIndex: 2,
           textAlign: "center"
         }}>
           <div style={{
             opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(30px)",
+            transform: isVisible ? "translateY(0)" : "translateY(25px)",
             transition: "all 0.8s ease"
           }}>
             <div style={{
-              fontSize: "14px",
+              fontSize: "11px",
               color: "#D4A373",
               fontWeight: "700",
-              letterSpacing: "3px",
+              letterSpacing: "1.5px",
               textTransform: "uppercase",
-              marginBottom: "20px"
+              marginBottom: "15px"
             }}>
               İLETİŞİM
             </div>
             <h1 style={{
-              fontSize: "clamp(2.2rem, 5vw, 4rem)",
+              fontSize: "clamp(1.75rem, 4.5vw, 2.5rem)",
               color: "white",
-              marginBottom: "25px",
-              fontWeight: "800",
+              marginBottom: "15px",
+              fontWeight: "600",
               letterSpacing: "-1px"
             }}>
               Bizimle İletişime Geçin
             </h1>
             <p style={{
-              fontSize: "clamp(0.95rem, 2vw, 1.2rem)",
-              color: "rgba(255, 255, 255, 0.8)",
-              maxWidth: "700px",
+              fontSize: "1rem",
+              color: "rgba(255, 255, 255, 0.75)",
+              maxWidth: "600px",
               margin: "0 auto",
-              lineHeight: "1.7"
+              lineHeight: "1.6"
             }}>
               Projeleriniz için bizimle iletişime geçin. Size en kısa sürede dönüş yapalım.
             </p>
@@ -266,21 +266,21 @@ export default function ContactClient() {
       </header>
 
       {/* Main Content */}
-      <section style={{ padding: "80px 0", background: "#f8f9fa" }}>
+      <section style={{ padding: "60px 0", background: "#f8f9fa" }}>
         <div className="container" style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 550px), 1fr))",
-          gap: "clamp(30px, 6vw, 60px)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 500px), 1fr))",
+          gap: "40px",
           alignItems: "start"
         }}>
           
           {/* Contact Info */}
           <div>
             <h2 style={{
-              fontSize: "2.2rem",
-              fontWeight: "700",
+              fontSize: "1.5rem",
+              fontWeight: "600",
               color: "#0C1B33",
-              marginBottom: "30px"
+              marginBottom: "20px"
             }}>
               İletişim Bilgilerimiz
             </h2>
@@ -291,50 +291,49 @@ export default function ContactClient() {
                 key={index}
                 style={{
                   background: "white",
-                  padding: "30px",
-                  borderRadius: "20px",
-                  marginBottom: "20px",
-                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.06)",
+                  padding: "24px",
+                  borderRadius: "16px",
+                  marginBottom: "16px",
+                  boxShadow: "0 4px 15px rgba(0, 0, 0, 0.04)",
                   transition: "all 0.3s ease",
                   border: "2px solid transparent",
                   opacity: 0,
                   animation: `fadeInLeft 0.6s ease forwards ${index * 0.1 + 0.3}s`
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "translateX(10px)";
+                  e.currentTarget.style.transform = "translateX(6px)";
                   e.currentTarget.style.borderColor = "#D4A373";
-                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(0, 0, 0, 0.1)";
+                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = "translateX(0)";
                   e.currentTarget.style.borderColor = "transparent";
-                  e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.06)";
+                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.04)";
                 }}
               >
                 <div style={{
                   display: "flex",
                   alignItems: "flex-start",
-                  gap: "20px"
+                  gap: "16px"
                 }}>
                   <div style={{
-                    fontSize: "35px",
-                    width: "60px",
-                    height: "60px",
+                    width: "48px",
+                    height: "48px",
                     background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-                    borderRadius: "15px",
+                    borderRadius: "12px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0
                   }}>
-                    <item.icon size={28} color="#D4A373" />
+                    <item.icon size={20} color="#D4A373" />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
-                      fontSize: "1.1rem",
-                      fontWeight: "700",
+                      fontSize: "1rem",
+                      fontWeight: "600",
                       color: "#0C1B33",
-                      marginBottom: "10px"
+                      marginBottom: "6px"
                     }}>
                       {item.title}
                     </h3>
@@ -344,8 +343,8 @@ export default function ContactClient() {
                         style={{
                           color: "#D4A373",
                           textDecoration: "none",
-                          fontSize: "15px",
-                          lineHeight: "1.6",
+                          fontSize: "14px",
+                          lineHeight: "1.5",
                           fontWeight: "500",
                           transition: "color 0.3s ease"
                         }}
@@ -357,8 +356,8 @@ export default function ContactClient() {
                     ) : (
                       <div style={{
                         color: "#666",
-                        fontSize: "15px",
-                        lineHeight: "1.7",
+                        fontSize: "14px",
+                        lineHeight: "1.6",
                         whiteSpace: "pre-line"
                       }}>
                         {item.content}
@@ -372,21 +371,21 @@ export default function ContactClient() {
             {/* Social Media */}
             <div style={{
               background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-              padding: "35px",
-              borderRadius: "20px",
-              marginTop: "30px"
+              padding: "24px",
+              borderRadius: "16px",
+              marginTop: "24px"
             }}>
               <h3 style={{
-                fontSize: "1.2rem",
-                fontWeight: "700",
+                fontSize: "1.1rem",
+                fontWeight: "600",
                 color: "white",
-                marginBottom: "20px"
+                marginBottom: "16px"
               }}>
                 Bizi Takip Edin
               </h3>
               <div style={{
                 display: "flex",
-                gap: "15px",
+                gap: "12px",
                 flexWrap: "wrap"
               }}>
                 {socialItems.map((social, index) => (
@@ -394,32 +393,30 @@ export default function ContactClient() {
                     key={index}
                     href="#"
                     style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "12px",
-                      background: "rgba(212, 163, 115, 0.2)",
-                      border: "2px solid rgba(212, 163, 115, 0.3)",
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "10px",
+                      background: "rgba(212, 163, 115, 0.15)",
+                      border: "2px solid rgba(212, 163, 115, 0.2)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       color: "#D4A373",
                       textDecoration: "none",
-                      fontSize: "20px",
-                      fontWeight: "bold",
                       transition: "all 0.3s ease"
                     }}
                     onMouseOver={(e) => {
                       e.currentTarget.style.background = "#D4A373";
                       e.currentTarget.style.color = "#0C1B33";
-                      e.currentTarget.style.transform = "translateY(-5px) rotate(5deg)";
+                      e.currentTarget.style.transform = "translateY(-3px) rotate(5deg)";
                     }}
                     onMouseOut={(e) => {
-                      e.currentTarget.style.background = "rgba(212, 163, 115, 0.2)";
+                      e.currentTarget.style.background = "rgba(212, 163, 115, 0.15)";
                       e.currentTarget.style.color = "#D4A373";
                       e.currentTarget.style.transform = "translateY(0) rotate(0deg)";
                     }}
                   >
-                    <social.Icon size={20} strokeWidth={2} />
+                    <social.Icon size={16} strokeWidth={2} />
                   </a>
                 ))}
               </div>
@@ -429,36 +426,37 @@ export default function ContactClient() {
           {/* Contact Form */}
           <div style={{
             background: "white",
-            padding: "clamp(20px, 5vw, 50px)",
-            borderRadius: "25px",
-            boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+            padding: "32px 24px",
+            borderRadius: "20px",
+            boxShadow: "0 8px 30px rgba(0, 0, 0, 0.05)",
             border: "1px solid rgba(0, 0, 0, 0.05)"
           }}>
             <h2 style={{
-              fontSize: "2rem",
-              fontWeight: "700",
+              fontSize: "1.5rem",
+              fontWeight: "600",
               color: "#0C1B33",
-              marginBottom: "15px"
+              marginBottom: "10px"
             }}>
               Mesaj Gönderin
             </h2>
             <p style={{
               color: "#666",
-              marginBottom: "35px",
-              lineHeight: "1.6"
+              marginBottom: "24px",
+              fontSize: "14px",
+              lineHeight: "1.5"
             }}>
               Formu doldurun, en kısa sürede size dönüş yapalım.
             </p>
 
             <form onSubmit={handleSubmit}>
               {/* Name */}
-              <div style={{ marginBottom: "25px" }}>
+              <div style={{ marginBottom: "18px" }}>
                 <label style={{
                   display: "block",
-                  marginBottom: "10px",
+                  marginBottom: "8px",
                   color: "#333",
                   fontWeight: "600",
-                  fontSize: "14px"
+                  fontSize: "13px"
                 }}>
                   Ad Soyad *
                 </label>
@@ -471,10 +469,10 @@ export default function ContactClient() {
                   placeholder="Adınız ve soyadınız"
                   style={{
                     width: "100%",
-                    padding: "16px 20px",
+                    padding: "12px 16px",
                     border: "2px solid #e0e0e0",
-                    borderRadius: "12px",
-                    fontSize: "15px",
+                    borderRadius: "10px",
+                    fontSize: "14px",
                     transition: "all 0.3s ease",
                     boxSizing: "border-box",
                     fontFamily: "inherit"
@@ -491,13 +489,13 @@ export default function ContactClient() {
               </div>
 
               {/* Email */}
-              <div style={{ marginBottom: "25px" }}>
+              <div style={{ marginBottom: "18px" }}>
                 <label style={{
                   display: "block",
-                  marginBottom: "10px",
+                  marginBottom: "8px",
                   color: "#333",
                   fontWeight: "600",
-                  fontSize: "14px"
+                  fontSize: "13px"
                 }}>
                   E-posta *
                 </label>
@@ -510,10 +508,10 @@ export default function ContactClient() {
                   placeholder="ornek@email.com"
                   style={{
                     width: "100%",
-                    padding: "16px 20px",
+                    padding: "12px 16px",
                     border: "2px solid #e0e0e0",
-                    borderRadius: "12px",
-                    fontSize: "15px",
+                    borderRadius: "10px",
+                    fontSize: "14px",
                     transition: "all 0.3s ease",
                     boxSizing: "border-box",
                     fontFamily: "inherit"
@@ -530,13 +528,13 @@ export default function ContactClient() {
               </div>
 
               {/* Phone */}
-              <div style={{ marginBottom: "25px" }}>
+              <div style={{ marginBottom: "18px" }}>
                 <label style={{
                   display: "block",
-                  marginBottom: "10px",
+                  marginBottom: "8px",
                   color: "#333",
                   fontWeight: "600",
-                  fontSize: "14px"
+                  fontSize: "13px"
                 }}>
                   Telefon
                 </label>
@@ -548,10 +546,10 @@ export default function ContactClient() {
                   placeholder="+90 5XX XXX XX XX"
                   style={{
                     width: "100%",
-                    padding: "16px 20px",
+                    padding: "12px 16px",
                     border: "2px solid #e0e0e0",
-                    borderRadius: "12px",
-                    fontSize: "15px",
+                    borderRadius: "10px",
+                    fontSize: "14px",
                     transition: "all 0.3s ease",
                     boxSizing: "border-box",
                     fontFamily: "inherit"
@@ -568,13 +566,13 @@ export default function ContactClient() {
               </div>
 
               {/* Subject */}
-              <div style={{ marginBottom: "25px" }}>
+              <div style={{ marginBottom: "18px" }}>
                 <label style={{
                   display: "block",
-                  marginBottom: "10px",
+                  marginBottom: "8px",
                   color: "#333",
                   fontWeight: "600",
-                  fontSize: "14px"
+                  fontSize: "13px"
                 }}>
                   Konu *
                 </label>
@@ -587,10 +585,10 @@ export default function ContactClient() {
                   placeholder="Mesajınızın konusu"
                   style={{
                     width: "100%",
-                    padding: "16px 20px",
+                    padding: "12px 16px",
                     border: "2px solid #e0e0e0",
-                    borderRadius: "12px",
-                    fontSize: "15px",
+                    borderRadius: "10px",
+                    fontSize: "14px",
                     transition: "all 0.3s ease",
                     boxSizing: "border-box",
                     fontFamily: "inherit"
@@ -607,13 +605,13 @@ export default function ContactClient() {
               </div>
 
               {/* Message */}
-              <div style={{ marginBottom: "30px" }}>
+              <div style={{ marginBottom: "24px" }}>
                 <label style={{
                   display: "block",
-                  marginBottom: "10px",
+                  marginBottom: "8px",
                   color: "#333",
                   fontWeight: "600",
-                  fontSize: "14px"
+                  fontSize: "13px"
                 }}>
                   Mesajınız *
                 </label>
@@ -622,14 +620,14 @@ export default function ContactClient() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
+                  rows={5}
                   placeholder="Mesajınızı buraya yazın..."
                   style={{
                     width: "100%",
-                    padding: "16px 20px",
+                    padding: "12px 16px",
                     border: "2px solid #e0e0e0",
-                    borderRadius: "12px",
-                    fontSize: "15px",
+                    borderRadius: "10px",
+                    fontSize: "14px",
                     transition: "all 0.3s ease",
                     resize: "vertical",
                     boxSizing: "border-box",
@@ -652,29 +650,29 @@ export default function ContactClient() {
                 disabled={status === "sending"}
                 style={{
                   width: "100%",
-                  padding: "18px",
+                  padding: "13px 24px",
                   background: status === "sending" 
                     ? "#ccc" 
                     : "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
                   color: "white",
                   border: "none",
-                  borderRadius: "12px",
-                  fontSize: "16px",
-                  fontWeight: "700",
+                  borderRadius: "10px",
+                  fontSize: "14px",
+                  fontWeight: "600",
                   cursor: status === "sending" ? "not-allowed" : "pointer",
                   transition: "all 0.3s ease",
-                  boxShadow: "0 6px 20px rgba(212, 163, 115, 0.3)"
+                  boxShadow: "0 4px 12px rgba(212, 163, 115, 0.2)"
                 }}
                 onMouseOver={(e) => {
                   if (status !== "sending") {
-                    e.currentTarget.style.transform = "translateY(-2px)";
-                    e.currentTarget.style.boxShadow = "0 8px 25px rgba(212, 163, 115, 0.4)";
+                     e.currentTarget.style.transform = "translateY(-2px)";
+                     e.currentTarget.style.boxShadow = "0 6px 18px rgba(212, 163, 115, 0.3)";
                   }
                 }}
                 onMouseOut={(e) => {
                   if (status !== "sending") {
                     e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 6px 20px rgba(212, 163, 115, 0.3)";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(212, 163, 115, 0.2)";
                   }
                 }}
               >
@@ -685,20 +683,20 @@ export default function ContactClient() {
               <div
                 id="turnstile-card"
                 style={{
-                  marginTop: "18px",
+                  marginTop: "16px",
                   marginBottom: "8px",
-                  padding: "12px 14px",
-                  borderRadius: "12px",
+                  padding: "10px 12px",
+                  borderRadius: "10px",
                   border: turnstileError ? "1px solid #f5c6cb" : "1px solid #ececec",
                   background: turnstileError ? "#fff8f8" : "#f9fafb",
                 }}
               >
                 <div
                   style={{
-                    fontSize: "12px",
+                    fontSize: "11px",
                     fontWeight: "600",
                     color: "#64748b",
-                    marginBottom: "8px",
+                    marginBottom: "6px",
                     letterSpacing: "0.02em",
                   }}
                 >
@@ -706,29 +704,29 @@ export default function ContactClient() {
                 </div>
                 <div
                   style={{
-                    fontSize: "12px",
+                    fontSize: "11px",
                     color: "#94a3b8",
-                    lineHeight: "1.45",
-                    marginBottom: "10px",
+                    lineHeight: "1.4",
+                    marginBottom: "8px",
                   }}
                 >
-                  Çoğu ziyaretçide ek bir işlem gerekmez; gerekirse kısa bir kontrol gösterilebilir.
+                  Çoğu ziyaretçide ek bir işlem gerekmez.
                 </div>
                 <div
                   id="cf-turnstile"
                   style={{
-                    minHeight: "65px",
+                    minHeight: "55px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     border: turnstileError ? "1px solid #f1aeb5" : "1px solid #e5e7eb",
-                    borderRadius: "10px",
-                    padding: "8px",
+                    borderRadius: "8px",
+                    padding: "6px",
                     background: "white",
                   }}
                 />
                 {turnstileError && (
-                  <div style={{ marginTop: "8px", color: "#b91c1c", fontSize: "12px", fontWeight: "600" }}>
+                  <div style={{ marginTop: "6px", color: "#b91c1c", fontSize: "11px", fontWeight: "600" }}>
                     {turnstileError}
                   </div>
                 )}
@@ -737,19 +735,19 @@ export default function ContactClient() {
               {/* Status Message */}
               {status === "success" && (
                 <div style={{
-                  marginTop: "25px",
-                  padding: "20px",
+                  marginTop: "20px",
+                  padding: "16px",
                   background: "linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%)",
                   color: "#155724",
-                  borderRadius: "12px",
+                  borderRadius: "10px",
                   textAlign: "center",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: "600",
                   animation: "fadeIn 0.5s ease",
                   border: "2px solid #b1dfbb"
                 }}>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                    <CheckCircle size={18} />
+                    <CheckCircle size={16} />
                     Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
                   </span>
                 </div>
@@ -757,19 +755,19 @@ export default function ContactClient() {
               
               {status === "error" && (
                 <div style={{
-                  marginTop: "25px",
-                  padding: "20px",
+                  marginTop: "20px",
+                  padding: "16px",
                   background: "linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%)",
                   color: "#721c24",
-                  borderRadius: "12px",
+                  borderRadius: "10px",
                   textAlign: "center",
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: "600",
                   animation: "fadeIn 0.5s ease",
                   border: "2px solid #f5c6cb"
                 }}>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                    <CircleX size={18} />
+                    <CircleX size={16} />
                     Mesaj gönderilemedi. Lütfen tekrar deneyin veya bizi telefonla arayın.
                   </span>
                 </div>
@@ -780,22 +778,22 @@ export default function ContactClient() {
       </section>
 
       {/* Map Section */}
-      <section style={{ padding: "0 0 100px", background: "#f8f9fa" }}>
+      <section style={{ padding: "0 0 60px", background: "#f8f9fa" }}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <div style={{ textAlign: "center", marginBottom: "30px" }}>
             <h2 style={{
-              fontSize: "2rem",
+              fontSize: "1.5rem",
               fontWeight: "600",
               fontFamily: "'Roboto', system-ui, sans-serif",
               color: "#0C1B33",
-              marginBottom: "15px"
+              marginBottom: "10px"
             }}>
               Bizi Ziyaret Edin
             </h2>
             <p style={{
               color: "#666",
               fontFamily: "'Roboto', system-ui, sans-serif",
-              fontSize: "1rem"
+              fontSize: "14px"
             }}>
               Ofisimize gelip projelerinizi yüz yüze görüşebilirsiniz
             </p>

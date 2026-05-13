@@ -74,28 +74,28 @@ export default function AboutClient() {
     <div style={{
       minHeight: "100vh",
       background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
-      padding: "120px 0 80px"
+      padding: "100px 0 60px"
     }}>
       <div className="container">
         {/* Hero Section */}
         <header style={{
-          marginBottom: "60px"
+          marginBottom: "40px"
         }}>
           <article style={{
             background: "rgba(255, 255, 255, 0.95)",
             backdropFilter: "blur(10px)",
             borderRadius: "20px",
-            padding: "clamp(24px, 5vw, 60px)",
-            boxShadow: "0 20px 60px rgba(0, 0, 0, 0.1)",
+            padding: "clamp(24px, 4vw, 40px)",
+            boxShadow: "0 20px 60px rgba(0, 0, 0, 0.08)",
             border: "1px solid rgba(255, 255, 255, 0.5)"
           }}>
             <h1 style={{
-              fontSize: "clamp(2.2rem, 5vw, 3.2rem)",
+              fontSize: "clamp(1.75rem, 4.5vw, 2.5rem)",
               fontWeight: "600",
               background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              marginBottom: "30px",
+              marginBottom: "20px",
               letterSpacing: "-1px",
               lineHeight: "1.2"
             }}>
@@ -103,12 +103,12 @@ export default function AboutClient() {
             </h1>
             
             <div style={{
-              fontSize: "clamp(1rem, 2vw, 1.1rem)",
-              lineHeight: "1.8",
+              fontSize: "1rem",
+              lineHeight: "1.7",
               color: "#4a5568",
               whiteSpace: "pre-line",
               borderLeft: "4px solid #D4A373",
-              paddingLeft: "clamp(15px, 3vw, 30px)",
+              paddingLeft: "20px",
               fontWeight: "400"
             }}>
               {data.content}
@@ -119,11 +119,11 @@ export default function AboutClient() {
         {/* Vision & Mission Section */}
         <section aria-label="Vizyon ve Misyon">
           <h2 style={{
-            fontSize: "clamp(1.8rem, 4vw, 2.2rem)",
+            fontSize: "clamp(1.5rem, 3.5vw, 1.8rem)",
             fontWeight: "600",
             color: "#0C1B33",
             textAlign: "center",
-            marginBottom: "40px",
+            marginBottom: "30px",
           }}>
             Vizyonumuz &amp; Misyonumuz
           </h2>
@@ -134,8 +134,8 @@ export default function AboutClient() {
               background: "rgba(255, 255, 255, 0.95)",
               backdropFilter: "blur(10px)",
               borderRadius: "20px",
-              padding: "clamp(24px, 5vw, 50px)",
-              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.08)",
+              padding: "32px 24px",
+              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.06)",
               border: "1px solid rgba(255, 255, 255, 0.5)",
               position: "relative",
               overflow: "hidden",
@@ -143,11 +143,11 @@ export default function AboutClient() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-5px)";
-              e.currentTarget.style.boxShadow = "0 25px 70px rgba(0, 0, 0, 0.12)";
+              e.currentTarget.style.boxShadow = "0 25px 70px rgba(0, 0, 0, 0.1)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0, 0, 0, 0.08)";
+              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0, 0, 0, 0.06)";
             }}>
               <div style={{
                 position: "absolute",
@@ -162,32 +162,32 @@ export default function AboutClient() {
               
               <div style={{
                 display: "inline-block",
-                padding: "10px 20px",
+                padding: "8px 16px",
                 background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
                 borderRadius: "30px",
-                marginBottom: "25px",
+                marginBottom: "20px",
                 fontSize: "0.75rem",
                 fontWeight: "600",
                 color: "#fff",
-                letterSpacing: "1.5px",
+                letterSpacing: "1px",
                 textTransform: "uppercase"
               }}>
                 Vizyon
               </div>
 
               <h3 style={{
-                fontSize: "clamp(1.5rem, 3vw, 1.9rem)",
+                fontSize: "1.25rem",
                 fontWeight: "600",
                 color: "#0C1B33",
-                marginBottom: "20px",
+                marginBottom: "15px",
                 lineHeight: "1.3"
               }}>
                 {data.vision_title}
               </h3>
               
               <p style={{
-                fontSize: "1.02rem",
-                lineHeight: "1.8",
+                fontSize: "0.95rem",
+                lineHeight: "1.7",
                 color: "#4a5568",
                 margin: 0
               }}>
@@ -200,8 +200,8 @@ export default function AboutClient() {
               background: "rgba(255, 255, 255, 0.95)",
               backdropFilter: "blur(10px)",
               borderRadius: "20px",
-              padding: "clamp(24px, 5vw, 50px)",
-              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.08)",
+              padding: "32px 24px",
+              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.06)",
               border: "1px solid rgba(255, 255, 255, 0.5)",
               position: "relative",
               overflow: "hidden",
@@ -209,11 +209,11 @@ export default function AboutClient() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-5px)";
-              e.currentTarget.style.boxShadow = "0 25px 70px rgba(0, 0, 0, 0.12)";
+              e.currentTarget.style.boxShadow = "0 25px 70px rgba(0, 0, 0, 0.1)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0, 0, 0, 0.08)";
+              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0, 0, 0, 0.06)";
             }}>
               <div style={{
                 position: "absolute",
@@ -228,32 +228,32 @@ export default function AboutClient() {
               
               <div style={{
                 display: "inline-block",
-                padding: "10px 20px",
+                padding: "8px 16px",
                 background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
                 borderRadius: "30px",
-                marginBottom: "25px",
+                marginBottom: "20px",
                 fontSize: "0.75rem",
                 fontWeight: "600",
                 color: "#fff",
-                letterSpacing: "1.5px",
+                letterSpacing: "1px",
                 textTransform: "uppercase"
               }}>
                 Misyon
               </div>
 
               <h3 style={{
-                fontSize: "clamp(1.5rem, 3vw, 1.9rem)",
+                fontSize: "1.25rem",
                 fontWeight: "600",
                 color: "#0C1B33",
-                marginBottom: "20px",
+                marginBottom: "15px",
                 lineHeight: "1.3"
               }}>
                 {data.mission_title}
               </h3>
               
               <p style={{
-                fontSize: "1.02rem",
-                lineHeight: "1.8",
+                fontSize: "0.95rem",
+                lineHeight: "1.7",
                 color: "#4a5568",
                 margin: 0
               }}>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FolderOpen, Eye, Check, Hammer, ClipboardList } from "lucide-react";
+import { gsap } from "gsap";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
@@ -28,6 +29,22 @@ export default function ProjectsClient() {
   const [loading, setLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
 
+  const filteredProjects = selectedCategory === "Tümü"
+    ? projects
+    : projects.filter(p => p.category?.name === selectedCategory);
+
+  useEffect(() => {
+    if (!loading && filteredProjects.length > 0) {
+      const timer = setTimeout(() => {
+        gsap.fromTo(".project-page-card",
+          { opacity: 0, y: 35, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.08, ease: "power3.out", overwrite: "auto" }
+        );
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedCategory, loading, filteredProjects.length]);
+
   useEffect(() => {
     setIsVisible(true);
     
@@ -49,10 +66,6 @@ export default function ProjectsClient() {
     }
     fetchData();
   }, []);
-
-  const filteredProjects = selectedCategory === "Tümü"
-    ? projects
-    : projects.filter(p => p.category?.name === selectedCategory);
 
   if (loading) {
     return (
@@ -87,12 +100,12 @@ export default function ProjectsClient() {
   }
 
   return (
-    <div style={{ marginTop: "80px" }}>
+    <div style={{ marginTop: "70px" }}>
       {/* Hero Section */}
       <header
         style={{
           background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-          padding: "clamp(60px, 10vw, 120px) 0 clamp(40px, 8vw, 80px)",
+          padding: "50px 0",
           position: "relative",
           overflow: "hidden"
         }}
@@ -106,7 +119,7 @@ export default function ProjectsClient() {
             right: 0,
             bottom: 0,
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A373' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            opacity: 0.3
+            opacity: 0.25
           }}
         />
 
@@ -118,35 +131,35 @@ export default function ProjectsClient() {
           <div
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? "translateY(0)" : "translateY(30px)",
+              transform: isVisible ? "translateY(0)" : "translateY(25px)",
               transition: "all 0.8s ease"
             }}
           >
             <div style={{
-              fontSize: "14px",
+              fontSize: "11px",
               color: "#D4A373",
               fontWeight: "700",
-              letterSpacing: "3px",
+              letterSpacing: "1.5px",
               textTransform: "uppercase",
-              marginBottom: "20px"
+              marginBottom: "15px"
             }}>
               PORTFOLİO
             </div>
             <h1 style={{ 
-              fontSize: "clamp(2.2rem, 5vw, 4rem)", 
+              fontSize: "clamp(1.75rem, 4.5vw, 2.5rem)", 
               color: "white", 
-              marginBottom: "25px",
-              fontWeight: "800",
+              marginBottom: "15px",
+              fontWeight: "600",
               letterSpacing: "-1px"
             }}>
               Projelerimiz
             </h1>
             <p style={{ 
-              fontSize: "clamp(0.95rem, 2vw, 1.2rem)", 
-              color: "rgba(255, 255, 255, 0.8)", 
-              maxWidth: "700px", 
+              fontSize: "14px", 
+              color: "rgba(255, 255, 255, 0.75)", 
+              maxWidth: "600px", 
               margin: "0 auto",
-              lineHeight: "1.7"
+              lineHeight: "1.6"
             }}>
               Tamamladığımız ve devam eden projelerimize göz atın. Her proje,
               kalite ve mükemmeliyetin bir yansımasıdır.
@@ -158,47 +171,47 @@ export default function ProjectsClient() {
       {/* Filter Section */}
       <section style={{ 
         background: "white",
-        padding: "30px 0",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
+        padding: "20px 0",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
         position: "sticky",
-        top: "80px",
+        top: "70px",
         zIndex: 100
       }}>
-        <div className="container" style={{ 
+        <div className="container filter-container" style={{ 
           display: "flex",
           justifyContent: "center",
-          gap: "12px",
+          gap: "10px",
           flexWrap: "wrap"
         }}>
           <button
             onClick={() => setSelectedCategory("Tümü")}
             style={{
-              padding: "10px 24px",
+              padding: "8px 20px",
               borderRadius: "50px",
               border: selectedCategory === "Tümü" ? "2px solid #0C1B33" : "2px solid #e0e0e0",
               backgroundColor: selectedCategory === "Tümü" ? "#0C1B33" : "white",
               color: selectedCategory === "Tümü" ? "white" : "#666",
               cursor: "pointer",
               fontWeight: "600",
-              fontSize: "14px",
+              fontSize: "13px",
               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               boxShadow: selectedCategory === "Tümü" 
-                ? "0 8px 20px rgba(12, 27, 51, 0.3)" 
-                : "0 2px 8px rgba(0, 0, 0, 0.05)",
+                ? "0 6px 15px rgba(12, 27, 51, 0.2)" 
+                : "0 2px 6px rgba(0, 0, 0, 0.04)",
               transform: selectedCategory === "Tümü" ? "translateY(-2px)" : "translateY(0)"
             }}
             onMouseOver={(e) => {
               if (selectedCategory !== "Tümü") {
                 (e.currentTarget as HTMLButtonElement).style.borderColor = "#0C1B33";
                 (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.1)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.08)";
               }
             }}
             onMouseOut={(e) => {
               if (selectedCategory !== "Tümü") {
                 (e.currentTarget as HTMLButtonElement).style.borderColor = "#e0e0e0";
                 (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.04)";
               }
             }}
           >
@@ -207,7 +220,7 @@ export default function ProjectsClient() {
               background: selectedCategory === "Tümü" ? "rgba(255,255,255,0.2)" : "#f0f0f0",
               padding: "2px 8px",
               borderRadius: "12px",
-              fontSize: "12px"
+              fontSize: "11px"
             }}>
               {projects.length}
             </span>
@@ -220,32 +233,32 @@ export default function ProjectsClient() {
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.name)}
                 style={{
-                  padding: "10px 24px",
+                  padding: "8px 20px",
                   borderRadius: "50px",
                   border: selectedCategory === cat.name ? "2px solid #0C1B33" : "2px solid #e0e0e0",
                   backgroundColor: selectedCategory === cat.name ? "#0C1B33" : "white",
                   color: selectedCategory === cat.name ? "white" : "#666",
                   cursor: "pointer",
                   fontWeight: "600",
-                  fontSize: "14px",
+                  fontSize: "13px",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   boxShadow: selectedCategory === cat.name
-                    ? "0 8px 20px rgba(12, 27, 51, 0.3)"
-                    : "0 2px 8px rgba(0, 0, 0, 0.05)",
+                    ? "0 6px 15px rgba(12, 27, 51, 0.2)"
+                    : "0 2px 6px rgba(0, 0, 0, 0.04)",
                   transform: selectedCategory === cat.name ? "translateY(-2px)" : "translateY(0)"
                 }}
                 onMouseOver={(e) => {
                   if (selectedCategory !== cat.name) {
                     (e.currentTarget as HTMLButtonElement).style.borderColor = "#0C1B33";
                     (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.1)";
+                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.08)";
                   }
                 }}
                 onMouseOut={(e) => {
                   if (selectedCategory !== cat.name) {
                     (e.currentTarget as HTMLButtonElement).style.borderColor = "#e0e0e0";
                     (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.05)";
+                    (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.04)";
                   }
                 }}
               >
@@ -254,7 +267,7 @@ export default function ProjectsClient() {
                   background: selectedCategory === cat.name ? "rgba(255,255,255,0.2)" : "#f0f0f0",
                   padding: "2px 8px",
                   borderRadius: "12px",
-                  fontSize: "12px"
+                  fontSize: "11px"
                 }}>
                   {projectCount}
                 </span>
@@ -265,29 +278,29 @@ export default function ProjectsClient() {
       </section>
 
       {/* Projects Grid */}
-      <section aria-label="Proje Listesi" style={{ padding: "80px 0 120px", background: "#f8f9fa" }}>
+      <section aria-label="Proje Listesi" style={{ padding: "60px 0 80px", background: "#f8f9fa" }}>
         <div className="container">
           <h2 className="sr-only">Tüm Projelerimiz</h2>
           {filteredProjects.length === 0 ? (
             <div style={{
               textAlign: "center",
-              padding: "80px 20px",
+              padding: "60px 20px",
               background: "white",
               borderRadius: "20px",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)"
+              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)"
             }}>
               <div style={{ marginBottom: "20px", opacity: 0.3, display: "flex", justifyContent: "center" }}>
-                <FolderOpen size={72} strokeWidth={1.5} />
+                <FolderOpen size={64} strokeWidth={1.5} />
               </div>
-              <p style={{ fontSize: "1.2rem", color: "#666", fontWeight: "500" }}>
+              <p style={{ fontSize: "1.1rem", color: "#666", fontWeight: "500" }}>
                 Bu kategoride henüz proje bulunmuyor.
               </p>
             </div>
           ) : (
             <div style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(clamp(280px, 100%, 380px), 1fr))",
-              gap: "30px"
+              gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 380px), 1fr))",
+              gap: "24px"
             }}>
               {filteredProjects.map((project, index) => (
                 <Link
@@ -296,31 +309,31 @@ export default function ProjectsClient() {
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <div
+                    className="project-page-card"
                     style={{
                       background: "white",
                       borderRadius: "20px",
                       overflow: "hidden",
-                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                       cursor: "pointer",
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
-                      opacity: 0,
-                      animation: `fadeInUp 0.6s ease forwards ${index * 0.1}s`
+                      opacity: 0
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.transform = "translateY(-12px)";
-                      e.currentTarget.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.15)";
+                      e.currentTarget.style.transform = "translateY(-8px)";
+                      e.currentTarget.style.boxShadow = "0 15px 30px rgba(0, 0, 0, 0.1)";
                     }}
                     onMouseOut={(e) => {
                       e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.08)";
+                      e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.05)";
                     }}
                   >
                     {/* Image Container */}
                     <div style={{
-                      height: "280px",
+                      height: "240px",
                       backgroundColor: "#f0f0f0",
                       overflow: "hidden",
                       position: "relative"
@@ -353,9 +366,9 @@ export default function ProjectsClient() {
                             padding: "20px"
                           }}
                           className="project-overlay">
-                            <div style={{ color: "white", fontSize: "14px", fontWeight: "600" }}>
+                            <div style={{ color: "white", fontSize: "13px", fontWeight: "600" }}>
                               <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                                <Eye size={15} />
+                                <Eye size={14} />
                                 Detayları Görüntüle
                               </span>
                             </div>
@@ -368,7 +381,7 @@ export default function ProjectsClient() {
                           justifyContent: "center",
                           height: "100%",
                           color: "#999",
-                          fontSize: "1.2rem"
+                          fontSize: "1.1rem"
                         }}>
                           📷 Görsel Yok
                         </div>
@@ -376,16 +389,16 @@ export default function ProjectsClient() {
                     </div>
 
                     {/* Content */}
-                    <div style={{ padding: "30px", flex: 1, display: "flex", flexDirection: "column" }}>
+                    <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column" }}>
                       {/* Category Badge */}
                       {project.category?.name && (
                         <div style={{
-                          fontSize: "12px",
+                          fontSize: "11px",
                           color: "#D4A373",
                           fontWeight: "700",
-                          marginBottom: "12px",
+                          marginBottom: "10px",
                           textTransform: "uppercase",
-                          letterSpacing: "1px"
+                          letterSpacing: "1.5px"
                         }}>
                           {project.category.name}
                         </div>
@@ -393,10 +406,10 @@ export default function ProjectsClient() {
 
                       {/* Title */}
                       <h3 style={{
-                        margin: "0 0 15px 0",
-                        fontSize: "1.5rem",
+                        margin: "0 0 12px 0",
+                        fontSize: "1.25rem",
                         color: "#0C1B33",
-                        fontWeight: "700",
+                        fontWeight: "600",
                         lineHeight: "1.3"
                       }}>
                         {project.title}
@@ -404,13 +417,13 @@ export default function ProjectsClient() {
 
                       {/* Description */}
                       <p style={{
-                        fontSize: "15px",
+                        fontSize: "14px",
                         color: "#666",
-                        lineHeight: "1.7",
-                        marginBottom: "20px",
+                        lineHeight: "1.6",
+                        marginBottom: "16px",
                         flex: 1
                       }}>
-                        {project.description?.[0]?.children?.[0]?.text?.substring(0, 120) ||
+                        {project.description?.[0]?.children?.[0]?.text?.substring(0, 110) ||
                           "Detayları görmek için tıklayın"}
                         ...
                       </p>
@@ -428,12 +441,12 @@ export default function ProjectsClient() {
                               project.status_deneme === "Ongoing" ? "#856404" : "#0c5460",
                             padding: "6px 14px",
                             borderRadius: "20px",
-                            fontSize: "13px",
+                            fontSize: "12px",
                             fontWeight: "600"
                           }}>
                             <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
-                              {project.status_deneme === "Completed" ? <Check size={14} /> :
-                               project.status_deneme === "Ongoing" ? <Hammer size={14} /> : <ClipboardList size={14} />}
+                              {project.status_deneme === "Completed" ? <Check size={13} /> :
+                               project.status_deneme === "Ongoing" ? <Hammer size={13} /> : <ClipboardList size={13} />}
                               {project.status_deneme === "Completed" ? "Tamamlandı" :
                                project.status_deneme === "Ongoing" ? "Devam Ediyor" : "Planlandı"}
                             </span>
@@ -463,6 +476,21 @@ export default function ProjectsClient() {
         
         .project-card:hover .project-overlay {
           opacity: 1 !important;
+        }
+
+        @media (max-width: 768px) {
+          :global(.filter-container) {
+            flex-wrap: nowrap !important;
+            justify-content: flex-start !important;
+            overflow-x: auto !important;
+            padding-bottom: 8px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            -webkit-overflow-scrolling: touch;
+          }
+          :global(.filter-container)::-webkit-scrollbar {
+            display: none !important;
+          }
         }
       `}</style>
     </div>

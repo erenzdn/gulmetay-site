@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         hostname: "**.gulmetay.com.tr",
       },
       {
+        protocol: "https",
+        hostname: "gulmetay.mehmeterenozden.com",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
       },

@@ -3,22 +3,97 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Building2, ShieldCheck, Clock3, HardHat, PenTool, Building, BriefcaseBusiness, Mouse } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
 export default function HomeClient() {
   const [latestProjects, setLatestProjects] = useState([]);
-  const [stats, setStats] = useState([
-    { value: 0, target: 15, suffix: "+", label: "Yıl Tecrübe" },
-    { value: 0, target: 150, suffix: "+", label: "Tamamlanan Proje" },
-    { value: 0, target: 500, suffix: "+", label: "Mutlu Müşteri" },
-    { value: 0, target: 100, suffix: "%", label: "Müşteri Memnuniyeti" }
-  ]);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
     
+    // Register GSAP plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero content stagger animation on mount
+    gsap.fromTo(".hero-animate",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" }
+    );
+
+    // Hero collage image scale/fade on mount
+    gsap.fromTo(".hero-collage-container",
+      { opacity: 0, scale: 0.96, y: 20 },
+      { opacity: 1, scale: 1, y: 0, duration: 1.4, delay: 0.3, ease: "power3.out" }
+    );
+
+    // Services Title Scroll Trigger
+    gsap.fromTo(".services-header-animate",
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".services-header-animate",
+          start: "top 85%",
+        }
+      }
+    );
+
+    // Service Cards stagger on scroll
+    gsap.fromTo(".service-card-animate",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".services-grid",
+          start: "top 80%",
+        }
+      }
+    );
+
+    // Featured Projects header scroll animation
+    gsap.fromTo(".featured-projects-header",
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".featured-projects-header",
+          start: "top 85%",
+        }
+      }
+    );
+
+    // Featured Projects Cards stagger scroll animation
+    if (latestProjects.length > 0) {
+      gsap.fromTo(".project-card-animate",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.18,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".projects-grid",
+            start: "top 80%",
+          }
+        }
+      );
+    }
+
     async function fetchLatest() {
       try {
         const res = await fetch(`${STRAPI_URL}/api/projects?populate=*&pagination[limit]=3&sort=createdAt:desc`);
@@ -29,47 +104,20 @@ export default function HomeClient() {
       }
     }
     fetchLatest();
-
-    const duration = 2000;
-    const startTime = performance.now();
-    let animationFrameId: number;
-
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      setStats(prev =>
-        prev.map(stat => ({
-          ...stat,
-          value: Math.floor(progress * stat.target)
-        }))
-      );
-
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(animate);
-      }
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
-  }, []);
+  }, [latestProjects.length]);
 
   return (
-    <div style={{ marginTop: "80px" }}>
+    <div style={{ marginTop: "70px" }}>
       {/* HERO SECTION */}
       <header
         style={{
           position: "relative",
-          minHeight: "100vh",
+          minHeight: "88vh",
           display: "flex",
           alignItems: "center",
-          background: "#0a0a0b",
-          overflow: "hidden"
+          background: "#08080a",
+          overflow: "hidden",
+          padding: "60px 0"
         }}
       >
         <div
@@ -80,9 +128,9 @@ export default function HomeClient() {
             right: 0,
             bottom: 0,
             background: `
-              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
-              radial-gradient(ellipse 60% 50% at 80% 50%, rgba(212, 163, 115, 0.1), transparent),
-              radial-gradient(ellipse 50% 80% at 20% 80%, rgba(59, 130, 246, 0.08), transparent)
+              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.12), transparent),
+              radial-gradient(ellipse 60% 50% at 80% 50%, rgba(212, 163, 115, 0.08), transparent),
+              radial-gradient(ellipse 50% 80% at 20% 80%, rgba(59, 130, 246, 0.06), transparent)
             `
           }}
         />
@@ -95,10 +143,10 @@ export default function HomeClient() {
             right: 0,
             bottom: 0,
             backgroundImage: `
-              linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
+              linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px)
             `,
-            backgroundSize: "60px 60px"
+            backgroundSize: "50px 50px"
           }}
         />
 
@@ -107,11 +155,11 @@ export default function HomeClient() {
             position: "absolute",
             top: "20%",
             right: "15%",
-            width: "300px",
-            height: "300px",
+            width: "250px",
+            height: "250px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(212, 163, 115, 0.15) 0%, transparent 70%)",
-            filter: "blur(60px)",
+            background: "radial-gradient(circle, rgba(212, 163, 115, 0.12) 0%, transparent 70%)",
+            filter: "blur(50px)",
             animation: "float 8s ease-in-out infinite"
           }}
         />
@@ -120,11 +168,11 @@ export default function HomeClient() {
             position: "absolute",
             bottom: "10%",
             left: "10%",
-            width: "250px",
-            height: "250px",
+            width: "200px",
+            height: "200px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
-            filter: "blur(50px)",
+            background: "radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%)",
+            filter: "blur(40px)",
             animation: "float 10s ease-in-out infinite reverse"
           }}
         />
@@ -138,26 +186,26 @@ export default function HomeClient() {
           }}
         >
           <div
+            className="hero-grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 600px), 1fr))",
-              gap: "clamp(40px, 6vw, 100px)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 540px), 1fr))",
+              gap: "40px",
               alignItems: "center"
             }}
           >
-            <div
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(40px)",
-                transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1)"
-              }}
-            >
+            <div>
               <div
+                className="hero-animate"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "10px",
-                  marginBottom: "40px"
+                  gap: "8px",
+                  marginBottom: "24px",
+                  padding: "6px 12px",
+                  background: "rgba(255, 255, 255, 0.03)",
+                  border: "1px solid rgba(255, 255, 255, 0.06)",
+                  borderRadius: "50px"
                 }}
               >
                 <div
@@ -166,83 +214,84 @@ export default function HomeClient() {
                     height: "6px",
                     borderRadius: "50%",
                     background: "#22c55e",
-                    boxShadow: "0 0 12px rgba(34, 197, 94, 0.6)",
+                    boxShadow: "0 0 10px rgba(34, 197, 94, 0.6)",
                     animation: "pulse 2s ease-in-out infinite"
                   }}
                 />
                 <span
                   style={{
-                    color: "rgba(255, 255, 255, 0.5)",
-                    fontSize: "13px",
+                    color: "rgba(255, 255, 255, 0.6)",
+                    fontSize: "12px",
+                    fontWeight: "500",
                     letterSpacing: "0.5px"
                   }}
                 >
-                  2009&apos;dan beri aktif
+                  2009&apos;dan Beri Mühendislik Güvencesi
                 </span>
               </div>
 
               <h1
+                className="hero-animate"
                 style={{
-                  fontSize: "clamp(3rem, 5vw, 4.5rem)",
-                  fontWeight: "400",
+                  fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
+                  fontWeight: "300",
                   color: "#ffffff",
-                  marginBottom: "30px",
-                  lineHeight: "1.1",
-                  letterSpacing: "-2px"
+                  marginBottom: "20px",
+                  lineHeight: "1.2",
+                  letterSpacing: "-1px"
                 }}
               >
-                Geleceğin
+                Geleceğin Yapılarını
                 <br />
                 <span
                   style={{
-                    background: "linear-gradient(135deg, #D4A373 0%, #f0d4b8 50%, #D4A373 100%)",
+                    background: "linear-gradient(135deg, #D4A373 0%, #f5dbbf 50%, #D4A373 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                     backgroundSize: "200% auto",
+                    fontWeight: "600",
                     animation: "shimmer 3s linear infinite"
                   }}
                 >
-                  Yapılarını
+                  Bugün İnşa Ediyoruz
                 </span>
-                <br />
-                Bugün İnşa Ediyoruz
               </h1>
 
               <p
+                className="hero-text hero-animate"
                 style={{
-                  fontSize: "1.1rem",
-                  color: "rgba(255, 255, 255, 0.6)",
-                  marginBottom: "50px",
-                  lineHeight: "1.9",
+                  fontSize: "1.02rem",
+                  color: "rgba(255, 255, 255, 0.55)",
+                  marginBottom: "32px",
+                  lineHeight: "1.7",
                   maxWidth: "480px"
                 }}
               >
-                Mühendislik hassasiyeti ve mimari vizyonla, 
-                sürdürülebilir ve estetik yaşam alanları tasarlıyoruz.
+                Mühendislik hassasiyeti ve mimari vizyonla, modern, sürdürülebilir ve estetik yaşam alanlarını en yüksek kalite standartlarında hayata geçiriyoruz.
               </p>
 
-              <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+              <div className="hero-buttons hero-animate" style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
                 <Link href="/projects" style={{ textDecoration: "none" }}>
                   <button
                     style={{
                       background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
                       color: "#0a0a0b",
-                      padding: "18px 40px",
+                      padding: "12px 28px",
                       border: "none",
-                      borderRadius: "60px",
+                      borderRadius: "10px",
                       fontSize: "14px",
                       fontWeight: "600",
-                      letterSpacing: "0.5px",
+                      letterSpacing: "0.3px",
                       cursor: "pointer",
-                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       display: "flex",
                       alignItems: "center",
-                      gap: "12px"
+                      gap: "10px"
                     }}
                     onMouseOver={(e) => {
                       e.currentTarget.style.transform = "translateY(-2px)";
-                      e.currentTarget.style.boxShadow = "0 20px 40px rgba(212, 163, 115, 0.3)";
+                      e.currentTarget.style.boxShadow = "0 12px 24px rgba(212, 163, 115, 0.25)";
                     }}
                     onMouseOut={(e) => {
                       e.currentTarget.style.transform = "translateY(0)";
@@ -250,33 +299,35 @@ export default function HomeClient() {
                     }}
                   >
                     Projeleri Keşfet
-                    <ArrowRight size={18} strokeWidth={2.5} />
+                    <ArrowRight size={16} strokeWidth={2.5} />
                   </button>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
                   <button
                     style={{
-                      background: "transparent",
-                      color: "rgba(255, 255, 255, 0.8)",
-                      padding: "18px 40px",
-                      border: "1px solid rgba(255, 255, 255, 0.15)",
-                      borderRadius: "60px",
+                      background: "rgba(255, 255, 255, 0.02)",
+                      color: "rgba(255, 255, 255, 0.85)",
+                      padding: "12px 28px",
+                      border: "1px solid rgba(255, 255, 255, 0.12)",
+                      borderRadius: "10px",
                       fontSize: "14px",
                       fontWeight: "500",
-                      letterSpacing: "0.5px",
+                      letterSpacing: "0.3px",
                       cursor: "pointer",
-                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                       backdropFilter: "blur(10px)"
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(212, 163, 115, 0.5)";
+                      e.currentTarget.style.borderColor = "rgba(212, 163, 115, 0.4)";
+                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)";
                       e.currentTarget.style.color = "#D4A373";
                       e.currentTarget.style.transform = "translateY(-2px)";
                     }}
                     onMouseOut={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.15)";
-                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                      e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.12)";
+                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.02)";
+                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.85)";
                       e.currentTarget.style.transform = "translateY(0)";
                     }}
                   >
@@ -285,49 +336,16 @@ export default function HomeClient() {
                 </Link>
               </div>
 
-              <div
-                style={{
-                  marginTop: "80px",
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(clamp(110px, 100%, 1fr), 1fr))",
-                  gap: "15px"
-                }}
-              >
+              {/* Minimal Tag List under actions */}
+              <div className="hero-tags hero-animate" style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginTop: "40px", borderTop: "1px solid rgba(255, 255, 255, 0.06)", paddingTop: "24px" }}>
                 {[
-                  { number: "15+", label: "Yıl Tecrübe" },
-                  { number: "150+", label: "Proje" },
-                  { number: "100%", label: "Memnuniyet" }
-                ].map((stat, index) => (
-                  <div 
-                    key={index}
-                    style={{
-                      padding: "24px",
-                      background: "rgba(255, 255, 255, 0.03)",
-                      borderRadius: "16px",
-                      border: "1px solid rgba(255, 255, 255, 0.06)",
-                      backdropFilter: "blur(10px)"
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "2.2rem",
-                        fontWeight: "500",
-                        color: "#ffffff",
-                        lineHeight: "1",
-                        marginBottom: "8px"
-                      }}
-                    >
-                      {stat.number}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "13px",
-                        color: "rgba(255, 255, 255, 0.4)",
-                        letterSpacing: "0.3px"
-                      }}
-                    >
-                      {stat.label}
-                    </div>
+                  { icon: <Building2 size={16} color="#D4A373" />, text: "Mühendislik & Proje" },
+                  { icon: <ShieldCheck size={16} color="#D4A373" />, text: "Kentsel Dönüşüm" },
+                  { icon: <Clock3 size={16} color="#D4A373" />, text: "Zamanında Teslim" }
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    {item.icon}
+                    <span style={{ fontSize: "13px", color: "rgba(255, 255, 255, 0.45)" }}>{item.text}</span>
                   </div>
                 ))}
               </div>
@@ -337,245 +355,117 @@ export default function HomeClient() {
               style={{
                 position: "relative",
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(40px)",
-                transition: "all 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s"
+                transform: isVisible ? "translateY(0)" : "translateY(30px)",
+                transition: "all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.15s",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
               }}
             >
+              {/* Stunning collage showing hero-architecture */}
               <div
+                className="hero-collage-container"
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(clamp(140px, 100%, 1fr), 1fr))",
-                  gap: "16px"
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: "500px",
+                  height: "420px",
+                  borderRadius: "24px",
+                  overflow: "hidden",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                  background: "rgba(255, 255, 255, 0.02)"
                 }}
               >
-                <div
+                <Image
+                  src="/hero-architecture.png"
+                  alt="Modern Mimari Proje"
+                  fill
+                  priority
                   style={{
-                    gridColumn: "1 / -1",
-                    background: "linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
-                    borderRadius: "24px",
-                    padding: "40px",
-                    border: "1px solid rgba(255, 255, 255, 0.08)",
-                    backdropFilter: "blur(20px)",
-                    position: "relative",
-                    overflow: "hidden"
+                    objectFit: "cover",
+                    transition: "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: "-100%",
-                      width: "100%",
-                      height: "100%",
-                      background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent)",
-                      animation: "shine 4s ease-in-out infinite"
-                    }}
-                  />
-                  
-                  <div style={{ position: "relative", zIndex: 1 }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        marginBottom: "30px"
-                      }}
-                    >
-                      <div>
-                        <div
-                          style={{
-                            fontSize: "11px",
-                            letterSpacing: "2px",
-                            textTransform: "uppercase",
-                            color: "rgba(255, 255, 255, 0.4)",
-                            marginBottom: "10px"
-                          }}
-                        >
-                          Uzmanlık Alanları
-                        </div>
-                        <div
-                          style={{
-                            fontSize: "1.6rem",
-                            color: "#ffffff",
-                            fontWeight: "400"
-                          }}
-                        >
-                          Mühendislik &amp; Mimarlık
-                        </div>
-                      </div>
-                      
-                      <div
-                        style={{
-                          width: "48px",
-                          height: "48px",
-                          borderRadius: "14px",
-                          background: "linear-gradient(135deg, rgba(212, 163, 115, 0.2) 0%, rgba(212, 163, 115, 0.05) 100%)",
-                          border: "1px solid rgba(212, 163, 115, 0.2)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center"
-                        }}
-                      >
-                        <Building2 size={22} color="#D4A373" strokeWidth={1.8} />
-                      </div>
-                    </div>
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = "scale(1.05)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                />
 
-                    <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-                      {["Proje", "Statik", "İnşaat", "Taahhüt"].map((tag, i) => (
-                        <span
-                          key={i}
-                          style={{
-                            padding: "8px 16px",
-                            background: "rgba(255, 255, 255, 0.05)",
-                            borderRadius: "100px",
-                            fontSize: "13px",
-                            color: "rgba(255, 255, 255, 0.6)",
-                            border: "1px solid rgba(255, 255, 255, 0.08)"
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
+                {/* Floating Glass Overlay Card 1 (Bottom Left) */}
                 <div
                   style={{
-                    background: "linear-gradient(145deg, rgba(212, 163, 115, 0.15) 0%, rgba(212, 163, 115, 0.05) 100%)",
-                    borderRadius: "24px",
-                    padding: "30px",
-                    border: "1px solid rgba(212, 163, 115, 0.15)",
+                    position: "absolute",
+                    bottom: "20px",
+                    left: "20px",
+                    background: "rgba(8, 8, 10, 0.75)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    borderRadius: "16px",
+                    padding: "16px 20px",
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    minHeight: "180px"
+                    alignItems: "center",
+                    gap: "12px",
+                    zIndex: 5,
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                    transition: "transform 0.3s ease"
                   }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
+                  onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
                 >
                   <div
                     style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "12px",
-                      background: "rgba(212, 163, 115, 0.2)",
+                      width: "36px",
+                      height: "36px",
+                      borderRadius: "50%",
+                      background: "rgba(212, 163, 115, 0.15)",
+                      border: "1px solid rgba(212, 163, 115, 0.2)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center"
                     }}
                   >
-                    <ShieldCheck size={20} color="#D4A373" strokeWidth={1.8} />
+                    <Building2 size={18} color="#D4A373" />
                   </div>
                   <div>
-                    <div
-                      style={{
-                        fontSize: "1.8rem",
-                        color: "#D4A373",
-                        fontWeight: "500",
-                        marginBottom: "4px"
-                      }}
-                    >
-                      Güvenilir
+                    <div style={{ color: "#ffffff", fontSize: "14px", fontWeight: "600", letterSpacing: "0.2px" }}>
+                      Gülmetay İnşaat
                     </div>
-                    <div
-                      style={{
-                        fontSize: "13px",
-                        color: "rgba(255, 255, 255, 0.5)"
-                      }}
-                    >
-                      Kalite garantisi
+                    <div style={{ color: "rgba(255, 255, 255, 0.5)", fontSize: "11px" }}>
+                      Mimarlık & Mühendislik
                     </div>
                   </div>
                 </div>
 
+                {/* Floating Glass Overlay Card 2 (Top Right) */}
                 <div
                   style={{
-                    background: "linear-gradient(145deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.03) 100%)",
-                    borderRadius: "24px",
-                    padding: "30px",
-                    border: "1px solid rgba(99, 102, 241, 0.1)",
+                    position: "absolute",
+                    top: "20px",
+                    right: "20px",
+                    background: "rgba(212, 163, 115, 0.15)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(212, 163, 115, 0.25)",
+                    borderRadius: "30px",
+                    padding: "8px 16px",
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    minHeight: "180px"
+                    alignItems: "center",
+                    gap: "8px",
+                    zIndex: 5,
+                    boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+                    transition: "transform 0.3s ease"
                   }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+                  onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
                 >
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "12px",
-                      background: "rgba(99, 102, 241, 0.15)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    <Clock3 size={20} color="#818cf8" strokeWidth={1.8} />
-                  </div>
-                  <div>
-                    <div
-                      style={{
-                        fontSize: "1.8rem",
-                        color: "#818cf8",
-                        fontWeight: "500",
-                        marginBottom: "4px"
-                      }}
-                    >
-                      Zamanında
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "13px",
-                        color: "rgba(255, 255, 255, 0.5)"
-                      }}
-                    >
-                      Teslim garantisi
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    gridColumn: "1 / -1",
-                    background: "rgba(255, 255, 255, 0.03)",
-                    borderRadius: "20px",
-                    padding: "24px 30px",
-                    border: "1px solid rgba(255, 255, 255, 0.06)",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center"
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "15px",
-                      color: "rgba(255, 255, 255, 0.6)"
-                    }}
-                  >
-                    Projeniz için ücretsiz danışmanlık alın
-                  </div>
-                  <Link 
-                    href="/contact"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      color: "#D4A373",
-                      textDecoration: "none",
-                      fontSize: "14px",
-                      fontWeight: "600",
-                      transition: "gap 0.3s ease"
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.gap = "12px";
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.gap = "8px";
-                    }}
-                  >
-                    Başlayın
-                    <ArrowRight size={18} strokeWidth={2} />
-                  </Link>
+                  <ShieldCheck size={14} color="#D4A373" />
+                  <span style={{ color: "#ffffff", fontSize: "11px", fontWeight: "600", letterSpacing: "0.5px" }}>
+                    Güvenilir Hizmet
+                  </span>
                 </div>
               </div>
             </div>
@@ -585,119 +475,66 @@ export default function HomeClient() {
         <div
           style={{
             position: "absolute",
-            bottom: "40px",
+            bottom: "30px",
             left: "50%",
             transform: "translateX(-50%)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "12px"
+            gap: "8px"
           }}
         >
-          <Mouse size={24} strokeWidth={1.8} color="rgba(255, 255, 255, 0.55)" />
+          <Mouse size={20} strokeWidth={1.8} color="rgba(255, 255, 255, 0.45)" />
         </div>
-
       </header>
 
-      {/* STATS SECTION */}
-      <section
-        aria-label="İstatistikler"
-        style={{
-          background: "white",
-          padding: "60px 0",
-          boxShadow: "0 -10px 40px rgba(0, 0, 0, 0.05)"
-        }}
-      >
-        <div
-          className="container"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(clamp(150px, 100%, 250px), 1fr))",
-            gap: "40px",
-            textAlign: "center"
-          }}
-        >
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
-                transition: `all 0.6s ease ${index * 0.1}s`
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-                  fontWeight: "600",
-                  background: "linear-gradient(135deg, #0C1B33 0%, #D4A373 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  marginBottom: "10px"
-                }}
-              >
-                {stat.value}{stat.suffix}
-              </div>
-              <div
-                style={{
-                  color: "#666",
-                  fontSize: "15px",
-                  fontWeight: "500",
-                  letterSpacing: "0.5px"
-                }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+
 
       {/* SERVICES SECTION */}
       <section
         aria-label="Hizmetlerimiz"
         style={{
-          padding: "80px 0",
+          padding: "60px 0",
           background: "linear-gradient(180deg, white 0%, #f8f9fa 100%)"
         }}
       >
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "70px" }}>
+          <div className="services-header-animate" style={{ textAlign: "center", marginBottom: "50px" }}>
             <div
               style={{
-                fontSize: "13px",
+                fontSize: "12px",
                 color: "#D4A373",
                 fontWeight: "600",
                 letterSpacing: "3px",
                 textTransform: "uppercase",
-                marginBottom: "15px"
+                marginBottom: "10px"
               }}
             >
               HİZMETLERİMİZ
             </div>
             <h2
               style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontSize: "clamp(1.75rem, 3.2vw, 2.25rem)",
                 fontWeight: "600",
                 color: "#0C1B33",
-                marginBottom: "20px"
+                marginBottom: "15px"
               }}
             >
               Neler Yapıyoruz?
             </h2>
             <p style={{ 
-              fontSize: "1.1rem", 
+              fontSize: "1rem", 
               color: "#666", 
               maxWidth: "600px", 
               margin: "0 auto",
-              lineHeight: "1.7"
+              lineHeight: "1.6"
             }}>
               Kapsamlı inşaat çözümlerimizle projelerinizi baştan sona yönetiyoruz
             </p>
           </div>
 
           <div
+            className="services-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(clamp(250px, 100%, 320px), 1fr))",
@@ -732,8 +569,9 @@ export default function HomeClient() {
             ].map((service, index) => (
               <article
                 key={index}
+                className="service-card-animate"
                 style={{
-                  padding: "clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px)",
+                  padding: "30px 24px",
                   border: "1px solid rgba(0, 0, 0, 0.06)",
                   borderRadius: "20px",
                   position: "relative",
@@ -770,8 +608,8 @@ export default function HomeClient() {
                   style={{
                     position: "absolute",
                     top: "20px",
-                    right: "25px",
-                    fontSize: "5rem",
+                    right: "24px",
+                    fontSize: "4rem",
                     fontWeight: "800",
                     color: "rgba(12, 27, 51, 0.08)",
                     lineHeight: "1",
@@ -785,7 +623,7 @@ export default function HomeClient() {
                   className="service-icon"
                   style={{
                     color: "#D4A373",
-                    marginBottom: "25px",
+                    marginBottom: "20px",
                     transition: "all 0.3s ease"
                   }}
                 >
@@ -794,10 +632,10 @@ export default function HomeClient() {
 
                 <h3
                   style={{
-                    fontSize: "1.4rem",
+                    fontSize: "1.25rem",
                     fontWeight: "600",
                     color: "#0C1B33",
-                    marginBottom: "15px",
+                    marginBottom: "12px",
                     transition: "color 0.4s ease",
                     position: "relative",
                     zIndex: 1
@@ -809,8 +647,8 @@ export default function HomeClient() {
                 <p
                   style={{
                     color: "#666",
-                    lineHeight: "1.8",
-                    fontSize: "15px",
+                    lineHeight: "1.7",
+                    fontSize: "14px",
                     transition: "color 0.4s ease",
                     position: "relative",
                     zIndex: 1,
@@ -833,14 +671,15 @@ export default function HomeClient() {
       </section>
 
       {/* FEATURED PROJECTS SECTION */}
-      <section aria-label="Öne Çıkan Projeler" style={{ padding: "80px 0", background: "white" }}>
+      <section aria-label="Öne Çıkan Projeler" style={{ padding: "60px 0", background: "white" }}>
         <div className="container">
           <div
+            className="featured-projects-header"
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: "60px",
+              marginBottom: "40px",
               flexWrap: "wrap",
               gap: "20px"
             }}
@@ -848,19 +687,19 @@ export default function HomeClient() {
             <div>
               <div
                 style={{
-                  fontSize: "13px",
+                  fontSize: "11px",
                   color: "#D4A373",
                   fontWeight: "600",
-                  letterSpacing: "3px",
+                  letterSpacing: "1.5px",
                   textTransform: "uppercase",
-                  marginBottom: "10px"
+                  marginBottom: "8px"
                 }}
               >
                 PORTFOLİO
               </div>
               <h2
                 style={{
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
+                  fontSize: "clamp(1.75rem, 3.2vw, 2.25rem)",
                   fontWeight: "600",
                   color: "#0C1B33"
                 }}
@@ -873,17 +712,17 @@ export default function HomeClient() {
                 style={{
                   background: "transparent",
                   color: "#0C1B33",
-                  padding: "14px 30px",
+                  padding: "10px 22px",
                   border: "2px solid #0C1B33",
                   borderRadius: "10px",
-                  fontSize: "14px",
+                  fontSize: "13px",
                   fontWeight: "600",
-                  letterSpacing: "0.5px",
+                  letterSpacing: "0.3px",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   display: "flex",
                   alignItems: "center",
-                  gap: "10px"
+                  gap: "8px"
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.background = "#0C1B33";
@@ -895,7 +734,7 @@ export default function HomeClient() {
                 }}
               >
                 Tüm Projeler
-                <ArrowRight size={16} />
+                <ArrowRight size={14} />
               </button>
             </Link>
           </div>
@@ -904,52 +743,51 @@ export default function HomeClient() {
             <div
               style={{
                 textAlign: "center",
-                padding: "60px 20px",
+                padding: "40px 20px",
                 background: "#f8f9fa",
                 borderRadius: "20px"
               }}
             >
-              <p style={{ fontSize: "1.1rem", color: "#666" }}>Henüz proje eklenmemiş.</p>
+              <p style={{ fontSize: "1rem", color: "#666" }}>Henüz proje eklenmemiş.</p>
             </div>
           ) : (
             <div
+              className="projects-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(clamp(280px, 100%, 380px), 1fr))",
-                gap: "35px"
+                gap: "24px"
               }}
             >
               {latestProjects.map((project: any, index: number) => (
                 <Link
-                  key={project.id}
+                   key={project.id}
                   href={`/projects/${project.slug}`}
                   style={{ textDecoration: "none" }}
                 >
                   <article
+                    className="project-card-animate"
                     style={{
                       borderRadius: "20px",
                       overflow: "hidden",
-                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                       cursor: "pointer",
-                      background: "white",
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? "translateY(0)" : "translateY(30px)",
-                      transitionDelay: `${index * 0.1}s`
+                      background: "white"
                     }}
                     onMouseOver={(e) => {
-                      e.currentTarget.style.transform = "translateY(-12px)";
-                      e.currentTarget.style.boxShadow = "0 20px 40px rgba(0, 0, 0, 0.15)";
+                      e.currentTarget.style.transform = "translateY(-8px)";
+                      e.currentTarget.style.boxShadow = "0 15px 30px rgba(0, 0, 0, 0.1)";
                     }}
                     onMouseOut={(e) => {
                       e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.08)";
+                      e.currentTarget.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.05)";
                     }}
                   >
                     <div
                       style={{
                         position: "relative",
-                        height: "280px",
+                        height: "240px",
                         overflow: "hidden",
                         background: "#f0f0f0"
                       }}
@@ -970,13 +808,13 @@ export default function HomeClient() {
                           <div
                             style={{
                               position: "absolute",
-                              top: "20px",
-                              right: "20px",
+                              top: "16px",
+                              right: "16px",
                               background: "rgba(212, 163, 115, 0.95)",
                               color: "white",
-                              padding: "8px 16px",
+                              padding: "6px 14px",
                               borderRadius: "50px",
-                              fontSize: "12px",
+                              fontSize: "11px",
                               fontWeight: "600",
                               backdropFilter: "blur(10px)",
                               zIndex: 1,
@@ -988,13 +826,13 @@ export default function HomeClient() {
                       )}
                     </div>
 
-                    <div style={{ padding: "30px" }}>
+                    <div style={{ padding: "24px" }}>
                       <h3
                         style={{
-                          fontSize: "1.5rem",
+                          fontSize: "1.25rem",
                           fontWeight: "600",
                           color: "#0C1B33",
-                          marginBottom: "15px",
+                          marginBottom: "12px",
                           lineHeight: "1.3"
                         }}
                       >
@@ -1003,12 +841,12 @@ export default function HomeClient() {
                       <p
                         style={{
                           color: "#666",
-                          lineHeight: "1.8",
-                          marginBottom: "20px",
-                          fontSize: "15px"
+                          lineHeight: "1.6",
+                          marginBottom: "16px",
+                          fontSize: "14px"
                         }}
                       >
-                        {project.description?.[0]?.children?.[0]?.text?.substring(0, 100) ||
+                        {project.description?.[0]?.children?.[0]?.text?.substring(0, 90) ||
                           "Proje detaylarını görmek için tıklayın"}
                         ...
                       </p>
@@ -1018,13 +856,13 @@ export default function HomeClient() {
                           fontWeight: "600",
                           display: "flex",
                           alignItems: "center",
-                          gap: "8px",
-                          fontSize: "14px",
-                          letterSpacing: "0.5px"
+                          gap: "6px",
+                          fontSize: "13px",
+                          letterSpacing: "0.3px"
                         }}
                       >
                         Detayları Gör
-                        <ArrowRight size={16} />
+                        <ArrowRight size={14} />
                       </div>
                     </div>
                   </article>
@@ -1040,7 +878,7 @@ export default function HomeClient() {
         aria-label="İletişime Geçin"
         style={{
           background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-          padding: "100px 0",
+          padding: "65px 0",
           position: "relative",
           overflow: "hidden"
         }}
@@ -1051,18 +889,18 @@ export default function HomeClient() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "500px",
-            height: "500px",
-            background: "radial-gradient(circle, rgba(212, 163, 115, 0.1) 0%, transparent 70%)",
+            width: "400px",
+            height: "400px",
+            background: "radial-gradient(circle, rgba(212, 163, 115, 0.08) 0%, transparent 70%)",
             borderRadius: "50%",
-            filter: "blur(60px)"
+            filter: "blur(50px)"
           }}
         />
 
         <div
           className="container"
           style={{
-            maxWidth: "1000px",
+            maxWidth: "900px",
             textAlign: "center",
             position: "relative",
             zIndex: 2
@@ -1070,10 +908,10 @@ export default function HomeClient() {
         >
           <h2
             style={{
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
               fontWeight: "600",
               color: "white",
-              marginBottom: "25px",
+              marginBottom: "20px",
               lineHeight: "1.2"
             }}
           >
@@ -1082,12 +920,12 @@ export default function HomeClient() {
           </h2>
           <p
             style={{
-              fontSize: "1.15rem",
-              color: "rgba(255, 255, 255, 0.85)",
-              marginBottom: "40px",
-              maxWidth: "700px",
-              margin: "0 auto 40px",
-              lineHeight: "1.8"
+              fontSize: "1.02rem",
+              color: "rgba(255, 255, 255, 0.8)",
+              marginBottom: "30px",
+              maxWidth: "650px",
+              margin: "0 auto 30px",
+              lineHeight: "1.7"
             }}
           >
             Uzman ekibimiz, hayalinizdeki projeyi gerçeğe dönüştürmek için sizinle
@@ -1097,24 +935,24 @@ export default function HomeClient() {
             <button
               style={{
                 background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
-                color: "white",
-                padding: "20px 50px",
+                color: "#0a0a0b",
+                padding: "13px 32px",
                 border: "none",
-                borderRadius: "12px",
-                fontSize: "16px",
+                borderRadius: "10px",
+                fontSize: "14px",
                 fontWeight: "600",
-                letterSpacing: "0.5px",
+                letterSpacing: "0.3px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
-                boxShadow: "0 10px 30px rgba(212, 163, 115, 0.4)"
+                boxShadow: "0 8px 24px rgba(212, 163, 115, 0.25)"
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.transform = "translateY(-5px) scale(1.05)";
-                e.currentTarget.style.boxShadow = "0 15px 40px rgba(212, 163, 115, 0.5)";
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = "0 12px 30px rgba(212, 163, 115, 0.4)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.transform = "translateY(0) scale(1)";
-                e.currentTarget.style.boxShadow = "0 10px 30px rgba(212, 163, 115, 0.4)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 8px 24px rgba(212, 163, 115, 0.25)";
               }}
             >
               Ücretsiz Teklif Al
@@ -1143,6 +981,33 @@ export default function HomeClient() {
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.5; }
+        }
+        @media (max-width: 768px) {
+          :global(.hero-grid) {
+            grid-template-columns: 1fr !important;
+            gap: 30px !important;
+            text-align: center !important;
+          }
+          :global(.hero-text) {
+            max-width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          :global(.hero-buttons) {
+            justify-content: center !important;
+          }
+          :global(.hero-tags) {
+            justify-content: center !important;
+          }
+          :global(.hero-collage-container) {
+            height: 280px !important;
+          }
+          :global(.featured-projects-header) {
+            flex-direction: column !important;
+            text-align: center !important;
+            align-items: center !important;
+            gap: 15px !important;
+          }
         }
       `}</style>
     </div>

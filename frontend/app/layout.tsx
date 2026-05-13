@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import {
   SITE_NAME,
   SITE_URL,
@@ -68,11 +69,13 @@ export default function RootLayout({
       >
         <JsonLd data={ORGANIZATION_JSONLD} />
 
-        <Navbar />
+        <SmoothScrollProvider>
+          <Navbar />
 
-        <main style={{ minHeight: "80vh" }}>{children}</main>
+          <main style={{ minHeight: "80vh" }}>{children}</main>
 
-        <Footer />
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

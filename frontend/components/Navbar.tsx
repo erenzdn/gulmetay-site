@@ -57,7 +57,7 @@ export default function Navbar() {
           display: "flex", 
           justifyContent: "space-between", 
           alignItems: "center", 
-          padding: scrolled ? "12px 24px" : "20px 24px",
+          padding: scrolled ? "8px 24px" : "14px 24px",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
         }}>
           {/* Logo Alanı */}
@@ -73,8 +73,8 @@ export default function Navbar() {
             <Image 
               src="/logo.svg" 
               alt="Gülmetay İnşaat Logo" 
-              width={240}
-              height={50}
+              width={190}
+              height={40}
               style={{ 
                 objectFit: "contain",
                 transition: "all 0.3s ease"
@@ -84,7 +84,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menü */}
-          <div style={{ 
+          <div className="desktop-menu" style={{ 
             display: "flex", 
             alignItems: "center",
             gap: "8px"
@@ -174,6 +174,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
               display: "none",
@@ -306,10 +307,10 @@ export default function Navbar() {
           }
         }
         @media (max-width: 900px) {
-          nav > div:nth-child(2) {
+          .desktop-menu {
             display: none !important;
           }
-          nav button:last-child {
+          .mobile-menu-btn {
             display: block !important;
           }
         }
