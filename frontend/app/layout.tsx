@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Roboto } from "next/font/google";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,11 +14,18 @@ import {
   ORGANIZATION_JSONLD,
 } from "@/lib/seo.config";
 
-const roboto = Roboto({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-roboto",
+  variable: "--font-cormorant",
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-source-sans",
 });
 
 export const viewport: Viewport = {
@@ -63,10 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr" className={roboto.variable}>
-      <body
-        style={{ margin: 0, fontFamily: "var(--font-roboto), system-ui, sans-serif" }}
-      >
+    <html lang="tr" className={`${cormorant.variable} ${sourceSans.variable}`}>
+      <body style={{ margin: 0 }}>
         <JsonLd data={ORGANIZATION_JSONLD} />
 
         <SmoothScrollProvider>

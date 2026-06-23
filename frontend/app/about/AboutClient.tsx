@@ -1,13 +1,29 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { gsap } from "gsap";
+import "./about.css";
+
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
 
 interface AboutData {
   title: string;
   content: string;
-  vision_title: string;
-  vision_text: string;
-  mission_title: string;
-  mission_text: string;
+}
+
+const STATS = [
+  { value: "1994", label: "Kuruluş Yılı" },
+  { value: "30+", label: "Yıllık Tecrübe" },
+  { value: "İstanbul", label: "Merkez Ofis" },
+];
+
+function getExcerpt(content: string, maxLength = 220): string {
+  const firstParagraph = content.split("\n").find((line) => line.trim()) ?? content;
+  if (firstParagraph.length <= maxLength) return firstParagraph;
+  return `${firstParagraph.substring(0, maxLength).trim()}…`;
 }
 
 export default function AboutClient() {
@@ -17,7 +33,7 @@ export default function AboutClient() {
   useEffect(() => {
     async function fetchAbout() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || ""}/api/about`);
+        const res = await fetch(`${STRAPI_URL}/api/about`);
         const json = await res.json();
         setData(json.data);
       } catch (error) {
@@ -29,240 +45,138 @@ export default function AboutClient() {
     fetchAbout();
   }, []);
 
+  useEffect(() => {
+    if (!loading && data) {
+      const timer = setTimeout(() => {
+        gsap.fromTo(
+          ".about-intro__visual, .about-intro__text-block, .about-story, .about-stats, .about-cta",
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            stagger: 0.1,
+            ease: "power3.out",
+            overwrite: "auto",
+          }
+        );
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [loading, data]);
+
   if (loading) {
     return (
-      <div style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)"
-      }}>
-        <div style={{
-          width: "50px",
-          height: "50px",
-          border: "3px solid rgba(12, 27, 51, 0.1)",
-          borderTop: "3px solid #0C1B33",
-          borderRadius: "50%",
-          animation: "spin 1s linear infinite"
-        }} />
-        <style jsx>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
+      <div className="about-loading">
+        <div className="about-loading__inner">
+          <div className="about-loading__spinner" />
+          <p className="about-loading__text">Yükleniyor…</p>
+        </div>
       </div>
     );
   }
 
   if (!data) {
     return (
-      <div style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)"
-      }}>
-        <p style={{ fontSize: "1.2rem", color: "#666" }}>İçerik bulunamadı.</p>
+      <div className="about-empty">
+        <p className="about-empty__text">İçerik bulunamadı.</p>
       </div>
     );
   }
 
+  const excerpt = getExcerpt(data.content);
+
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
-      padding: "100px 0 60px"
-    }}>
-      <div className="container">
-        {/* Hero Section */}
-        <header style={{
-          marginBottom: "40px"
-        }}>
-          <article style={{
-            background: "rgba(255, 255, 255, 0.95)",
-            backdropFilter: "blur(10px)",
-            borderRadius: "20px",
-            padding: "clamp(24px, 4vw, 40px)",
-            boxShadow: "0 20px 60px rgba(0, 0, 0, 0.08)",
-            border: "1px solid rgba(255, 255, 255, 0.5)"
-          }}>
-            <h1 style={{
-              fontSize: "clamp(1.75rem, 4.5vw, 2.5rem)",
-              fontWeight: "600",
-              background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              marginBottom: "20px",
-              letterSpacing: "-1px",
-              lineHeight: "1.2"
-            }}>
-              {data.title}
+    <div className="about-page">
+      <header className="about-hero">
+        <div className="container">
+          <div className="about-hero__content">
+            <div className="about-hero__eyebrow">
+              <span className="about-hero__eyebrow-line" aria-hidden="true" />
+              <span className="about-hero__eyebrow-text">Gülmetay İnşaat</span>
+            </div>
+            <h1 className="about-hero__title">
+              Hakkımızda
+              <em>Güven &amp; Kalite</em>
             </h1>
-            
-            <div style={{
-              fontSize: "1rem",
-              lineHeight: "1.7",
-              color: "#4a5568",
-              whiteSpace: "pre-line",
-              borderLeft: "4px solid #D4A373",
-              paddingLeft: "20px",
-              fontWeight: "400"
-            }}>
-              {data.content}
+            <p className="about-hero__desc">
+              Endüstriyel yapı, iskele sistemleri ve mühendislik çözümlerinde
+              köklü bir geçmişle, her projede aynı özeni taşıyoruz.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <section className="about-body" aria-label="Şirket hikayesi">
+        <div className="container">
+          <div className="about-intro">
+            <div className="about-intro__visual">
+              <Image
+                src="/hero-architecture.png"
+                alt="Gülmetay İnşaat — mimari ve mühendislik"
+                fill
+                sizes="(max-width: 992px) 100vw, 50vw"
+                className="about-intro__image"
+              />
+              <span className="about-intro__frame" aria-hidden="true" />
+              <div className="about-intro__badge">
+                <p className="about-intro__badge-text">Kuruluş</p>
+                <p className="about-intro__badge-year">1994</p>
+              </div>
+            </div>
+
+            <div className="about-intro__text-block">
+              <p className="about-intro__label">Kimiz?</p>
+              <h2 className="about-intro__heading">{data.title}</h2>
+              <span className="about-intro__line" aria-hidden="true" />
+              <p className="about-intro__excerpt">{excerpt}</p>
+            </div>
+          </div>
+
+          <article className="about-story">
+            <aside className="about-story__sidebar">
+              <p className="about-story__sidebar-label">Hikayemiz</p>
+              <h2 className="about-story__sidebar-title">
+                Mühendislik disiplini, inşaat ustalığı
+              </h2>
+              <span className="about-story__sidebar-line" aria-hidden="true" />
+            </aside>
+
+            <div className="about-story__content">
+              <p className="about-story__text">{data.content}</p>
             </div>
           </article>
-        </header>
 
-        {/* Vision & Mission Section */}
-        <section aria-label="Vizyon ve Misyon">
-          <h2 style={{
-            fontSize: "clamp(1.5rem, 3.5vw, 1.8rem)",
-            fontWeight: "600",
-            color: "#0C1B33",
-            textAlign: "center",
-            marginBottom: "30px",
-          }}>
-            Vizyonumuz &amp; Misyonumuz
-          </h2>
-
-          <div className="responsive-grid">
-            {/* Vizyon Kartı */}
-            <article style={{
-              background: "rgba(255, 255, 255, 0.95)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
-              padding: "32px 24px",
-              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.06)",
-              border: "1px solid rgba(255, 255, 255, 0.5)",
-              position: "relative",
-              overflow: "hidden",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-5px)";
-              e.currentTarget.style.boxShadow = "0 25px 70px rgba(0, 0, 0, 0.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0, 0, 0, 0.06)";
-            }}>
-              <div style={{
-                position: "absolute",
-                top: "-50px",
-                right: "-50px",
-                width: "150px",
-                height: "150px",
-                background: "linear-gradient(135deg, rgba(12, 27, 51, 0.05) 0%, rgba(26, 58, 92, 0.05) 100%)",
-                borderRadius: "50%",
-                filter: "blur(40px)"
-              }} />
-              
-              <div style={{
-                display: "inline-block",
-                padding: "8px 16px",
-                background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-                borderRadius: "30px",
-                marginBottom: "20px",
-                fontSize: "0.75rem",
-                fontWeight: "600",
-                color: "#fff",
-                letterSpacing: "1px",
-                textTransform: "uppercase"
-              }}>
-                Vizyon
+          <div className="about-stats" aria-label="Öne çıkan bilgiler">
+            {STATS.map((stat) => (
+              <div key={stat.label} className="about-stats__item">
+                <p className="about-stats__value">{stat.value}</p>
+                <p className="about-stats__label">{stat.label}</p>
               </div>
-
-              <h3 style={{
-                fontSize: "1.25rem",
-                fontWeight: "600",
-                color: "#0C1B33",
-                marginBottom: "15px",
-                lineHeight: "1.3"
-              }}>
-                {data.vision_title}
-              </h3>
-              
-              <p style={{
-                fontSize: "0.95rem",
-                lineHeight: "1.7",
-                color: "#4a5568",
-                margin: 0
-              }}>
-                {data.vision_text}
-              </p>
-            </article>
-
-            {/* Misyon Kartı */}
-            <article style={{
-              background: "rgba(255, 255, 255, 0.95)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
-              padding: "32px 24px",
-              boxShadow: "0 20px 60px rgba(0, 0, 0, 0.06)",
-              border: "1px solid rgba(255, 255, 255, 0.5)",
-              position: "relative",
-              overflow: "hidden",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-5px)";
-              e.currentTarget.style.boxShadow = "0 25px 70px rgba(0, 0, 0, 0.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0, 0, 0, 0.06)";
-            }}>
-              <div style={{
-                position: "absolute",
-                top: "-50px",
-                right: "-50px",
-                width: "150px",
-                height: "150px",
-                background: "linear-gradient(135deg, rgba(12, 27, 51, 0.05) 0%, rgba(26, 58, 92, 0.05) 100%)",
-                borderRadius: "50%",
-                filter: "blur(40px)"
-              }} />
-              
-              <div style={{
-                display: "inline-block",
-                padding: "8px 16px",
-                background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
-                borderRadius: "30px",
-                marginBottom: "20px",
-                fontSize: "0.75rem",
-                fontWeight: "600",
-                color: "#fff",
-                letterSpacing: "1px",
-                textTransform: "uppercase"
-              }}>
-                Misyon
-              </div>
-
-              <h3 style={{
-                fontSize: "1.25rem",
-                fontWeight: "600",
-                color: "#0C1B33",
-                marginBottom: "15px",
-                lineHeight: "1.3"
-              }}>
-                {data.mission_title}
-              </h3>
-              
-              <p style={{
-                fontSize: "0.95rem",
-                lineHeight: "1.7",
-                color: "#4a5568",
-                margin: 0
-              }}>
-                {data.mission_text}
-              </p>
-            </article>
+            ))}
           </div>
-        </section>
-      </div>
+
+          <div className="about-cta">
+            <div className="about-cta__content">
+              <p className="about-cta__eyebrow">Bir sonraki adım</p>
+              <h2 className="about-cta__title">Projenizi birlikte hayata geçirelim</h2>
+              <p className="about-cta__desc">
+                Tamamlanan ve devam eden projelerimizi inceleyin ya da doğrudan
+                bizimle iletişime geçin.
+              </p>
+            </div>
+            <div className="about-cta__actions">
+              <Link href="/projects" className="about-cta__btn-primary">
+                Projeleri Gör
+                <ArrowRight size={15} strokeWidth={2.5} />
+              </Link>
+              <Link href="/contact" className="about-cta__btn-secondary">
+                İletişime Geç
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

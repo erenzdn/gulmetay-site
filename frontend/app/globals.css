@@ -10,9 +10,9 @@
   --foreground: #171717;
   
   /* Font Families */
-  --font-heading: 'Roboto', system-ui, sans-serif;
-  --font-body: 'Roboto', system-ui, sans-serif;
-  --font-accent: 'Roboto', system-ui, sans-serif;
+  --font-heading: var(--font-cormorant), 'Georgia', 'Times New Roman', serif;
+  --font-body: var(--font-source-sans), system-ui, sans-serif;
+  --font-accent: var(--font-cormorant), 'Georgia', serif;
   --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -286,6 +286,12 @@ p, span, a, li {
 }
 
 /* Container Definitions */
+main:has(.projects-page) + footer,
+main:has(.home-page) + footer,
+main:has(.project-detail-page) + footer {
+  margin-top: 0 !important;
+}
+
 .container {
   width: 100%;
   margin-left: auto;
