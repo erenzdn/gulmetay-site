@@ -1,0 +1,576 @@
+{
+  "common": {
+    "title": "Gülmetay Construction",
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "projects": "Projects",
+      "about": "About Us",
+      "contact": "Contact",
+      "getQuote": "Get a Quote"
+    },
+    "footer": {
+      "desc": "We build modern living spaces, high-quality structures, and aesthetic architectural solutions, turning your vision into reality.",
+      "quickLinks": "Quick Links",
+      "services": "Services",
+      "contact": "Contact",
+      "allRightsReserved": "© {year} Gülmetay İnşaat. All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfUse": "Terms of Use"
+    },
+    "lightbox": {
+      "prev": "Previous image",
+      "next": "Next image",
+      "close": "Close gallery",
+      "counter": "{current} / {total}"
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Reliable Construction Since 2009",
+      "titleMain": "Building Strong Foundations,",
+      "titleAccent": "Creating Lasting Value",
+      "desc": "Leveraging engineering precision and architectural vision, we deliver modern, sustainable, and aesthetic living spaces built to the highest industry standards.",
+      "btnProjects": "Explore Projects",
+      "btnQuote": "Get a Quote",
+      "scrollHint": "Scroll",
+      "frameTitle": "Gülmetay Construction",
+      "frameSub": "Architecture & Engineering"
+    },
+    "services": {
+      "label": "Our Services",
+      "title": "What We Do",
+      "subtitle": "We manage your projects from conception to completion with comprehensive construction solutions",
+      "seeAll": "View All Services"
+    },
+    "projects": {
+      "label": "Portfolio",
+      "title": "Featured Projects",
+      "seeAll": "All Projects",
+      "scrollHint": "Scroll to navigate between projects",
+      "empty": "No projects added yet.",
+      "slidePrefix": "Project",
+      "viewDetails": "View Details",
+      "descriptionFallback": "Click to explore project details."
+    },
+    "cta": {
+      "eyebrow": "Let's Work Together",
+      "title": "Let your next project",
+      "titleAccent": " start with us.",
+      "desc": "We manage the entire construction lifecycle transparently and systematically. Your initial consultation is completely free.",
+      "btnRequest": "Request Consultation"
+    }
+  },
+  "about": {
+    "loading": "Loading...",
+    "empty": "No content found.",
+    "hero": {
+      "eyebrow": "Gülmetay Construction",
+      "title": "About Us",
+      "titleAccent": "Trust & Quality",
+      "desc": "With a deep-rooted history in industrial construction, scaffolding systems, and engineering, we bring the same level of care and precision to every project."
+    },
+    "intro": {
+      "badgeTitle": "Founded",
+      "label": "Who We Are"
+    },
+    "story": {
+      "label": "Our Story",
+      "title": "Engineering discipline, master craftsmanship"
+    },
+    "stats": {
+      "founded": "Year Founded",
+      "experience": "Years of Experience",
+      "headquarters": "Headquarters"
+    },
+    "cta": {
+      "eyebrow": "Next Step",
+      "title": "Let's bring your project to life",
+      "desc": "Explore our completed and ongoing projects, or contact us directly to discuss your needs.",
+      "btnProjects": "View Projects",
+      "btnContact": "Get in Touch"
+    }
+  },
+  "services": {
+    "loading": "Loading...",
+    "hero": {
+      "eyebrow": "Gülmetay Construction",
+      "title": "Our Services",
+      "titleAccent": "What We Do",
+      "desc": "We manage your projects from design to hand-off with sustainable, safe, and aesthetic engineering solutions, building the living spaces of the future."
+    },
+    "stats": {
+      "experience": "Years of Experience",
+      "completed": "Completed Projects",
+      "area": "m² Construction Area",
+      "satisfaction": "Customer Satisfaction"
+    },
+    "card": {
+      "viewDetails": "View Details"
+    },
+    "commitments": {
+      "eyebrow": "Service Standards",
+      "title": "How We Make a Difference",
+      "safety": {
+        "title": "Zero Error & Safety",
+        "desc": "We strictly apply the most demanding international safety and engineering standards without compromise."
+      },
+      "transparent": {
+        "title": "On-Time & Transparent",
+        "desc": "We manage our build schedule efficiently and keep you updated at every milestone with transparent progress reports."
+      },
+      "materials": {
+        "title": "Premium Materials",
+        "desc": "We select certified, sustainable, and highly durable construction materials to maximize your structure's lifespan."
+      }
+    },
+    "cta": {
+      "eyebrow": "Next Step",
+      "title": "Request a Quote",
+      "desc": "Let's discuss the right service for your needs and prepare a custom solution and timeline for you.",
+      "btnQuote": "Get a Quote",
+      "btnProjects": "View Projects"
+    },
+    "items": {
+      "insaat-taahhut": {
+        "title": "Construction & Contracting",
+        "shortDescription": "We build your dream structures with turnkey solutions and professional contracting services.",
+        "heroTagline": "Solid structures, delivered on time",
+        "intro": "At Gülmetay Construction, we provide turnkey contracting services for residential, commercial, and industrial structures. We execute your projects exactly as planned through strict field discipline, premium materials, and professional site management.",
+        "highlights": [
+          "Turnkey residential and commercial builds",
+          "Industrial facilities and factory construction",
+          "Structural reinforcement and renovation",
+          "Strict compliance with safety and quality standards"
+        ],
+        "features": [
+          {
+            "title": "Turnkey Project Delivery",
+            "description": "We manage all construction phases from breaking ground to final inspection, relieving you of the coordination load."
+          },
+          {
+            "title": "Premium Materials & Craftsmanship",
+            "description": "We build durable, long-lasting structures utilizing approved suppliers and highly skilled trades."
+          },
+          {
+            "title": "Construction Site Discipline",
+            "description": "We maintain a transparent and organized site layout through daily progress tracking, strict scheduling, and safety audits."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Discovery & Proposal",
+            "description": "We conduct site inspections and needs analysis to prepare a clear cost and schedule proposal."
+          },
+          {
+            "step": "02",
+            "title": "Planning & Preconstruction",
+            "description": "We establish the project schedule, procure materials, and organize the construction crews."
+          },
+          {
+            "step": "03",
+            "title": "Execution",
+            "description": "Construction phases progress systematically alongside regular quality control and safety checks."
+          },
+          {
+            "step": "04",
+            "title": "Handover",
+            "description": "Final inspections are completed, and the structure is handed over fully ready for occupation."
+          }
+        ],
+        "keywords": [
+          "construction contracting",
+          "turnkey construction",
+          "site management",
+          "Gülmetay Construction"
+        ],
+        "stats": [
+          "120,000+ m² Completed Area",
+          "100% On-Time Delivery Rate",
+          "Zero Accident Record"
+        ],
+        "faqs": [
+          {
+            "question": "How long does a turnkey construction project take?",
+            "answer": "It generally ranges between 8 to 18 months depending on the project scope, site conditions, and municipal permits. A detailed schedule will be shared with you prior to signing."
+          },
+          {
+            "question": "How do you ensure occupational safety and quality on site?",
+            "answer": "Our sites employ full-time OHS (Occupational Health & Safety) experts. Additionally, our processes are regularly inspected by independent auditing organizations and our own internal quality team."
+          },
+          {
+            "question": "How do you select materials and perform quality control?",
+            "answer": "We only work with brands holding TSE, CE, and equivalent international standard certifications. Laboratory tests and visual inspections are carried out at every stage, from material arrival to final application."
+          }
+        ]
+      },
+      "mimari-tasarim": {
+        "title": "Architectural Design",
+        "shortDescription": "Modern and aesthetic architectural drawings, 3D modeling, and expert project consulting.",
+        "heroTagline": "Aesthetics, functionality, and engineering aligned",
+        "intro": "During our architectural design process, we address your lifestyle habits, site conditions, and local zoning codes as a cohesive unit. We produce clear, practical, and highly aesthetic design packages from initial concept to construction drawings.",
+        "highlights": [
+          "Concept and schematic design studies",
+          "Construction documents and detailing",
+          "3D modeling and photorealistic visualization",
+          "Permitting and building code consulting"
+        ],
+        "features": [
+          {
+            "title": "Concept Design",
+            "description": "We create a strong architectural identity and spatial flow tailored to your project brief."
+          },
+          {
+            "title": "3D Modeling",
+            "description": "We render the project in 3D prior to construction, clarifying the decision-making process for you."
+          },
+          {
+            "title": "Feasibility & Detailing",
+            "description": "We draft drawings that match real-world construction techniques, minimizing unexpected issues in the field."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Brief & Analysis",
+            "description": "Your project objectives, site survey details, and legal codes are evaluated together."
+          },
+          {
+            "step": "02",
+            "title": "Schematic Concept",
+            "description": "The design aesthetic is established through mass, facade, and floor plan options."
+          },
+          {
+            "step": "03",
+            "title": "Project Design",
+            "description": "Construction drawings, detailed sections, and final 3D visuals are completed."
+          },
+          {
+            "step": "04",
+            "title": "Approval & Support",
+            "description": "We provide technical support during municipal permitting and field execution."
+          }
+        ],
+        "keywords": [
+          "architectural design",
+          "3D modeling",
+          "construction drawings",
+          "architectural consulting"
+        ],
+        "stats": [
+          "60+ Custom Projects",
+          "12+ Design Awards",
+          "100% Realistic 3D Models"
+        ],
+        "faqs": [
+          {
+            "question": "What are the main stages of the design process?",
+            "answer": "The process consists of basic phases: needs assessment (brief), concept development, 3D modeling/rendering, permit application documentation, and detailed construction drawings."
+          },
+          {
+            "question": "Do you offer 3D visualizations and virtual walk-throughs?",
+            "answer": "Yes, we build near-reality models of our projects before construction. Upon request, we can also prepare a 3D virtual tour of the designed space."
+          },
+          {
+            "question": "How many revisions do we get during the design stage?",
+            "answer": "We provide reasonable iterations during the concept phase until we reach mutual agreement. Once construction drawings start, we focus on technical details."
+          }
+        ]
+      },
+      "kentsel-donusum": {
+        "title": "Urban Renewal",
+        "shortDescription": "We add value by renewing old structures, establishing safe and modern residential areas.",
+        "heroTagline": "Safe structures, valuable living spaces",
+        "intro": "When replacing earthquake-prone buildings, we establish transparent dialogue with property owners. We improve safety and living standards through compliant project management and modern architecture.",
+        "highlights": [
+          "Structural risk assessment and process consulting",
+          "Transparent communication with property owners",
+          "Modern, earthquake-resilient structures",
+          "Value-driven urban planning"
+        ],
+        "features": [
+          {
+            "title": "Renewal Management",
+            "description": "We coordinate all steps, from risk applications to demolition and reconstruction."
+          },
+          {
+            "title": "Fair Distribution",
+            "description": "We create clear, fair, and legally sound solutions for land shares and property allocation."
+          },
+          {
+            "title": "Earthquake Resilience",
+            "description": "We build highly secure structures in strict compliance with current seismic codes."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Evaluation",
+            "description": "Building integrity, site potential, and legal viability are examined."
+          },
+          {
+            "step": "02",
+            "title": "Agreement",
+            "description": "The business model and division of property shares are finalized with owners."
+          },
+          {
+            "step": "03",
+            "title": "Demolition & Build",
+            "description": "After safe demolition, the new structure rises according to the schedule."
+          },
+          {
+            "step": "04",
+            "title": "Handover",
+            "description": "Individual units are completed and keys are delivered to the owners."
+          }
+        ],
+        "keywords": [
+          "urban renewal",
+          "risk assessment",
+          "construction agreement",
+          "seismic strengthening"
+        ],
+        "stats": [
+          "850+ Renewed Homes",
+          "30+ Renewed Blocks/Buildings",
+          "100% Building Code Compliance"
+        ],
+        "faqs": [
+          {
+            "question": "How do we confirm if our building is officially classified as structurally compromised?",
+            "answer": "Through partner laboratories licensed by the Ministry of Environment and Urbanization, core samples are taken from the concrete to prepare a formal Seismic Risk Report, officially starting the process."
+          },
+          {
+            "question": "How do government subsidies and rent assistance processes work?",
+            "answer": "Our team handles the applications for all legal incentives, including state rent assistance, relocation support, and low-interest urban renewal loan applications once the risk status is approved."
+          },
+          {
+            "question": "How are properties divided in land-share agreements?",
+            "answer": "We calculate properties fairly based on zoning limits, plot values, and permitted construction areas, presenting a clear distribution protocol to all property owners."
+          }
+        ]
+      },
+      "proje-yonetimi": {
+        "title": "Project Management",
+        "shortDescription": "Professional project tracking, budget control, and guaranteed on-time delivery.",
+        "heroTagline": "Control, transparency, and timely results",
+        "intro": "We maintain the balance between budget, time, and quality. By fostering subcontractor coordination, we identify potential risks early and provide full transparency through progress reporting.",
+        "highlights": [
+          "Work schedules and critical path management",
+          "Cost control and budget tracking",
+          "Vendor and subcontractor coordination",
+          "Regular progress reporting"
+        ],
+        "features": [
+          {
+            "title": "Cost Control",
+            "description": "We identify budget variances early and mitigate them with practical alternatives."
+          },
+          {
+            "title": "Time Management",
+            "description": "We maintain delivery deadlines with realistic milestones and consistent site inspections."
+          },
+          {
+            "title": "Transparent Reporting",
+            "description": "We share progress charts, budget updates, and risk mitigation paths on a regular schedule."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Scope Definition",
+            "description": "Project targets, constraints, and success criteria are outlined."
+          },
+          {
+            "step": "02",
+            "title": "Planning & Resource",
+            "description": "The timeline, budget boundaries, and resource scheduling are set."
+          },
+          {
+            "step": "03",
+            "title": "Monitoring",
+            "description": "Progress is continuously audited using field reports and design checks."
+          },
+          {
+            "step": "04",
+            "title": "Closeout",
+            "description": "The project is finalized with document handovers, site testing, and post-project reviews."
+          }
+        ],
+        "keywords": [
+          "project management",
+          "cost control",
+          "construction schedule",
+          "construction tracking"
+        ],
+        "stats": [
+          "40+ Managed Projects",
+          "15% Average Budget Saving",
+          "100% Transparent Reporting"
+        ],
+        "faqs": [
+          {
+            "question": "What kind of cost savings does project management offer?",
+            "answer": "Through detailed planning, material bulk purchasing, and efficient subcontractor selection, we achieve an average of 15% to 20% budget optimization while preventing scheduling delays."
+          },
+          {
+            "question": "How can we track the project's progress?",
+            "answer": "You can follow every detail through our weekly and monthly progress reports, budget variance sheets, and updated timeline schedules."
+          },
+          {
+            "question": "What measures do you have against scheduling delays?",
+            "answer": "All our contracts include subcontractor delay clauses. We use critical path method (CPM) analysis to detect delays before they occur and allocate secondary crews as needed."
+          }
+        ]
+      }
+    }
+  },
+  "serviceDetail": {
+    "profile": {
+      "title": "Service Profile",
+      "ctaText": "Contact us to get detailed information and a custom quote regarding this service.",
+      "btnContact": "Quick Contact"
+    },
+    "kapsamTitle": "Service Scope",
+    "features": {
+      "label": "Highlights",
+      "title": "Why Choose Gülmetay?"
+    },
+    "process": {
+      "label": "Workflow",
+      "title": "How We Work"
+    },
+    "faqs": {
+      "label": "Knowledge Base",
+      "title": "Frequently Asked Questions"
+    },
+    "others": {
+      "label": "Other Services",
+      "title": "Explore Our Solutions"
+    },
+    "cta": {
+      "eyebrow": "Ready to Start?",
+      "title": "Let's discuss {title}",
+      "desc": "Let's clarify the scope of your project and draft a custom estimate and roadmap tailored for you.",
+      "btnContact": "Get in Touch",
+      "btnServices": "All Services"
+    }
+  },
+  "projects": {
+    "loading": "Loading projects...",
+    "hero": {
+      "eyebrow": "Portfolio",
+      "title": "Our Projects",
+      "titleAccent": "Engineering & Construction",
+      "desc": "Explore our completed and active projects since 1994. Every build stands as a concrete expression of our quality standards and engineering expertise."
+    },
+    "filter": {
+      "label": "Filter By",
+      "all": "All",
+      "results": "projects displayed"
+    },
+    "empty": {
+      "title": "No projects found in this category",
+      "desc": "You can browse our other works by selecting a different category.",
+      "btnSeeAll": "View All Projects"
+    },
+    "status": {
+      "completed": "Completed",
+      "ongoing": "In Progress",
+      "planned": "Planned"
+    },
+    "card": {
+      "viewDetails": "View Details",
+      "placeholder": "Image not available",
+      "linkText": "View Project"
+    },
+    "cta": {
+      "eyebrow": "Is your project next?",
+      "title": "Get in touch with our expert team today.",
+      "desc": "We manage the entire lifecycle transparently and systematically from inception to closeout.",
+      "btnContact": "Get in Touch"
+    }
+  },
+  "projectDetail": {
+    "empty": {
+      "title": "Project Not Found",
+      "desc": "The project you are looking for does not exist or may have been archived.",
+      "btnBack": "Back to Projects"
+    },
+    "placeholder": "No Image Available",
+    "btnBack": "All Projects",
+    "meta": {
+      "status": "Status",
+      "start": "Start Date",
+      "end": "Completion"
+    },
+    "about": {
+      "label": "Overview",
+      "title": "About the Project",
+      "descFallback": "Project description not available."
+    },
+    "gallery": {
+      "label": "Archive",
+      "title": "Project Gallery",
+      "countText": "images"
+    },
+    "cta": {
+      "eyebrow": "Let's Collaborate",
+      "title": "Planning a Similar Project?",
+      "desc": "We manage the complete lifecycle transparently and methodically. Contact us for a free preconstruction consultation.",
+      "btnContact": "Get in Touch"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Get in Touch",
+      "titleAccent": "Let's Start Building",
+      "desc": "Fill out the contact form below, or reach out to us directly through our office numbers or emails to inquire about technical support and estimates."
+    },
+    "items": {
+      "address": "Address",
+      "phone": "Phone",
+      "gsm": "Mobile",
+      "email": "Email",
+      "hours": "Working Hours",
+      "hoursContent": "Monday - Friday: 09:00 - 18:00\nSaturday: 09:00 - 14:00\nSunday: Closed"
+    },
+    "social": {
+      "title": "Social Media"
+    },
+    "form": {
+      "title": "Send a Message",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "subjectSelect": "Select one",
+      "subjects": {
+        "taahhut": "Contracting & Construction",
+        "mimari": "Architectural Design & Concepts",
+        "donusum": "Urban Renewal Program",
+        "yonetim": "Project Management & Advising",
+        "teklif": "General Estimate Inquiry",
+        "diger": "Other Questions"
+      },
+      "message": "Your Message",
+      "btnSubmit": "Send Message",
+      "btnSending": "Sending..."
+    },
+    "status": {
+      "successTitle": "Message Sent Successfully",
+      "successText": "Thank you for contacting us. Our engineering team will review your message and reach back to you shortly.",
+      "errorTitle": "Failed to Send Message",
+      "errorText": "An error occurred while submitting the form: {error}",
+      "btnClose": "Close"
+    },
+    "turnstile": {
+      "errorMissingKey": "Turnstile site key missing (NEXT_PUBLIC_TURNSTILE_SITE_KEY).",
+      "errorUnavailable": "Verification is currently unavailable.",
+      "errorGeneral": "Verification error. Please try again.",
+      "errorExpired": "Verification expired. Please re-verify."
+    }
+  }
+}

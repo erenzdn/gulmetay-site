@@ -1,0 +1,186 @@
+/* Page Loader */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a1525 0%, #0c1b33 50%, #0a0f18 100%);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  animation: pageLoaderFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.page-loader__logo-wrapper {
+  position: relative;
+  animation: pageLoaderLogoFloat 3s ease-in-out infinite;
+  padding: 32px;
+}
+
+.page-loader__logo-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 24px 36px;
+  border-radius: 16px;
+  border: 1px solid rgba(212, 163, 115, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.page-loader__logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 163, 115, 0.15) 0%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  z-index: 1;
+  animation: pageLoaderGlowPulse 3s ease-in-out infinite;
+}
+
+.page-loader__logo {
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+/* Spinner - Altın çizgi animasyonu */
+.page-loader__spinner {
+  position: relative;
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.page-loader__spinner-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #D4A373 20%,
+    #D4A373 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  animation: pageLoaderSpinnerMove 1.5s ease-in-out infinite;
+  box-shadow: 0 0 16px rgba(212, 163, 115, 0.6);
+}
+
+/* Animasyonlar */
+@keyframes pageLoaderFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageLoaderLogoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pageLoaderSpinnerMove {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pageLoaderGlowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-loader__logo {
+    max-width: 85vw;
+  }
+
+  .page-loader__logo-wrapper {
+    padding: 24px;
+  }
+
+  .page-loader__logo-container {
+    padding: 20px 32px;
+  }
+
+  .page-loader__content {
+    gap: 40px;
+  }
+
+  .page-loader__spinner {
+    width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-loader__logo {
+    max-width: 80vw;
+  }
+
+  .page-loader__logo-wrapper {
+    padding: 16px;
+  }
+
+  .page-loader__logo-container {
+    padding: 16px 24px;
+  }
+
+  .page-loader__content {
+    gap: 32px;
+    padding: 0 20px;
+  }
+
+  .page-loader__spinner {
+    width: 140px;
+    height: 2px;
+  }
+}

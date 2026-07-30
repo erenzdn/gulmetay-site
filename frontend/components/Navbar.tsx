@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { locale, setLocale, t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,10 +21,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "/", label: "Ana Sayfa" },
-    { href: "/projects", label: "Projeler" },
-    { href: "/about", label: "Hakkımızda" },
-    { href: "/contact", label: "İletişim" }
+    { href: "/", label: t("common.nav.home") },
+    { href: "/hizmetlerimiz", label: t("common.nav.services") },
+    { href: "/projects", label: t("common.nav.projects") },
+    { href: "/about", label: t("common.nav.about") },
+    { href: "/contact", label: t("common.nav.contact") }
   ];
 
   const isActive = (href: string) => {
@@ -137,8 +140,59 @@ export default function Navbar() {
               </Link>
             ))}
 
+            {/* Language Switcher */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+              marginLeft: "15px",
+              marginRight: "5px",
+              background: "rgba(12, 27, 51, 0.03)",
+              padding: "4px 8px",
+              borderRadius: "20px",
+              border: "1px solid rgba(12, 27, 51, 0.05)"
+            }}>
+              <button
+                onClick={() => setLocale("tr")}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: locale === "tr" ? "#0C1B33" : "#888",
+                  fontWeight: locale === "tr" ? "700" : "500",
+                  fontSize: "13px",
+                  cursor: "pointer",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
+                  padding: "4px 8px",
+                  borderRadius: "15px",
+                  transition: "all 0.3s ease",
+                  backgroundColor: locale === "tr" ? "rgba(212, 163, 115, 0.15)" : "transparent"
+                }}
+              >
+                TR
+              </button>
+              <span style={{ color: "rgba(12, 27, 51, 0.15)", fontSize: "11px", userSelect: "none" }}>|</span>
+              <button
+                onClick={() => setLocale("en")}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: locale === "en" ? "#0C1B33" : "#888",
+                  fontWeight: locale === "en" ? "700" : "500",
+                  fontSize: "13px",
+                  cursor: "pointer",
+                  fontFamily: "'Roboto', system-ui, sans-serif",
+                  padding: "4px 8px",
+                  borderRadius: "15px",
+                  transition: "all 0.3s ease",
+                  backgroundColor: locale === "en" ? "rgba(212, 163, 115, 0.15)" : "transparent"
+                }}
+              >
+                EN
+              </button>
+            </div>
+
             {/* CTA Button */}
-            <Link href="/contact" style={{ textDecoration: "none", marginLeft: "15px" }}>
+            <Link href="/contact" style={{ textDecoration: "none", marginLeft: "10px" }}>
               <button
                 style={{
                   background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
@@ -166,7 +220,7 @@ export default function Navbar() {
                   e.currentTarget.style.boxShadow = "0 4px 15px rgba(12, 27, 51, 0.3)";
                 }}
               >
-                Teklif Al
+                {t("common.nav.getQuote")}
                 <ArrowRight size={16} strokeWidth={2.2} />
               </button>
             </Link>
@@ -185,7 +239,7 @@ export default function Navbar() {
               borderRadius: "8px",
               transition: "background 0.2s ease"
             }}
-            aria-label="Menü"
+            aria-label={locale === "tr" ? "Menü" : "Menu"}
           >
             <div style={{
               width: "24px",
@@ -270,7 +324,7 @@ export default function Navbar() {
             </Link>
           ))}
           
-          <Link href="/contact" style={{ textDecoration: "none", marginTop: "20px" }}>
+          <Link href="/contact" style={{ textDecoration: "none", marginTop: "20px" }} onClick={(e) => e.stopPropagation()}>
             <button
               style={{
                 background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
@@ -285,9 +339,66 @@ export default function Navbar() {
               }}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Teklif Al
+              {t("common.nav.getQuote")}
             </button>
           </Link>
+
+          {/* Mobile Language Switcher */}
+          <div 
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              marginTop: "30px",
+              background: "rgba(12, 27, 51, 0.03)",
+              padding: "6px 12px",
+              borderRadius: "30px",
+              border: "1px solid rgba(12, 27, 51, 0.05)"
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => {
+                setLocale("tr");
+                setMobileMenuOpen(false);
+              }}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: locale === "tr" ? "#0C1B33" : "#888",
+                fontWeight: locale === "tr" ? "700" : "500",
+                fontSize: "16px",
+                cursor: "pointer",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                transition: "all 0.3s ease",
+                backgroundColor: locale === "tr" ? "rgba(212, 163, 115, 0.15)" : "transparent"
+              }}
+            >
+              TR
+            </button>
+            <span style={{ color: "rgba(12, 27, 51, 0.15)", fontSize: "14px", userSelect: "none" }}>|</span>
+            <button
+              onClick={() => {
+                setLocale("en");
+                setMobileMenuOpen(false);
+              }}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: locale === "en" ? "#0C1B33" : "#888",
+                fontWeight: locale === "en" ? "700" : "500",
+                fontSize: "16px",
+                cursor: "pointer",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                transition: "all 0.3s ease",
+                backgroundColor: locale === "en" ? "rgba(212, 163, 115, 0.15)" : "transparent"
+              }}
+            >
+              EN
+            </button>
+          </div>
         </div>
       )}
 

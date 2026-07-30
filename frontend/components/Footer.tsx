@@ -12,8 +12,12 @@ import {
   Smartphone,
   Mail,
 } from "lucide-react";
+import { SERVICES } from "@/lib/services";
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   const socialLinks = [
     { name: "facebook", icon: Globe, href: "https://www.facebook.com" },
     { name: "instagram", icon: Camera, href: "https://www.instagram.com" },
@@ -66,8 +70,7 @@ export default function Footer() {
                   fontSize: "14px"
                 }}
               >
-                Modern yaşam alanları, güvenilir yapılar ve estetik mimari çözümlerle
-                hayallerinizi gerçeğe dönüştürüyoruz.
+                {t("common.footer.desc")}
               </p>
             </div>
             
@@ -122,14 +125,15 @@ export default function Footer() {
                 color: "white"
               }}
             >
-              Hızlı Erişim
+              {t("common.footer.quickLinks")}
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
-                { href: "/", label: "Anasayfa" },
-                { href: "/projects", label: "Projeler" },
-                { href: "/about", label: "Hakkımızda" },
-                { href: "/contact", label: "İletişim" }
+                { href: "/", label: t("common.nav.home") },
+                { href: "/hizmetlerimiz", label: t("common.nav.services") },
+                { href: "/projects", label: t("common.nav.projects") },
+                { href: "/about", label: t("common.nav.about") },
+                { href: "/contact", label: t("common.nav.contact") }
               ].map((link) => (
                 <Link
                   key={link.href}
@@ -170,25 +174,36 @@ export default function Footer() {
                 color: "white"
               }}
             >
-              Hizmetlerimiz
+              {t("common.footer.services")}
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {["İnşaat & Taahhüt", "Mimari Tasarım", "Kentsel Dönüşüm", "Proje Yönetimi"].map(
-                (service) => (
-                  <div
-                    key={service}
+              {SERVICES.map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={`/hizmetlerimiz/${service.slug}`}
                     style={{
                       color: "#b0b0b0",
-                      fontSize: "14px"
+                      fontSize: "14px",
+                      textDecoration: "none",
+                      transition: "all 0.3s ease",
+                      display: "inline-block",
+                      width: "fit-content"
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = "#D4A373";
+                      e.currentTarget.style.paddingLeft = "5px";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = "#b0b0b0";
+                      e.currentTarget.style.paddingLeft = "0";
                     }}
                   >
                     <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
                       <CircleDot size={12} />
-                      {service}
+                      {t(`services.items.${service.slug}.title`)}
                     </span>
-                  </div>
-                )
-              )}
+                  </Link>
+                ))}
             </div>
           </div>
 
@@ -202,15 +217,25 @@ export default function Footer() {
                 color: "white"
               }}
             >
-              İletişim
+              {t("common.footer.contact")}
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
                 <MapPin color="#D4A373" size={18} />
                 <div style={{ color: "#b0b0b0", fontSize: "14px", lineHeight: "1.6" }}>
-                  Bahçeşehir 2. Kısım Mah. 12. Cadde<br />
-                  Cihan Doğa Sitesi, Villa No: 8/A<br />
-                  Başakşehir / İstanbul
+                  {t("contact.items.hours") === "Working Hours" ? (
+                    <>
+                      Bahçeşehir 2nd Stage Dist. 12th St.<br />
+                      Cihan Doga Sitesi, Villa No: 8/A<br />
+                      Basaksehir / Istanbul / Turkey
+                    </>
+                  ) : (
+                    <>
+                      Bahçeşehir 2. Kısım Mah. 12. Cadde<br />
+                      Cihan Doğa Sitesi, Villa No: 8/A<br />
+                      Başakşehir / İstanbul / Türkiye
+                    </>
+                  )}
                 </div>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -278,7 +303,7 @@ export default function Footer() {
           }}
         >
           <p style={{ color: "#888", fontSize: "14px", margin: 0 }}>
-            © {new Date().getFullYear()} Gülmetay İnşaat. Tüm hakları saklıdır.
+            {t("common.footer.allRightsReserved", { year: new Date().getFullYear() })}
           </p>
           <div style={{ display: "flex", gap: "25px" }}>
             <Link
@@ -292,7 +317,7 @@ export default function Footer() {
               onMouseOver={(e) => (e.currentTarget.style.color = "#D4A373")}
               onMouseOut={(e) => (e.currentTarget.style.color = "#888")}
             >
-              Gizlilik Politikası
+              {t("common.footer.privacyPolicy")}
             </Link>
             <Link
               href="/terms-of-use"
@@ -305,7 +330,7 @@ export default function Footer() {
               onMouseOver={(e) => (e.currentTarget.style.color = "#D4A373")}
               onMouseOut={(e) => (e.currentTarget.style.color = "#888")}
             >
-              Kullanım Koşulları
+              {t("common.footer.termsOfUse")}
             </Link>
           </div>
         </div>

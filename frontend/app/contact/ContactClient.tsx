@@ -28,37 +28,42 @@ import {
   CheckCircle,
   CircleX,
 } from "lucide-react";
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function ContactClient() {
+  const { t, locale } = useTranslation();
+
   const contactItems = [
     {
       icon: MapPin,
-      title: "Adres",
-      content: "Bahçeşehir 2. Kısım Mah. 12. Cadde\nCihan Doğa Sitesi, Villa No: 8/A\nBaşakşehir / İstanbul / Türkiye",
+      title: t("contact.items.address"),
+      content: t("contact.items.hours") === "Working Hours"
+        ? "Bahçeşehir 2nd Stage District 12th Street\nCihan Doga Sitesi, Villa No: 8/A\nBasaksehir / Istanbul / Turkey"
+        : "Bahçeşehir 2. Kısım Mah. 12. Cadde\nCihan Doğa Sitesi, Villa No: 8/A\nBaşakşehir / İstanbul / Türkiye",
       link: null
     },
     {
       icon: Phone,
-      title: "Telefon",
+      title: t("contact.items.phone"),
       content: "+90 212 418 09 09",
       link: "tel:+902124180909"
     },
     {
       icon: Smartphone,
-      title: "GSM",
+      title: t("contact.items.gsm"),
       content: "+90 535 819 77 64",
       link: "tel:+905358197764"
     },
     {
       icon: Mail,
-      title: "E-posta",
+      title: t("contact.items.email"),
       content: "bilgi@gulmetay.com.tr",
       link: "mailto:bilgi@gulmetay.com.tr"
     },
     {
       icon: Clock3,
-      title: "Çalışma Saatleri",
-      content: "Pazartesi - Cuma: 09:00 - 18:00\nCumartesi: 09:00 - 14:00\nPazar: Kapalı",
+      title: t("contact.items.hours"),
+      content: t("contact.items.hoursContent"),
       link: null
     }
   ];
@@ -89,9 +94,9 @@ export default function ContactClient() {
       if (!siteKey) {
         // Prod'da teknik detayı kullanıcıya göstermeyelim.
         if (process.env.NODE_ENV !== "production") {
-          setTurnstileError("Turnstile site key eksik (NEXT_PUBLIC_TURNSTILE_SITE_KEY).");
+          setTurnstileError(t("contact.turnstile.errorMissingKey"));
         } else {
-          setTurnstileError("Doğrulama şu anda kullanılamıyor.");
+          setTurnstileError(t("contact.turnstile.errorUnavailable"));
         }
         return;
       }
@@ -113,11 +118,11 @@ export default function ContactClient() {
         },
         "error-callback": () => {
           setTurnstileToken("");
-          setTurnstileError("Doğrulama sırasında hata oluştu. Lütfen tekrar deneyin.");
+          setTurnstileError(t("contact.turnstile.errorGeneral"));
         },
         "expired-callback": () => {
           setTurnstileToken("");
-          setTurnstileError("Doğrulama süresi doldu. Lütfen tekrar doğrulayın.");
+          setTurnstileError(t("contact.turnstile.errorExpired"));
         },
       });
 
@@ -241,7 +246,7 @@ export default function ContactClient() {
               textTransform: "uppercase",
               marginBottom: "15px"
             }}>
-              İLETİŞİM
+              {t("contact.hero.eyebrow")}
             </div>
             <h1 style={{
               fontSize: "clamp(1.75rem, 4.5vw, 2.5rem)",
@@ -250,7 +255,7 @@ export default function ContactClient() {
               fontWeight: "600",
               letterSpacing: "-1px"
             }}>
-              Bizimle İletişime Geçin
+              {t("contact.hero.title")}
             </h1>
             <p style={{
               fontSize: "1rem",
@@ -259,7 +264,7 @@ export default function ContactClient() {
               margin: "0 auto",
               lineHeight: "1.6"
             }}>
-              Projeleriniz için bizimle iletişime geçin. Size en kısa sürede dönüş yapalım.
+              {t("contact.hero.desc")}
             </p>
           </div>
         </div>
@@ -282,7 +287,7 @@ export default function ContactClient() {
               color: "#0C1B33",
               marginBottom: "20px"
             }}>
-              İletişim Bilgilerimiz
+              {t("common.footer.contact")}
             </h2>
             
             {/* Contact Cards */}
@@ -381,7 +386,7 @@ export default function ContactClient() {
                 color: "white",
                 marginBottom: "16px"
               }}>
-                Bizi Takip Edin
+                {t("contact.social.title")}
               </h3>
               <div style={{
                 display: "flex",
@@ -437,7 +442,7 @@ export default function ContactClient() {
               color: "#0C1B33",
               marginBottom: "10px"
             }}>
-              Mesaj Gönderin
+              {t("contact.form.title")}
             </h2>
             <p style={{
               color: "#666",
@@ -445,7 +450,7 @@ export default function ContactClient() {
               fontSize: "14px",
               lineHeight: "1.5"
             }}>
-              Formu doldurun, en kısa sürede size dönüş yapalım.
+              {locale === "tr" ? "Formu doldurun, en kısa sürede size dönüş yapalım." : "Fill out the form, and we will get back to you shortly."}
             </p>
 
             <form onSubmit={handleSubmit}>
@@ -458,7 +463,7 @@ export default function ContactClient() {
                   fontWeight: "600",
                   fontSize: "13px"
                 }}>
-                  Ad Soyad *
+                  {t("contact.form.name")} *
                 </label>
                 <input
                   type="text"
@@ -466,7 +471,7 @@ export default function ContactClient() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Adınız ve soyadınız"
+                  placeholder={t("contact.form.name")}
                   style={{
                     width: "100%",
                     padding: "12px 16px",
@@ -497,7 +502,7 @@ export default function ContactClient() {
                   fontWeight: "600",
                   fontSize: "13px"
                 }}>
-                  E-posta *
+                  {t("contact.form.email")} *
                 </label>
                 <input
                   type="email"
@@ -505,7 +510,7 @@ export default function ContactClient() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="ornek@email.com"
+                  placeholder={t("contact.form.email") === "E-posta Adresiniz" ? "ornek@email.com" : "example@email.com"}
                   style={{
                     width: "100%",
                     padding: "12px 16px",
@@ -536,7 +541,7 @@ export default function ContactClient() {
                   fontWeight: "600",
                   fontSize: "13px"
                 }}>
-                  Telefon
+                  {t("contact.form.phone")}
                 </label>
                 <input
                   type="tel"
@@ -574,7 +579,7 @@ export default function ContactClient() {
                   fontWeight: "600",
                   fontSize: "13px"
                 }}>
-                  Konu *
+                  {t("contact.form.subject")} *
                 </label>
                 <input
                   type="text"
@@ -582,7 +587,7 @@ export default function ContactClient() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  placeholder="Mesajınızın konusu"
+                  placeholder={t("contact.form.subject")}
                   style={{
                     width: "100%",
                     padding: "12px 16px",
@@ -613,7 +618,7 @@ export default function ContactClient() {
                   fontWeight: "600",
                   fontSize: "13px"
                 }}>
-                  Mesajınız *
+                  {t("contact.form.message")} *
                 </label>
                 <textarea
                   name="message"
@@ -621,7 +626,7 @@ export default function ContactClient() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  placeholder="Mesajınızı buraya yazın..."
+                  placeholder={t("contact.form.message") + "..."}
                   style={{
                     width: "100%",
                     padding: "12px 16px",
@@ -671,12 +676,12 @@ export default function ContactClient() {
                 }}
                 onMouseOut={(e) => {
                   if (status !== "sending") {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(212, 163, 115, 0.2)";
+                     e.currentTarget.style.transform = "translateY(0)";
+                     e.currentTarget.style.boxShadow = "0 4px 12px rgba(212, 163, 115, 0.2)";
                   }
                 }}
               >
-                {status === "sending" ? "Gönderiliyor..." : "Mesajı Gönder"}
+                {status === "sending" ? t("contact.form.btnSending") : t("contact.form.btnSubmit")}
               </button>
 
               {/* Turnstile (managed: çoğu kullanıcıda ek tıklama gerekmez) */}
@@ -700,7 +705,7 @@ export default function ContactClient() {
                     letterSpacing: "0.02em",
                   }}
                 >
-                  Güvenlik (Cloudflare)
+                  {locale === "tr" ? "Güvenlik (Cloudflare)" : "Security (Cloudflare)"}
                 </div>
                 <div
                   style={{
@@ -710,7 +715,7 @@ export default function ContactClient() {
                     marginBottom: "8px",
                   }}
                 >
-                  Çoğu ziyaretçide ek bir işlem gerekmez.
+                  {locale === "tr" ? "Çoğu ziyaretçide ek bir işlem gerekmez." : "No additional action is required for most visitors."}
                 </div>
                 <div
                   id="cf-turnstile"
@@ -748,7 +753,7 @@ export default function ContactClient() {
                 }}>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
                     <CheckCircle size={16} />
-                    Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                    {t("contact.status.successText")}
                   </span>
                 </div>
               )}
@@ -768,7 +773,7 @@ export default function ContactClient() {
                 }}>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
                     <CircleX size={16} />
-                    Mesaj gönderilemedi. Lütfen tekrar deneyin veya bizi telefonla arayın.
+                    {locale === "tr" ? "Mesaj gönderilemedi. Lütfen tekrar deneyin veya bizi telefonla arayın." : "Failed to send message. Please try again or call us by phone."}
                   </span>
                 </div>
               )}
@@ -788,14 +793,14 @@ export default function ContactClient() {
               color: "#0C1B33",
               marginBottom: "10px"
             }}>
-              Bizi Ziyaret Edin
+              {locale === "tr" ? "Bizi Ziyaret Edin" : "Visit Us"}
             </h2>
             <p style={{
               color: "#666",
               fontFamily: "'Roboto', system-ui, sans-serif",
               fontSize: "14px"
             }}>
-              Ofisimize gelip projelerinizi yüz yüze görüşebilirsiniz
+              {locale === "tr" ? "Ofisimize gelip projelerinizi yüz yüze görüşebilirsiniz" : "You are welcome to visit our office to discuss your projects in person."}
             </p>
           </div>
           
@@ -815,7 +820,7 @@ export default function ContactClient() {
                 display: "block",
               }}
               loading="lazy"
-              title="Gülmetay İnşaat konumu — Başakşehir"
+              title={`${t("common.title")} — Başakşehir`}
             />
           </div>
           <p
@@ -852,7 +857,7 @@ export default function ContactClient() {
                 e.currentTarget.style.borderBottomColor = "rgba(212, 163, 115, 0.5)";
               }}
             >
-              Haritada aç ve yol tarifi al
+              {locale === "tr" ? "Haritada aç ve yol tarifi al" : "Open in map and get directions"}
               <ExternalLink size={15} aria-hidden />
             </a>
           </p>

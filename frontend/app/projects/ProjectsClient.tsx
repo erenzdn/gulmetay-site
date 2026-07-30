@@ -12,6 +12,7 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { gsap } from "gsap";
+import { useTranslation } from "@/context/LanguageContext";
 import "./projects.css";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
@@ -31,23 +32,24 @@ interface Category {
   name: string;
 }
 
-function getProjectDescription(project: ProjectItem, maxLength = 140): string {
+function getProjectDescription(project: ProjectItem, maxLength = 140, fallbackText = ""): string {
   const text = project.description?.[0]?.children?.[0]?.text;
-  if (!text) return "Proje detaylarını incelemek için tıklayın.";
+  if (!text) return fallbackText;
   return text.length > maxLength ? `${text.substring(0, maxLength)}…` : text;
 }
 
 function getStatusInfo(status?: string) {
   if (status === "Completed") {
-    return { label: "Tamamlandı", className: "completed", icon: Check };
+    return { labelKey: "projects.status.completed", className: "completed", icon: Check };
   }
   if (status === "Ongoing") {
-    return { label: "Devam Ediyor", className: "ongoing", icon: Hammer };
+    return { labelKey: "projects.status.ongoing", className: "ongoing", icon: Hammer };
   }
-  return { label: "Planlandı", className: "planned", icon: ClipboardList };
+  return { labelKey: "projects.status.planned", className: "planned", icon: ClipboardList };
 }
 
 export default function ProjectsClient() {
+  const { t } = useTranslation();
   const [projects, setProjects] = useState<ProjectItem[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("Tümü");
@@ -105,7 +107,7 @@ export default function ProjectsClient() {
       <div className="projects-loading">
         <div className="projects-loading__inner">
           <div className="projects-loading__spinner" />
-          <p className="projects-loading__text">Projeler yükleniyor…</p>
+          <p className="projects-loading__text">{t("projects.loading")}</p>
         </div>
       </div>
     );
@@ -118,16 +120,14 @@ export default function ProjectsClient() {
           <div className="projects-hero__content">
             <div className="projects-hero__eyebrow">
               <span className="projects-hero__eyebrow-line" />
-              <span className="projects-hero__eyebrow-text">Portföy</span>
+              <span className="projects-hero__eyebrow-text">{t("projects.hero.eyebrow")}</span>
             </div>
             <h1 className="projects-hero__title">
-              Projelerimiz
-              <em>Mühendislik &amp; İnşaat</em>
+              {t("projects.hero.title")}
+              <em>{t("projects.hero.titleAccent")}</em>
             </h1>
             <p className="projects-hero__desc">
-              1994&apos;ten bu yana tamamladığımız ve devam eden projelerimiz.
-              Her yapı, kalite anlayışımızın ve mühendislik disiplinimizin
-              somut bir yansımasıdır.
+              {t("projects.hero.desc")}
             </p>
           </div>
         </div>
@@ -135,14 +135,14 @@ export default function ProjectsClient() {
 
       <nav className="projects-filter" aria-label="Proje kategorileri">
         <div className="container projects-filter__inner">
-          <span className="projects-filter__label">Filtrele</span>
+          <span className="projects-filter__label">{t("projects.filter.label")}</span>
           <div className="projects-filter__tabs">
             <button
               type="button"
               className={`projects-filter__tab${selectedCategory === "Tümü" ? " is-active" : ""}`}
               onClick={() => setSelectedCategory("Tümü")}
             >
-              Tümü
+              {t("projects.filter.all")}
               <span className="projects-filter__count">{projects.length}</span>
             </button>
             {categories.map((cat) => {
@@ -163,14 +163,14 @@ export default function ProjectsClient() {
             })}
           </div>
           <p className="projects-filter__result">
-            <strong>{filteredProjects.length}</strong> proje gösteriliyor
+            <strong>{filteredProjects.length}</strong> {t("projects.filter.results")}
           </p>
         </div>
       </nav>
 
       <section className="projects-grid-section" aria-label="Proje listesi">
         <div className="container">
-          <h2 className="sr-only">Tüm Projelerimiz</h2>
+          <h2 className="sr-only">{t("projects.hero.title")}</h2>
 
           {filteredProjects.length === 0 ? (
             <div className="projects-empty">
@@ -178,18 +178,17 @@ export default function ProjectsClient() {
                 <FolderOpen size={56} strokeWidth={1.25} />
               </div>
               <h3 className="projects-empty__title">
-                Bu kategoride proje bulunamadı
+                {t("projects.empty.title")}
               </h3>
               <p className="projects-empty__desc">
-                Farklı bir kategori seçerek diğer projelerimize göz
-                atabilirsiniz.
+                {t("projects.empty.desc")}
               </p>
               <button
                 type="button"
                 className="projects-empty__btn"
                 onClick={() => setSelectedCategory("Tümü")}
               >
-                Tüm Projeleri Gör
+                {t("projects.empty.btnSeeAll")}
               </button>
             </div>
           ) : (
@@ -224,13 +223,13 @@ export default function ProjectsClient() {
                             <div className="projects-card__media-overlay">
                               <span className="projects-card__view">
                                 <Eye size={14} />
-                                Detayları İncele
+                                {t("projects.card.viewDetails")}
                               </span>
                             </div>
                           </>
                         ) : (
                           <div className="projects-card__placeholder">
-                            Görsel mevcut değil
+                            {t("projects.card.placeholder")}
                           </div>
                         )}
                       </div>
@@ -247,7 +246,7 @@ export default function ProjectsClient() {
                               className={`projects-card__status projects-card__status--${status.className}`}
                             >
                               <StatusIcon size={11} />
-                              {status.label}
+                              {t(status.labelKey)}
                             </span>
                           )}
                         </div>
@@ -256,13 +255,14 @@ export default function ProjectsClient() {
                         <p className="projects-card__desc">
                           {getProjectDescription(
                             project,
-                            isFeatured ? 220 : 130
+                            isFeatured ? 220 : 130,
+                            t("home.projects.descriptionFallback")
                           )}
                         </p>
 
                         <div className="projects-card__footer">
                           <span className="projects-card__link">
-                            Projeyi İncele
+                            {t("projects.card.linkText")}
                             <ArrowRight size={14} />
                           </span>
                           <span className="projects-card__index">
@@ -283,16 +283,16 @@ export default function ProjectsClient() {
         <div className="container">
           <div className="projects-cta__inner">
             <div className="projects-cta__content">
-              <p className="projects-cta__eyebrow">Bir sonraki proje sizin mi?</p>
+              <p className="projects-cta__eyebrow">{t("projects.cta.eyebrow")}</p>
               <h2 className="projects-cta__title">
-                Projeniz için uzman ekibimizle iletişime geçin.
+                {t("projects.cta.title")}
               </h2>
               <p className="projects-cta__desc">
-                Keşiften teslimata kadar tüm süreci şeffaf ve planlı yönetiyoruz.
+                {t("projects.cta.desc")}
               </p>
             </div>
             <Link href="/contact" className="projects-cta__btn">
-              İletişime Geç
+              {t("projects.cta.btnContact")}
               <ArrowRight size={16} />
             </Link>
           </div>

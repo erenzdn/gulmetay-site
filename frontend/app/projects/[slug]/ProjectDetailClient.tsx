@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  XCircle,
   ArrowLeft,
   ArrowRight,
   Check,
@@ -17,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { gsap } from "gsap";
+import { useTranslation } from "@/context/LanguageContext";
 import "./project-detail.css";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
@@ -39,10 +39,10 @@ interface Project {
   endDate?: string;
 }
 
-function getStatusLabel(status: string) {
-  if (status === "Completed") return "Tamamlandı";
-  if (status === "Ongoing") return "Devam Ediyor";
-  return "Planlandı";
+function getStatusLabel(status: string, t: any) {
+  if (status === "Completed") return t("projects.status.completed");
+  if (status === "Ongoing") return t("projects.status.ongoing");
+  return t("projects.status.planned");
 }
 
 function getStatusClass(status: string) {
@@ -75,6 +75,7 @@ function getGalleryImages(project: Project): ProjectImage[] {
 }
 
 export default function ProjectDetailClient() {
+  const { t, locale } = useTranslation();
   const { slug } = useParams();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
@@ -89,7 +90,7 @@ export default function ProjectDetailClient() {
       if (!slugStr) return;
       try {
         const res = await fetch(
-          `${STRAPI_URL}/api/projects?filters[slug][$eq]=${encodeURIComponent(slugStr)}&populate[mainImage]=true&populate[gallery]=true&populate[categories]=true`
+          `${STRAPI_URL}/api/projects?filters[slug][$eq]=${encodeURIComponent(slugStr)}&populate[mainImage]=true&populate[gallery]=true&populate[category]=true`
         );
         const json = await res.json();
         setProject(json.data?.length > 0 ? json.data[0] : null);
@@ -99,92 +100,78 @@ export default function ProjectDetailClient() {
         setLoading(false);
       }
     }
-
     fetchProject();
   }, [slug]);
 
   useEffect(() => {
-    if (loading || !project) return;
+    if (!loading && project) {
+      const timer = setTimeout(() => {
+        gsap.fromTo(
+          ".project-detail-hero__back, .project-detail-hero__label, .project-detail-hero__title, .project-detail-hero__meta",
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            stagger: 0.08,
+            ease: "power3.out",
+            overwrite: "auto",
+          }
+        );
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".project-detail-hero__back, .project-detail-hero__label, .project-detail-hero__title, .project-detail-hero__meta",
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.85,
-          stagger: 0.1,
-          ease: "power3.out",
-          delay: 0.15,
-        }
-      );
-
-      gsap.fromTo(
-        ".project-detail-hero__image",
-        { opacity: 0, scale: 1.04 },
-        { opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" }
-      );
-
-      gsap.fromTo(
-        ".project-detail-about, .project-detail-gallery, .project-detail-cta",
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.75,
-          stagger: 0.1,
-          ease: "power2.out",
-          delay: 0.35,
-          clearProps: "opacity,transform",
-        }
-      );
-    });
-
-    return () => ctx.revert();
+        gsap.fromTo(
+          ".project-detail-about, .project-detail-gallery, .project-detail-cta",
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".project-detail-body",
+              start: "top 80%",
+            },
+          }
+        );
+      }, 50);
+      return () => clearTimeout(timer);
+    }
   }, [loading, project]);
-
-  const handlePrevImage = useCallback(() => {
-    if (!project) return;
-    const images = getGalleryImages(project);
-    const newIndex = selectedIndex === 0 ? images.length - 1 : selectedIndex - 1;
-    setSelectedIndex(newIndex);
-    setSelectedImage(images[newIndex]);
-  }, [project, selectedIndex]);
 
   const handleNextImage = useCallback(() => {
     if (!project) return;
-    const images = getGalleryImages(project);
-    const newIndex = selectedIndex === images.length - 1 ? 0 : selectedIndex + 1;
-    setSelectedIndex(newIndex);
-    setSelectedImage(images[newIndex]);
+    const galleryImages = getGalleryImages(project);
+    const nextIdx = (selectedIndex + 1) % galleryImages.length;
+    setSelectedImage(galleryImages[nextIdx]);
+    setSelectedIndex(nextIdx);
+  }, [project, selectedIndex]);
+
+  const handlePrevImage = useCallback(() => {
+    if (!project) return;
+    const galleryImages = getGalleryImages(project);
+    const prevIdx = (selectedIndex - 1 + galleryImages.length) % galleryImages.length;
+    setSelectedImage(galleryImages[prevIdx]);
+    setSelectedIndex(prevIdx);
   }, [project, selectedIndex]);
 
   useEffect(() => {
-    if (!selectedImage) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSelectedImage(null);
-      } else if (e.key === "ArrowLeft") {
-        handlePrevImage();
-      } else if (e.key === "ArrowRight") {
-        handleNextImage();
-      }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      if (e.key === "ArrowRight") handleNextImage();
+      if (e.key === "ArrowLeft") handlePrevImage();
+      if (e.key === "Escape") setSelectedImage(null);
     };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [selectedImage, handlePrevImage, handleNextImage]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage, handleNextImage, handlePrevImage]);
 
   if (loading) {
     return (
       <div className="project-detail-state">
         <div className="project-detail-state__inner">
-          <div className="project-detail-state__spinner" aria-hidden="true" />
-          <p className="project-detail-state__text">Proje yükleniyor…</p>
+          <div className="project-detail-state__spinner" />
+          <p className="project-detail-state__text">{t("projects.loading")}</p>
         </div>
       </div>
     );
@@ -194,16 +181,13 @@ export default function ProjectDetailClient() {
     return (
       <div className="project-detail-state">
         <div className="project-detail-state__inner">
-          <div className="project-detail-state__icon">
-            <XCircle size={56} strokeWidth={1.4} />
-          </div>
-          <h2 className="project-detail-state__title">Proje Bulunamadı</h2>
+          <h2 className="project-detail-state__title">{t("projectDetail.empty.title")}</h2>
           <p className="project-detail-state__desc">
-            Aradığınız proje mevcut değil veya kaldırılmış olabilir.
+            {t("projectDetail.empty.desc")}
           </p>
           <Link href="/projects" className="project-detail-state__btn">
             <ArrowLeft size={14} />
-            Projelere Dön
+            {t("projectDetail.empty.btnBack")}
           </Link>
         </div>
       </div>
@@ -212,7 +196,7 @@ export default function ProjectDetailClient() {
 
   const descriptionText =
     project.description?.[0]?.children?.[0]?.text ||
-    "Proje açıklaması mevcut değil.";
+    t("projectDetail.about.descFallback");
 
   const hasMeta =
     project.status_deneme || project.startDate || project.endDate;
@@ -242,14 +226,14 @@ export default function ProjectDetailClient() {
               style={{ objectFit: "cover" }}
             />
           ) : (
-            <span>Görsel Yok</span>
+            <span>{t("projectDetail.placeholder")}</span>
           )}
         </div>
 
         <div className="project-detail-hero__panel">
           <Link href="/projects" className="project-detail-hero__back">
             <ArrowLeft size={14} />
-            Tüm Projeler
+            {t("projectDetail.btnBack")}
           </Link>
 
           {project.category?.name && (
@@ -262,18 +246,18 @@ export default function ProjectDetailClient() {
             <dl className="project-detail-hero__meta">
               {project.status_deneme && (
                 <div className="project-detail-hero__meta-item">
-                  <dt className="project-detail-hero__meta-key">Durum</dt>
+                  <dt className="project-detail-hero__meta-key">{t("projectDetail.meta.status")}</dt>
                   <dd
                     className={`project-detail-hero__meta-val ${getStatusClass(project.status_deneme)}`}
                   >
                     <StatusIcon status={project.status_deneme} />
-                    {getStatusLabel(project.status_deneme)}
+                    {getStatusLabel(project.status_deneme, t)}
                   </dd>
                 </div>
               )}
               {project.startDate && (
                 <div className="project-detail-hero__meta-item">
-                  <dt className="project-detail-hero__meta-key">Başlangıç</dt>
+                  <dt className="project-detail-hero__meta-key">{t("projectDetail.meta.start")}</dt>
                   <dd className="project-detail-hero__meta-val">
                     <Calendar size={14} strokeWidth={1.8} />
                     {project.startDate}
@@ -282,7 +266,7 @@ export default function ProjectDetailClient() {
               )}
               {project.endDate && (
                 <div className="project-detail-hero__meta-item">
-                  <dt className="project-detail-hero__meta-key">Bitiş</dt>
+                  <dt className="project-detail-hero__meta-key">{t("projectDetail.meta.end")}</dt>
                   <dd className="project-detail-hero__meta-val">
                     <Flag size={14} strokeWidth={1.8} />
                     {project.endDate}
@@ -296,11 +280,11 @@ export default function ProjectDetailClient() {
 
       <div className="project-detail-body">
         <div className="container">
-          <section className="project-detail-about" aria-label="Proje Hakkında">
+          <section className="project-detail-about" aria-label={t("projectDetail.about.title")}>
             <aside className="project-detail-about__sidebar">
-              <p className="project-detail-about__sidebar-label">Detay</p>
+              <p className="project-detail-about__sidebar-label">{t("projectDetail.about.label")}</p>
               <h2 className="project-detail-about__sidebar-title">
-                Proje Hakkında
+                {t("projectDetail.about.title")}
               </h2>
               <span className="project-detail-about__sidebar-line" aria-hidden="true" />
             </aside>
@@ -310,14 +294,14 @@ export default function ProjectDetailClient() {
           </section>
 
           {galleryImages.length > 0 && (
-            <section className="project-detail-gallery" aria-label="Proje Galerisi">
+            <section className="project-detail-gallery" aria-label={t("projectDetail.gallery.title")}>
               <div className="project-detail-gallery__header">
                 <div>
-                  <p className="project-detail-gallery__label">Görsel Arşiv</p>
-                  <h2 className="project-detail-gallery__title">Proje Galerisi</h2>
+                  <p className="project-detail-gallery__label">{t("projectDetail.gallery.label")}</p>
+                  <h2 className="project-detail-gallery__title">{t("projectDetail.gallery.title")}</h2>
                 </div>
                 <span className="project-detail-gallery__count">
-                  {galleryImages.length} görsel
+                  {galleryImages.length} {t("projectDetail.gallery.countText")}
                 </span>
               </div>
 
@@ -353,20 +337,19 @@ export default function ProjectDetailClient() {
         </div>
       </div>
 
-      <section className="project-detail-cta" aria-label="İletişim">
+      <section className="project-detail-cta" aria-label={t("projectDetail.cta.eyebrow")}>
         <div className="container project-detail-cta__inner">
           <div>
-            <p className="project-detail-cta__label">Birlikte Çalışalım</p>
+            <p className="project-detail-cta__label">{t("projectDetail.cta.eyebrow")}</p>
             <h2 className="project-detail-cta__title">
-              Benzer Bir Proje mi Planlıyorsunuz?
+              {t("projectDetail.cta.title")}
             </h2>
             <p className="project-detail-cta__desc">
-              Keşiften teslimata kadar tüm süreci şeffaf ve planlı yönetiyoruz.
-              Ücretsiz ön görüşme için bizimle iletişime geçin.
+              {t("projectDetail.cta.desc")}
             </p>
           </div>
           <Link href="/contact" className="project-detail-cta__btn">
-            İletişime Geç
+            {t("projectDetail.cta.btnContact")}
             <ArrowRight size={15} />
           </Link>
         </div>
@@ -378,7 +361,7 @@ export default function ProjectDetailClient() {
           onClick={() => setSelectedImage(null)}
           role="dialog"
           aria-modal="true"
-          aria-label="Galeri görseli"
+          aria-label={t("common.lightbox.close")}
         >
           <div className="project-detail-lightbox__content">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -398,7 +381,7 @@ export default function ProjectDetailClient() {
                     e.stopPropagation();
                     handlePrevImage();
                   }}
-                  aria-label="Önceki görsel"
+                  aria-label={t("common.lightbox.prev")}
                 >
                   <ArrowLeft size={24} strokeWidth={1.8} />
                 </button>
@@ -410,13 +393,13 @@ export default function ProjectDetailClient() {
                     e.stopPropagation();
                     handleNextImage();
                   }}
-                  aria-label="Sonraki görsel"
+                  aria-label={t("common.lightbox.next")}
                 >
                   <ArrowRight size={24} strokeWidth={1.8} />
                 </button>
                 
                 <div className="project-detail-lightbox__counter">
-                  {selectedIndex + 1} / {galleryImages.length}
+                  {t("common.lightbox.counter", { current: selectedIndex + 1, total: galleryImages.length })}
                 </div>
               </>
             )}
@@ -426,7 +409,7 @@ export default function ProjectDetailClient() {
             type="button"
             className="project-detail-lightbox__close"
             onClick={() => setSelectedImage(null)}
-            aria-label="Galeriyi kapat"
+            aria-label={t("common.lightbox.close")}
           >
             <X size={20} strokeWidth={1.8} />
           </button>

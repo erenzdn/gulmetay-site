@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import PageLoader from "@/components/PageLoader";
+import { LanguageProvider } from "@/context/LanguageContext";
 import {
   SITE_NAME,
   SITE_URL,
@@ -73,14 +75,17 @@ export default function RootLayout({
     <html lang="tr" className={`${cormorant.variable} ${sourceSans.variable}`}>
       <body style={{ margin: 0 }}>
         <JsonLd data={ORGANIZATION_JSONLD} />
+        <PageLoader />
 
-        <SmoothScrollProvider>
-          <Navbar />
+        <LanguageProvider>
+          <SmoothScrollProvider>
+            <Navbar />
 
-          <main style={{ minHeight: "80vh" }}>{children}</main>
+            <main style={{ minHeight: "80vh" }}>{children}</main>
 
-          <Footer />
-        </SmoothScrollProvider>
+            <Footer />
+          </SmoothScrollProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

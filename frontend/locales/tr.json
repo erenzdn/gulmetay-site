@@ -1,0 +1,576 @@
+{
+  "common": {
+    "title": "Gülmetay İnşaat",
+    "nav": {
+      "home": "Ana Sayfa",
+      "services": "Hizmetlerimiz",
+      "projects": "Projeler",
+      "about": "Hakkımızda",
+      "contact": "İletişim",
+      "getQuote": "Teklif Al"
+    },
+    "footer": {
+      "desc": "Modern yaşam alanları, güvenilir yapılar ve estetik mimari çözümlerle hayallerinizi gerçeğe dönüştürüyoruz.",
+      "quickLinks": "Hızlı Erişim",
+      "services": "Hizmetlerimiz",
+      "contact": "İletişim",
+      "allRightsReserved": "© {year} Gülmetay İnşaat. Tüm hakları saklıdır.",
+      "privacyPolicy": "Gizlilik Politikası",
+      "termsOfUse": "Kullanım Koşulları"
+    },
+    "lightbox": {
+      "prev": "Önceki görsel",
+      "next": "Sonraki görsel",
+      "close": "Galeriyi kapat",
+      "counter": "{current} / {total}"
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "2009'dan Beri Güvenilir İnşaat",
+      "titleMain": "Sağlam Temeller,",
+      "titleAccent": "Kalıcı Değer İnşa Ediyoruz",
+      "desc": "Mühendislik hassasiyeti ve mimari vizyonla; modern, sürdürülebilir ve estetik yaşam alanlarını en yüksek kalite standartlarında hayata geçiriyoruz.",
+      "btnProjects": "Projeleri İncele",
+      "btnQuote": "Teklif Alın",
+      "scrollHint": "Kaydır",
+      "frameTitle": "Gülmetay İnşaat",
+      "frameSub": "Mimarlık & Mühendislik"
+    },
+    "services": {
+      "label": "Hizmetlerimiz",
+      "title": "Neler Yapıyoruz?",
+      "subtitle": "Kapsamlı inşaat çözümlerimizle projelerinizi baştan sona yönetiyoruz",
+      "seeAll": "Tüm Hizmetleri Gör"
+    },
+    "projects": {
+      "label": "Portföy",
+      "title": "Öne Çıkan Projeler",
+      "seeAll": "Tüm Projeler",
+      "scrollHint": "Projeler arasında gezinmek için kaydırın",
+      "empty": "Henüz proje eklenmemiş.",
+      "slidePrefix": "Proje",
+      "viewDetails": "Detayları Gör",
+      "descriptionFallback": "Proje detaylarını görmek için tıklayın."
+    },
+    "cta": {
+      "eyebrow": "Birlikte Çalışalım",
+      "title": "Bir sonraki proje",
+      "titleAccent": " sizinle başlasın.",
+      "desc": "Keşiften teslimata kadar tüm süreci şeffaf ve planlı yönetiyoruz. İlk görüşme ücretsiz.",
+      "btnRequest": "Görüşme Talep Et"
+    }
+  },
+  "about": {
+    "loading": "Yükleniyor…",
+    "empty": "İçerik bulunamadı.",
+    "hero": {
+      "eyebrow": "Gülmetay İnşaat",
+      "title": "Hakkımızda",
+      "titleAccent": "Güven & Kalite",
+      "desc": "Endüstriyel yapı, iskele sistemleri ve mühendislik çözümlerinde köklü bir geçmişle, her projede aynı özeni taşıyoruz."
+    },
+    "intro": {
+      "badgeTitle": "Kuruluş",
+      "label": "Kimiz?"
+    },
+    "story": {
+      "label": "Hikayemiz",
+      "title": "Mühendislik disiplini, inşaat ustalığı"
+    },
+    "stats": {
+      "founded": "Kuruluş Yılı",
+      "experience": "Yıllık Tecrübe",
+      "headquarters": "Merkez Ofis"
+    },
+    "cta": {
+      "eyebrow": "Bir sonraki adım",
+      "title": "Projenizi birlikte hayata geçirelim",
+      "desc": "Tamamlanan ve devam eden projelerimizi inceleyin ya da doğrudan bizimle iletişime geçin.",
+      "btnProjects": "Projeleri Gör",
+      "btnContact": "İletişime Geç"
+    }
+  },
+  "services": {
+    "loading": "Yükleniyor…",
+    "hero": {
+      "eyebrow": "Gülmetay İnşaat",
+      "title": "Hizmetlerimiz",
+      "titleAccent": "Neler Yapıyoruz?",
+      "desc": "Sürdürülebilir, güvenli ve estetik mühendislik çözümleriyle projelerinizi baştan sona yönetiyor, geleceğin yaşam alanlarını inşa ediyoruz."
+    },
+    "stats": {
+      "experience": "Yıllık Tecrübe",
+      "completed": "Tamamlanan Proje",
+      "area": "m² İnşaat Alanı",
+      "satisfaction": "Müşteri Memnuniyeti"
+    },
+    "card": {
+      "viewDetails": "Detayı İncele"
+    },
+    "commitments": {
+      "eyebrow": "Hizmet Standartlarımız",
+      "title": "Nasıl Fark Yaratıyoruz?",
+      "safety": {
+        "title": "Sıfır Hata & Güvenlik",
+        "desc": "İş güvenliği ve mühendislik hesaplamalarında en katı uluslararası standartları tavizsiz uygularız."
+      },
+      "transparent": {
+        "title": "Zamanında & Şeffaf",
+        "desc": "İş takvimimizi sapma olmadan yönetir, haftalık ve aylık raporlarla sizi her aşamada bilgilendiririz."
+      },
+      "materials": {
+        "title": "Birinci Sınıf Malzeme",
+        "desc": "Yapının ömrünü uzatan, onaylı ve sürdürülebilir teknolojik inşaat malzemeleri kullanırız."
+      }
+    },
+    "cta": {
+      "eyebrow": "Bir sonraki adım",
+      "title": "Projeniz için teklif alın",
+      "desc": "İhtiyacınıza uygun hizmeti birlikte belirleyelim; size özel çözüm ve süre planı hazırlayalım.",
+      "btnQuote": "Teklif Al",
+      "btnProjects": "Projeleri Gör"
+    },
+    "items": {
+      "insaat-taahhut": {
+        "title": "İnşaat & Taahhüt",
+        "shortDescription": "Anahtar teslim projeler ve profesyonel inşaat hizmetleri ile hayalinizdeki yapıları inşa ediyoruz.",
+        "heroTagline": "Sağlam yapılar, zamanında teslim",
+        "intro": "Gülmetay İnşaat olarak konut, ticari ve endüstriyel yapılarda anahtar teslim taahhüt hizmeti sunuyoruz. Sahadaki disiplinimiz, malzeme kalitesi ve şantiye yönetimiyle projenizi planlandığı gibi hayata geçiriyoruz.",
+        "highlights": [
+          "Anahtar teslim konut ve ticari yapılar",
+          "Endüstriyel tesis ve fabrika inşaatı",
+          "Güçlendirme ve renovasyon uygulamaları",
+          "İş güvenliği ve kalite standartlarına uyum"
+        ],
+        "features": [
+          {
+            "title": "Anahtar Teslim Uygulama",
+            "description": "Temelden teslimata kadar tüm inşaat süreçlerini tek elden yönetiyor, koordinasyon yükünü sizden alıyoruz."
+          },
+          {
+            "title": "Kaliteli Malzeme & İşçilik",
+            "description": "Onaylı tedarikçiler ve deneyimli ekiplerle uzun ömürlü, dayanıklı yapılar üretiyoruz."
+          },
+          {
+            "title": "Şantiye Disiplini",
+            "description": "Günlük saha takibi, iş programı ve güvenlik kontrolleriyle şantiyeyi şeffaf ve düzenli yürütüyoruz."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Keşif & Teklif",
+            "description": "Saha incelemesi, ihtiyaç analizi ve net maliyet/süre teklifi hazırlanır."
+          },
+          {
+            "step": "02",
+            "title": "Planlama",
+            "description": "İş programı, malzeme tedariki ve ekip organizasyonu oluşturulur."
+          },
+          {
+            "step": "03",
+            "title": "Uygulama",
+            "description": "İnşaat aşamaları kalite ve güvenlik kontrolleriyle ilerletilir."
+          },
+          {
+            "step": "04",
+            "title": "Teslim",
+            "description": "Son kontroller tamamlanır, yapı eksiksiz ve kullanıma hazır teslim edilir."
+          }
+        ],
+        "keywords": [
+          "inşaat taahhüt",
+          "anahtar teslim inşaat",
+          "şantiye yönetimi",
+          "Gülmetay İnşaat"
+        ],
+        "stats": [
+          "120.000m²+ Tamamlanan Alan",
+          "100% Zamanında Teslimat",
+          "Sıfır İş Kazası Oranı"
+        ],
+        "faqs": [
+          {
+            "question": "Anahtar teslim inşaat süreci ne kadar sürer?",
+            "answer": "Projenin büyüklüğüne, arsa durumuna ve imar izinlerine bağlı olarak genellikle 8 ila 18 ay arasında değişmektedir. Detaylı iş programı sözleşme öncesinde sizinle paylaşılır."
+          },
+          {
+            "question": "Şantiyede iş güvenliği ve denetimleri nasıl sağlıyorsunuz?",
+            "answer": "Şantiyelerimizde tam zamanlı İSG uzmanları görev yapmaktadır. Ayrıca tüm iş süreçlerimiz bağımsız denetim kuruluşları ve kendi iç denetim ekiplerimizce düzenli olarak kontrol edilir."
+          },
+          {
+            "question": "Malzeme seçimlerini ve kalite kontrolünü nasıl yapıyorsunuz?",
+            "answer": "Yalnızca TSE, CE ve uluslararası standartlara sahip onaylı markalarla çalışıyoruz. Malzemelerin şantiyeye girişinden uygulama sonrasına kadar tüm aşamalarda laboratuvar testleri ve kalite kontrolleri gerçekleştirilir."
+          }
+        ]
+      },
+      "mimari-tasarim": {
+        "title": "Mimari Tasarım",
+        "shortDescription": "Modern ve estetik mimari çizimler, 3D modelleme ve profesyonel proje danışmanlığı hizmetleri.",
+        "heroTagline": "Estetik, işlev ve mühendislik bir arada",
+        "intro": "Mimari tasarım sürecinde yaşam alışkanlıklarınızı, arsa koşullarını ve yönetmelikleri birlikte ele alıyoruz. Konseptten uygulama projesine kadar her aşamada net, uygulanabilir ve estetik çözümler üretiyoruz.",
+        "highlights": [
+          "Konsept ve ön proje çalışmaları",
+          "Uygulama projeleri ve detay çizimleri",
+          "3D modelleme ve görselleştirme",
+          "Ruhsat ve mevzuat danışmanlığı"
+        ],
+        "features": [
+          {
+            "title": "Konsept Tasarım",
+            "description": "İhtiyaç programınıza uygun, güçlü bir mimari dil ve mekân kurgusu oluşturuyoruz."
+          },
+          {
+            "title": "3D Modelleme",
+            "description": "Projeyi inşa öncesi üç boyutlu olarak görmenizi sağlayarak karar sürecini netleştiriyoruz."
+          },
+          {
+            "title": "Uygulanabilirlik",
+            "description": "Çizimleri saha gerçekleriyle uyumlu hazırlayarak uygulama aşamasında sürprizleri azaltıyoruz."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Brief & Analiz",
+            "description": "İhtiyaçlar, arsa verileri ve yasal çerçeve birlikte değerlendirilir."
+          },
+          {
+            "step": "02",
+            "title": "Konsept",
+            "description": "Kütle, cephe ve plan alternatifleri üzerinden tasarım dili belirlenir."
+          },
+          {
+            "step": "03",
+            "title": "Projelendirme",
+            "description": "Uygulama projeleri, detaylar ve görseller tamamlanır."
+          },
+          {
+            "step": "04",
+            "title": "Onay & Destek",
+            "description": "Ruhsat süreçlerinde ve uygulama sırasında teknik destek sağlanır."
+          }
+        ],
+        "keywords": [
+          "mimari tasarım",
+          "3D modelleme",
+          "uygulama projesi",
+          "mimarlık danışmanlığı"
+        ],
+        "stats": [
+          "60+ Özgün Proje",
+          "12+ Tasarım Ödülü",
+          "100% Gerçekçi 3D Model"
+        ],
+        "faqs": [
+          {
+            "question": "Tasarım süreci nasıl ilerliyor ve adımları nelerdir?",
+            "answer": "Süreç; ihtiyaç analizi (brief), konsept geliştirme, 3D modelleme/görselleştirme, ruhsat projesi hazırlığı ve son olarak detaylı uygulama projelerinin çizimi olmak üzere temel aşamalardan oluşur."
+          },
+          {
+            "question": "3D görselleştirme ve sanal tur hizmeti sunuyor musunuz?",
+            "answer": "Evet, projelerimizi hayata geçmeden önce bilgisayar ortamında gerçeğe en yakın şekilde modelliyoruz. İsteğe bağlı olarak projenin içinde 3D sanal tur deneyimi de hazırlamaktayız."
+          },
+          {
+            "question": "Tasarım aşamasında revizyon hakkımız bulunuyor mu?",
+            "answer": "Konsept aşamasında sizinle tam mutabık kalana kadar makul ölçüde revizyonlar gerçekleştiriyoruz. Uygulama projesine geçildikten sonra ise teknik detay düzenlemelerini yapıyoruz."
+          }
+        ]
+      },
+      "kentsel-donusum": {
+        "title": "Kentsel Dönüşüm",
+        "shortDescription": "Eski yapıları yenileyerek değer katıyor, güvenli ve modern yaşam alanları oluşturuyoruz.",
+        "heroTagline": "Güvenli yapılar, değerli yaşam alanları",
+        "intro": "Riskli yapıların yenilenmesinde hak sahipleriyle şeffaf iletişim kuruyor, mevzuata uygun süreç yönetimi ve modern mimariyle hem güvenliği hem yaşam kalitesini yükseltiyoruz.",
+        "highlights": [
+          "Riskli yapı tespiti ve süreç danışmanlığı",
+          "Hak sahipleri ile şeffaf iletişim",
+          "Modern, depreme dayanıklı yapılar",
+          "Değer artışı odaklı planlama"
+        ],
+        "features": [
+          {
+            "title": "Süreç Yönetimi",
+            "description": "Başvurudan yıkım ve yeniden inşaya kadar tüm adımları koordine ediyoruz."
+          },
+          {
+            "title": "Hak Sahipliği Dengesi",
+            "description": "Kat karşılığı ve hak dağılımında adil, anlaşılır çözümler üretiyoruz."
+          },
+          {
+            "title": "Güvenli Yenileme",
+            "description": "Güncel deprem yönetmeliğine uygun, dayanıklı yapılar inşa ediyoruz."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Değerlendirme",
+            "description": "Yapı durumu, arsa potansiyeli ve yasal uygunluk incelenir."
+          },
+          {
+            "step": "02",
+            "title": "Anlaşma",
+            "description": "Hak sahipleriyle model ve paylaşımlar netleştirilir."
+          },
+          {
+            "step": "03",
+            "title": "Yıkım & İnşa",
+            "description": "Güvenli yıkım sonrası yeni yapı uygulama programıyla yükseltilir."
+          },
+          {
+            "step": "04",
+            "title": "Teslim",
+            "description": "Bağımsız bölümler tamamlanır, hak sahiplerine teslim edilir."
+          }
+        ],
+        "keywords": [
+          "kentsel dönüşüm",
+          "riskli yapı",
+          "kat karşılığı",
+          "deprem güçlendirme"
+        ],
+        "stats": [
+          "850+ Yenilenen Konut",
+          "30+ Yenilenen Blok/Bina",
+          "100% Deprem Yönetmeliği Uyumu"
+        ],
+        "faqs": [
+          {
+            "question": "Binamızın riskli olduğunu nasıl tespit edebiliriz?",
+            "answer": "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı lisanslı ortak kuruluşlarımız aracılığıyla binanızdan karot örneği alınarak Deprem Risk Raporu hazırlanır ve süreç resmen başlatılır."
+          },
+          {
+            "question": "Devlet destekleri ve kira yardımı süreçleri nasıl işliyor?",
+            "answer": "Riskli yapı onaylandıktan sonra hak sahiplerine sunulan kira yardımı, taşınma desteği ve kentsel dönüşüm kredisi faiz desteği gibi tüm yasal teşvikler için başvuru danışmanlığını ekibimiz üstlenmektedir."
+          },
+          {
+            "question": "Kat karşılığı anlaşmalarda hak dağılımı nasıl belirlenir?",
+            "answer": "Arsanızın mevcut imar durumu, emsal değeri ve yönetmeliklerin izin verdiği maksimum inşaat alanı hesaplanarak, hak sahipleri arasında adil ve şeffaf bir paylaşım protokolü oluşturulur."
+          }
+        ]
+      },
+      "proje-yonetimi": {
+        "title": "Proje Yönetimi",
+        "shortDescription": "Baştan sona profesyonel proje takibi, maliyet kontrolü ve zamanında teslim garantisi.",
+        "heroTagline": "Kontrol, şeffaflık ve zamanında sonuç",
+        "intro": "Proje yönetiminde bütçe, süre ve kalite üçgenini dengede tutuyoruz. Paydaşlar arası koordinasyonu güçlendirerek riskleri erken görüyor, raporlama ile süreci sizin için görünür kılıyoruz.",
+        "highlights": [
+          "İş programı ve kritik yol yönetimi",
+          "Maliyet kontrolü ve bütçe takibi",
+          "Tedarikçi ve alt yüklenici koordinasyonu",
+          "Düzenli ilerleme raporlaması"
+        ],
+        "features": [
+          {
+            "title": "Maliyet Kontrolü",
+            "description": "Bütçe sapmalarını erken yakalayıp alternatiflerle süreci dengede tutuyoruz."
+          },
+          {
+            "title": "Zaman Yönetimi",
+            "description": "Gerçekçi iş programları ve saha takibiyle teslim tarihlerini koruyoruz."
+          },
+          {
+            "title": "Şeffaf Raporlama",
+            "description": "İlerleme, risk ve karar noktalarını düzenli olarak sizinle paylaşıyoruz."
+          }
+        ],
+        "process": [
+          {
+            "step": "01",
+            "title": "Kapsam Tanımı",
+            "description": "Hedefler, kısıtlar ve başarı kriterleri birlikte belirlenir."
+          },
+          {
+            "step": "02",
+            "title": "Plan & Kaynak",
+            "description": "Takvim, bütçe ve kaynak dağılımı oluşturulur."
+          },
+          {
+            "step": "03",
+            "title": "İzleme",
+            "description": "Saha and ofis verileriyle ilerleme sürekli kontrol edilir."
+          },
+          {
+            "step": "04",
+            "title": "Kapanış",
+            "description": "Teslim, evrak ve değerlendirme süreçleriyle proje tamamlanır."
+          }
+        ],
+        "keywords": [
+          "proje yönetimi",
+          "maliyet kontrolü",
+          "iş programı",
+          "inşaat proje takibi"
+        ],
+        "stats": [
+          "40+ Yönetilen Proje",
+          "15% Bütçe Optimizasyonu",
+          "100% Şeffaf Raporlama"
+        ],
+        "faqs": [
+          {
+            "question": "Proje yönetimi hizmeti bize ne tür bir tasarruf sağlar?",
+            "answer": "Doğru planlama, etkin malzeme tedariki ve doğru taşeron seçimi sayesinde projelerde ortalama %15 ila %20 arasında bütçe tasarrufu ve zaman sapmalarının önüne geçilmesini sağlıyoruz."
+          },
+          {
+            "question": "Proje ilerlemesini nasıl takip edebiliyoruz?",
+            "answer": "Haftalık ve aylık periyotlarda hazırladığımız detaylı faaliyet raporları, bütçe-maliyet analizleri ve iş programı güncellemeleriyle sürecin her anını şeffafça izleyebilirsiniz."
+          },
+          {
+            "question": "Zamanında teslim edilmeyen işler için ne gibi önlemleriniz var?",
+            "answer": "Tüm sözleşmelerimizde alt yüklenicilere yönelik cezai şartlar ve teslim garantileri yer alır. Kritik yol analizleriyle gecikme risklerini önceden tespit edip ek kaynak planlaması yapıyoruz."
+          }
+        ]
+      }
+    }
+  },
+  "serviceDetail": {
+    "profile": {
+      "title": "Hizmet Künyesi",
+      "ctaText": "Bu hizmet hakkında detaylı bilgi ve özel teklif almak için bize ulaşın.",
+      "btnContact": "Hızlı İletişim"
+    },
+    "kapsamTitle": "Hizmet Kapsamımız",
+    "features": {
+      "label": "Öne çıkanlar",
+      "title": "Neden Gülmetay?"
+    },
+    "process": {
+      "label": "İş Akışı",
+      "title": "Nasıl Çalışıyoruz?"
+    },
+    "faqs": {
+      "label": "Bilgi Bankası",
+      "title": "Sıkça Sorulan Sorular"
+    },
+    "others": {
+      "label": "Diğer hizmetler",
+      "title": "Bunlara da göz atın"
+    },
+    "cta": {
+      "eyebrow": "Hazır mısınız?",
+      "title": "{title} için bizimle konuşun",
+      "desc": "Projenizin kapsamını birlikte netleştirelim; size özel teklif ve yol haritası hazırlayalım.",
+      "btnContact": "İletişime Geç",
+      "btnServices": "Tüm Hizmetler"
+    }
+  },
+  "projects": {
+    "loading": "Projeler yükleniyor…",
+    "hero": {
+      "eyebrow": "Portföy",
+      "title": "Projelerimiz",
+      "titleAccent": "Mühendislik & İnşaat",
+      "desc": "1994'ten bu yana tamamladığımız ve devam eden projelerimiz. Her yapı, kalite anlayışımızın ve mühendislik disiplinimizin somut bir yansımasıdır."
+    },
+    "filter": {
+      "label": "Filtrele",
+      "all": "Tümü",
+      "results": "proje gösteriliyor"
+    },
+    "empty": {
+      "title": "Bu kategoride proje bulunamadı",
+      "desc": "Farklı bir kategori seçerek diğer projelerimize göz atabilirsiniz.",
+      "btnSeeAll": "Tüm Projeleri Gör"
+    },
+    "status": {
+      "completed": "Tamamlandı",
+      "ongoing": "Devam Ediyor",
+      "planned": "Planlandı"
+    },
+    "card": {
+      "viewDetails": "Detayları İncele",
+      "placeholder": "Görsel mevcut değil",
+      "linkText": "Projeyi İncele"
+    },
+    "cta": {
+      "eyebrow": "Bir sonraki proje sizin mi?",
+      "title": "Projeniz için uzman ekibimizle iletişime geçin.",
+      "desc": "Keşiften teslimata kadar tüm süreci şeffaf ve planlı yönetiyoruz.",
+      "btnContact": "İletişime Geç"
+    }
+  },
+  "projectDetail": {
+    "empty": {
+      "title": "Proje Bulunamadı",
+      "desc": "Aradığınız proje mevcut değil veya kaldırılmış olabilir.",
+      "btnBack": "Projelere Dön"
+    },
+    "placeholder": "Görsel Yok",
+    "btnBack": "Tüm Projeler",
+    "meta": {
+      "status": "Durum",
+      "start": "Başlangıç",
+      "end": "Bitiş"
+    },
+    "about": {
+      "label": "Detay",
+      "title": "Proje Hakkında",
+      "descFallback": "Proje açıklaması mevcut değil."
+    },
+    "gallery": {
+      "label": "Görsel Arşiv",
+      "title": "Proje Galerisi",
+      "countText": "görsel"
+    },
+    "cta": {
+      "eyebrow": "Birlikte Çalışalım",
+      "title": "Benzer Bir Proje mi Planlıyorsunuz?",
+      "desc": "Keşiften teslimata kadar tüm süreci şeffaf ve planlı yönetiyoruz. Ücretsiz ön görüşme için bizimle iletişime geçin.",
+      "btnContact": "İletişime Geç"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "İletişim",
+      "title": "Bize Ulaşın",
+      "titleAccent": "Birlikte Başlayalım",
+      "desc": "Projeleriniz için teknik destek almak, teklif istemek veya sadece tanışmak için formumuzu doldurabilir ya da iletişim kanallarımızdan bize ulaşabilirsiniz."
+    },
+    "items": {
+      "address": "Adres",
+      "phone": "Telefon",
+      "gsm": "GSM",
+      "email": "E-posta",
+      "hours": "Çalışma Saatleri",
+      "hoursContent": "Pazartesi - Cuma: 09:00 - 18:00\nCumartesi: 09:00 - 14:00\nPazar: Kapalı"
+    },
+    "social": {
+      "title": "Sosyal Medya"
+    },
+    "form": {
+      "title": "Mesaj Gönderin",
+      "name": "Adınız Soyadınız",
+      "email": "E-posta Adresiniz",
+      "phone": "Telefon Numaranız",
+      "subject": "Konu",
+      "subjectSelect": "Seçiniz",
+      "subjects": {
+        "taahhut": "İnşaat Taahhüt Hizmetleri",
+        "mimari": "Mimari Proje & Tasarım",
+        "donusum": "Kentsel Dönüşüm Projesi",
+        "yonetim": "Proje Yönetimi & Danışmanlık",
+        "teklif": "Genel Teklif İstemi",
+        "diger": "Diğer Sorularınız"
+      },
+      "message": "Mesajınız",
+      "btnSubmit": "Gönder",
+      "btnSending": "Gönderiliyor..."
+    },
+    "status": {
+      "successTitle": "Mesajınız İletildi",
+      "successText": "Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.",
+      "errorTitle": "Gönderim Başarısız",
+      "errorText": "Form gönderilirken bir hata oluştu: {error}",
+      "btnClose": "Kapat"
+    },
+    "turnstile": {
+      "errorMissingKey": "Turnstile site key eksik (NEXT_PUBLIC_TURNSTILE_SITE_KEY).",
+      "errorUnavailable": "Doğrulama şu anda kullanılamıyor.",
+      "errorGeneral": "Doğrulama sırasında hata oluştu. Lütfen tekrar deneyin.",
+      "errorExpired": "Doğrulama süresi doldu. Lütfen tekrar doğrulayın."
+    }
+  }
+}

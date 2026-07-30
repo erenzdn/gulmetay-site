@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL, STRAPI_URL } from "@/lib/seo.config";
+import { SERVICES } from "@/lib/services";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
@@ -8,6 +9,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
+    },
+    {
+      url: `${SITE_URL}/hizmetlerimiz`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     {
       url: `${SITE_URL}/about`,
@@ -28,6 +35,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
   ];
+
+  const servicePages: MetadataRoute.Sitemap = SERVICES.map((service) => ({
+    url: `${SITE_URL}/hizmetlerimiz/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
   let projectPages: MetadataRoute.Sitemap = [];
 
@@ -51,5 +65,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Strapi unavailable — return static pages only
   }
 
-  return [...staticPages, ...projectPages];
+  return [...staticPages, ...servicePages, ...projectPages];
 }

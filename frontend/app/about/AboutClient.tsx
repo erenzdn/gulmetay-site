@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
+import { useTranslation } from "@/context/LanguageContext";
 import "./about.css";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "";
@@ -14,12 +15,6 @@ interface AboutData {
   content: string;
 }
 
-const STATS = [
-  { value: "1994", label: "Kuruluş Yılı" },
-  { value: "30+", label: "Yıllık Tecrübe" },
-  { value: "İstanbul", label: "Merkez Ofis" },
-];
-
 function getExcerpt(content: string, maxLength = 220): string {
   const firstParagraph = content.split("\n").find((line) => line.trim()) ?? content;
   if (firstParagraph.length <= maxLength) return firstParagraph;
@@ -27,8 +22,15 @@ function getExcerpt(content: string, maxLength = 220): string {
 }
 
 export default function AboutClient() {
+  const { t } = useTranslation();
   const [data, setData] = useState<AboutData | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const stats = [
+    { value: "1994", label: t("about.stats.founded") },
+    { value: "30+", label: t("about.stats.experience") },
+    { value: t("about.stats.headquarters") === "Headquarters" ? "Istanbul" : "İstanbul", label: t("about.stats.headquarters") },
+  ];
 
   useEffect(() => {
     async function fetchAbout() {
@@ -70,7 +72,7 @@ export default function AboutClient() {
       <div className="about-loading">
         <div className="about-loading__inner">
           <div className="about-loading__spinner" />
-          <p className="about-loading__text">Yükleniyor…</p>
+          <p className="about-loading__text">{t("about.loading")}</p>
         </div>
       </div>
     );
@@ -79,7 +81,7 @@ export default function AboutClient() {
   if (!data) {
     return (
       <div className="about-empty">
-        <p className="about-empty__text">İçerik bulunamadı.</p>
+        <p className="about-empty__text">{t("about.empty")}</p>
       </div>
     );
   }
@@ -93,15 +95,14 @@ export default function AboutClient() {
           <div className="about-hero__content">
             <div className="about-hero__eyebrow">
               <span className="about-hero__eyebrow-line" aria-hidden="true" />
-              <span className="about-hero__eyebrow-text">Gülmetay İnşaat</span>
+              <span className="about-hero__eyebrow-text">{t("about.hero.eyebrow")}</span>
             </div>
             <h1 className="about-hero__title">
-              Hakkımızda
-              <em>Güven &amp; Kalite</em>
+              {t("about.hero.title")}
+              <em>{t("about.hero.titleAccent")}</em>
             </h1>
             <p className="about-hero__desc">
-              Endüstriyel yapı, iskele sistemleri ve mühendislik çözümlerinde
-              köklü bir geçmişle, her projede aynı özeni taşıyoruz.
+              {t("about.hero.desc")}
             </p>
           </div>
         </div>
@@ -113,20 +114,20 @@ export default function AboutClient() {
             <div className="about-intro__visual">
               <Image
                 src="/hero-architecture.png"
-                alt="Gülmetay İnşaat — mimari ve mühendislik"
+                alt={`${t("about.hero.eyebrow")} — mimari ve mühendislik`}
                 fill
-                sizes="(max-width: 992px) 100vw, 50vw"
+                sizes="(max-width: 992px) 100vw, 55vw"
                 className="about-intro__image"
               />
               <span className="about-intro__frame" aria-hidden="true" />
               <div className="about-intro__badge">
-                <p className="about-intro__badge-text">Kuruluş</p>
+                <p className="about-intro__badge-text">{t("about.intro.badgeTitle")}</p>
                 <p className="about-intro__badge-year">1994</p>
               </div>
             </div>
 
             <div className="about-intro__text-block">
-              <p className="about-intro__label">Kimiz?</p>
+              <p className="about-intro__label">{t("about.intro.label")}</p>
               <h2 className="about-intro__heading">{data.title}</h2>
               <span className="about-intro__line" aria-hidden="true" />
               <p className="about-intro__excerpt">{excerpt}</p>
@@ -135,9 +136,9 @@ export default function AboutClient() {
 
           <article className="about-story">
             <aside className="about-story__sidebar">
-              <p className="about-story__sidebar-label">Hikayemiz</p>
+              <p className="about-story__sidebar-label">{t("about.story.label")}</p>
               <h2 className="about-story__sidebar-title">
-                Mühendislik disiplini, inşaat ustalığı
+                {t("about.story.title")}
               </h2>
               <span className="about-story__sidebar-line" aria-hidden="true" />
             </aside>
@@ -148,7 +149,7 @@ export default function AboutClient() {
           </article>
 
           <div className="about-stats" aria-label="Öne çıkan bilgiler">
-            {STATS.map((stat) => (
+            {stats.map((stat) => (
               <div key={stat.label} className="about-stats__item">
                 <p className="about-stats__value">{stat.value}</p>
                 <p className="about-stats__label">{stat.label}</p>
@@ -158,20 +159,19 @@ export default function AboutClient() {
 
           <div className="about-cta">
             <div className="about-cta__content">
-              <p className="about-cta__eyebrow">Bir sonraki adım</p>
-              <h2 className="about-cta__title">Projenizi birlikte hayata geçirelim</h2>
+              <p className="about-cta__eyebrow">{t("about.cta.eyebrow")}</p>
+              <h2 className="about-cta__title">{t("about.cta.title")}</h2>
               <p className="about-cta__desc">
-                Tamamlanan ve devam eden projelerimizi inceleyin ya da doğrudan
-                bizimle iletişime geçin.
+                {t("about.cta.desc")}
               </p>
             </div>
             <div className="about-cta__actions">
               <Link href="/projects" className="about-cta__btn-primary">
-                Projeleri Gör
+                {t("about.cta.btnProjects")}
                 <ArrowRight size={15} strokeWidth={2.5} />
               </Link>
               <Link href="/contact" className="about-cta__btn-secondary">
-                İletişime Geç
+                {t("about.cta.btnContact")}
               </Link>
             </div>
           </div>
