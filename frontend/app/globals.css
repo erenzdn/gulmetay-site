@@ -10,9 +10,9 @@
   --foreground: #171717;
   
   /* Font Families */
-  --font-heading: var(--font-cormorant), 'Georgia', 'Times New Roman', serif;
-  --font-body: var(--font-source-sans), system-ui, sans-serif;
-  --font-accent: var(--font-cormorant), 'Georgia', serif;
+  --font-heading: var(--font-montserrat), 'Montserrat', sans-serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-accent: var(--font-montserrat), 'Montserrat', sans-serif;
   --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 

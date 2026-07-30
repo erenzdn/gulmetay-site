@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,18 +16,18 @@ import {
   ORGANIZATION_JSONLD,
 } from "@/lib/seo.config";
 
-const cormorant = Cormorant_Garamond({
+const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-cormorant",
+  variable: "--font-montserrat",
 });
 
-const sourceSans = Source_Sans_3({
+const inter = Inter({
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-source-sans",
+  variable: "--font-inter",
 });
 
 export const viewport: Viewport = {
@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr" className={`${cormorant.variable} ${sourceSans.variable}`}>
+    <html lang="tr" className={`${montserrat.variable} ${inter.variable}`}>
       <body style={{ margin: 0 }}>
         <JsonLd data={ORGANIZATION_JSONLD} />
         <PageLoader />
