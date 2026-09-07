@@ -54,13 +54,13 @@ export default function Navbar() {
         borderBottom: scrolled ? "none" : "1px solid rgba(0, 0, 0, 0.05)"
       }}>
         <div style={{
-          maxWidth: "1400px",
+          maxWidth: "1240px",
           margin: "0 auto",
           width: "100%",
           display: "flex", 
           justifyContent: "space-between", 
           alignItems: "center", 
-          padding: scrolled ? "8px 24px" : "14px 24px",
+          padding: scrolled ? "8px 24px" : "12px 24px",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
         }}>
           {/* Logo Alanı */}
@@ -76,8 +76,8 @@ export default function Navbar() {
             <Image 
               src="/logo.svg" 
               alt="Gülmetay İnşaat Logo" 
-              width={190}
-              height={40}
+              width={170}
+              height={36}
               style={{ 
                 objectFit: "contain",
                 transition: "all 0.3s ease"
@@ -90,7 +90,7 @@ export default function Navbar() {
           <div className="desktop-menu" style={{ 
             display: "flex", 
             alignItems: "center",
-            gap: "8px"
+            gap: "6px"
           }}>
             {navLinks.map((link) => (
               <Link 
@@ -99,16 +99,16 @@ export default function Navbar() {
                 style={{ 
                   textDecoration: "none", 
                   color: isActive(link.href) ? "#0C1B33" : "#555",
-                  fontSize: "15px",
+                  fontSize: "14.5px",
                   fontWeight: isActive(link.href) ? "600" : "500",
-                  fontFamily: "'Roboto', system-ui, sans-serif",
-                  letterSpacing: "0.3px",
-                  padding: "10px 20px",
-                  borderRadius: "8px",
+                  fontFamily: "var(--font-body), system-ui, sans-serif",
+                  letterSpacing: "0.2px",
+                  padding: "8px 16px",
+                  borderRadius: "6px",
                   position: "relative",
                   transition: "all 0.3s ease",
                   background: isActive(link.href) 
-                    ? "linear-gradient(135deg, rgba(12, 27, 51, 0.08) 0%, rgba(212, 163, 115, 0.08) 100%)"
+                    ? "rgba(12, 27, 51, 0.06)"
                     : "transparent"
                 }}
                 onMouseEnter={(e) => {
@@ -128,11 +128,11 @@ export default function Navbar() {
                 {isActive(link.href) && (
                   <span style={{
                     position: "absolute",
-                    bottom: "6px",
+                    bottom: "4px",
                     left: "50%",
                     transform: "translateX(-50%)",
-                    width: "20px",
-                    height: "3px",
+                    width: "18px",
+                    height: "2.5px",
                     background: "linear-gradient(135deg, #D4A373 0%, #c49363 100%)",
                     borderRadius: "2px"
                   }} />
@@ -144,12 +144,12 @@ export default function Navbar() {
             <div style={{
               display: "flex",
               alignItems: "center",
-              gap: "4px",
-              marginLeft: "15px",
-              marginRight: "5px",
+              gap: "3px",
+              marginLeft: "12px",
+              marginRight: "6px",
               background: "rgba(12, 27, 51, 0.03)",
               padding: "4px 8px",
-              borderRadius: "20px",
+              borderRadius: "18px",
               border: "1px solid rgba(12, 27, 51, 0.05)"
             }}>
               <button
@@ -159,13 +159,13 @@ export default function Navbar() {
                   border: "none",
                   color: locale === "tr" ? "#0C1B33" : "#888",
                   fontWeight: locale === "tr" ? "700" : "500",
-                  fontSize: "13px",
+                  fontSize: "12.5px",
                   cursor: "pointer",
-                  fontFamily: "'Roboto', system-ui, sans-serif",
+                  fontFamily: "var(--font-body), system-ui, sans-serif",
                   padding: "4px 8px",
-                  borderRadius: "15px",
+                  borderRadius: "14px",
                   transition: "all 0.3s ease",
-                  backgroundColor: locale === "tr" ? "rgba(212, 163, 115, 0.15)" : "transparent"
+                  backgroundColor: locale === "tr" ? "rgba(212, 163, 115, 0.18)" : "transparent"
                 }}
               >
                 TR
@@ -178,13 +178,13 @@ export default function Navbar() {
                   border: "none",
                   color: locale === "en" ? "#0C1B33" : "#888",
                   fontWeight: locale === "en" ? "700" : "500",
-                  fontSize: "13px",
+                  fontSize: "12.5px",
                   cursor: "pointer",
-                  fontFamily: "'Roboto', system-ui, sans-serif",
+                  fontFamily: "var(--font-body), system-ui, sans-serif",
                   padding: "4px 8px",
-                  borderRadius: "15px",
+                  borderRadius: "14px",
                   transition: "all 0.3s ease",
-                  backgroundColor: locale === "en" ? "rgba(212, 163, 115, 0.15)" : "transparent"
+                  backgroundColor: locale === "en" ? "rgba(212, 163, 115, 0.18)" : "transparent"
                 }}
               >
                 EN
@@ -197,27 +197,27 @@ export default function Navbar() {
                 style={{
                   background: "linear-gradient(135deg, #0C1B33 0%, #1a3a5c 100%)",
                   color: "white",
-                  padding: "12px 24px",
+                  padding: "10px 20px",
                   border: "none",
-                  borderRadius: "10px",
-                  fontSize: "14px",
+                  borderRadius: "7px",
+                  fontSize: "13.5px",
                   fontWeight: "600",
-                  fontFamily: "'Roboto', system-ui, sans-serif",
-                  letterSpacing: "0.5px",
+                  fontFamily: "var(--font-body), system-ui, sans-serif",
+                  letterSpacing: "0.3px",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
-                  boxShadow: "0 4px 15px rgba(12, 27, 51, 0.3)",
+                  boxShadow: "0 3px 12px rgba(12, 27, 51, 0.25)",
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px"
+                  gap: "7px"
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(12, 27, 51, 0.4)";
+                  e.currentTarget.style.transform = "translateY(-1px)";
+                  e.currentTarget.style.boxShadow = "0 5px 16px rgba(12, 27, 51, 0.35)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(12, 27, 51, 0.3)";
+                  e.currentTarget.style.boxShadow = "0 3px 12px rgba(12, 27, 51, 0.25)";
                 }}
               >
                 {t("common.nav.getQuote")}

@@ -30,34 +30,34 @@ export default function Footer() {
       style={{
         background: "linear-gradient(180deg, #0C1B33 0%, #060f1a 100%)",
         color: "white",
-        marginTop: "100px"
+        marginTop: "60px"
       }}
     >
       {/* Main Footer Content */}
       <div
         className="container"
         style={{
-          paddingTop: "80px",
-          paddingBottom: "40px"
+          paddingTop: "50px",
+          paddingBottom: "30px"
         }}
       >
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "50px",
-            marginBottom: "50px"
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "32px",
+            marginBottom: "36px"
           }}
         >
           {/* Company Info */}
           <div>
-            <div style={{ marginBottom: "25px" }}>
+            <div style={{ marginBottom: "20px" }}>
               <div
                 style={{
-                  fontSize: "26px",
+                  fontSize: "21px",
                   fontWeight: "700",
                   color: "#D4A373",
-                  marginBottom: "8px",
+                  marginBottom: "6px",
                   letterSpacing: "-0.5px"
                 }}
               >
@@ -66,8 +66,8 @@ export default function Footer() {
               <p
                 style={{
                   color: "#b0b0b0",
-                  lineHeight: "1.7",
-                  fontSize: "14px"
+                  lineHeight: "1.6",
+                  fontSize: "13.5px"
                 }}
               >
                 {t("common.footer.desc")}
@@ -75,7 +75,7 @@ export default function Footer() {
             </div>
             
             {/* Social Links */}
-            <div style={{ display: "flex", gap: "15px", marginTop: "20px" }}>
+            <div style={{ display: "flex", gap: "10px", marginTop: "16px" }}>
               {socialLinks.map((social) => {
                 const SocialIcon = social.icon;
                 return (
@@ -86,9 +86,9 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={`Gülmetay İnşaat ${social.name} hesabı`}
                     style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "8px",
+                      width: "34px",
+                      height: "34px",
+                      borderRadius: "6px",
                       background: "rgba(212, 163, 115, 0.1)",
                       display: "flex",
                       alignItems: "center",

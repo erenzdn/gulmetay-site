@@ -236,27 +236,29 @@ p, span, a, li {
 .btn-primary {
   background: var(--primary-gold);
   color: white;
-  padding: 14px 32px;
+  padding: 10px 22px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(212, 163, 115, 0.3);
+  box-shadow: 0 4px 12px rgba(212, 163, 115, 0.25);
 }
 
 .btn-primary:hover {
   background: #c49363;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
+  box-shadow: 0 6px 18px rgba(212, 163, 115, 0.35);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--primary-dark);
-  padding: 14px 32px;
-  border: 2px solid var(--primary-dark);
-  border-radius: 8px;
+  padding: 10px 22px;
+  border: 1.5px solid var(--primary-dark);
+  border-radius: 6px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -302,12 +304,12 @@ main:has(.project-detail-page) + footer {
   margin-right: auto;
   padding-left: 24px;
   padding-right: 24px;
-  max-width: 1400px;
+  max-width: 1240px;
 }
 
 @media (max-width: 1440px) {
   .container {
-    max-width: 1200px;
+    max-width: 1140px;
   }
 }
 
@@ -341,12 +343,12 @@ main:has(.project-detail-page) + footer {
 
 /* Section Spacing */
 .section-padding {
-  padding: 100px 0;
+  padding: 60px 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 }
 

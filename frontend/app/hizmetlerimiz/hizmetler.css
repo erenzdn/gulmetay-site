@@ -51,19 +51,19 @@
 .hizmetler-hero__content {
   position: relative;
   z-index: 1;
-  padding: clamp(80px, 11vw, 130px) 0 clamp(64px, 8vw, 96px);
+  padding: clamp(48px, 6vw, 72px) 0 clamp(40px, 5vw, 60px);
 }
 
 .hizmetler-hero__eyebrow {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .hizmetler-hero__eyebrow-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: var(--primary-gold);
   border-radius: 50%;
   position: relative;
@@ -72,27 +72,27 @@
 .hizmetler-hero__eyebrow-dot::after {
   content: "";
   position: absolute;
-  inset: -4px;
+  inset: -3px;
   border-radius: 50%;
   border: 1px solid var(--primary-gold);
   animation: pulseGold 2s infinite ease-in-out;
 }
 
 .hizmetler-hero__eyebrow-text {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--primary-gold);
 }
 
 .hizmetler-hero__title {
-  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
   font-weight: 500;
   color: #ffffff;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .hizmetler-hero__title em {
@@ -105,9 +105,9 @@
 }
 
 .hizmetler-hero__desc {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.8;
+  font-size: clamp(0.88rem, 1.3vw, 0.98rem);
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.65;
   max-width: 580px;
 }
 
