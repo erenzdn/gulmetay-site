@@ -25,6 +25,69 @@
       "counter": "{current} / {total}"
     }
   },
+  "kentselDonusum": {
+    "seoTitle": "Kentsel Dönüşüm Yarısı Bizden Kampanyası | Gülmetay İnşaat",
+    "seoDesc": "T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Yarısı Bizden kampanyası ile evinizi Gülmetay İnşaat güvencesiyle yenileyin. 700 Bin TL Hibe, 700 Bin TL Kredi ve 100 Bin TL Taşınma Desteği.",
+    "hero": {
+      "badge": "T.C. Bakanlık Destekli Kentsel Dönüşüm",
+      "title": "Kentsel Dönüşümde Yarısı Bizden Kampanyası",
+      "subtitle": "Devlet hibesi ve Gülmetay İnşaat'ın uzman mühendislik güvencesiyle evinizi depreme dayanıklı, modern yaşam alanlarına dönüştürüyoruz.",
+      "btnApply": "Ücretsiz Keşif Başvurusu",
+      "btnDetails": "Destek Paketini İnceleyin"
+    },
+    "features": {
+      "title": "Kampanya Destek Paketi Detayları",
+      "subtitle": "Bakanlık tarafından hak sahiplerine sağlanan finansal destekler",
+      "grantTitle": "700.000 ₺ Hibe Desteği",
+      "grantDesc": "Hak sahibi her bağımsız bölüm için geri ödemesiz, karşılıksız verilen doğrudan devlet desteği.",
+      "loanTitle": "700.000 ₺ Uygun Kredi",
+      "loanDesc": "10 yıl vadeli, düşük faizli ve ilk yılı ödemesiz devlet garantili finansman imkanı.",
+      "relocationTitle": "100.000 ₺ Taşınma Desteği",
+      "relocationDesc": "Dönüşüm sürecinde ev sahipleri ve kiracılara sağlanan tek seferlik karşılıksız destek."
+    },
+    "engineering": {
+      "badge": "Yüksek Mühendislik & Güvenlik",
+      "title": "Depreme Dayanıklı Modern Yapı Standartları",
+      "desc": "Gülmetay İnşaat olarak, sadece binanızı yenilemiyor; sismik izolatörler, radye temel sistemleri ve yüksek dayanımlı betonarme karkas yapı modelleriyle geleceği inşa ediyoruz.",
+      "point1": "Radye jenerik temel ve C35/40 yüksek dayanımlı beton",
+      "point2": "Mühendislik denetimli deprem güvenlik standartları",
+      "point3": "Zamanında anahtar teslim ve şeffaf süreç yönetimi"
+    },
+    "process": {
+      "title": "Adım Adım Kentsel Dönüşüm Süreci",
+      "subtitle": "Binanızı yenilerken izlediğimiz şeffaf ve güvenli süreç",
+      "step1Title": "1. Ücretsiz Keşif & Bina Analizi",
+      "step1Desc": "Uzman mühendislerimiz binanızı yerinde inceleyerek risk tespiti ve potansiyel proje taslağını hazırlar.",
+      "step2Title": "2. Malikler Sözleşmesi (%50+1)",
+      "step2Desc": "Bina kat maliklerinin salt çoğunluğu sağlandığında resmi uzlaşma ve dönüşüm sözleşmesi imzalanır.",
+      "step3Title": "3. Bakanlık Başvurusu & Projelendirme",
+      "step3Desc": "Yarısı Bizden hibe ve kredi başvuruları Bakanlık sistemine yüklenir, mimari projeler onaylatılır.",
+      "step4Title": "4. İnşaat & Anahtar Teslim",
+      "step4Desc": "Eski bina güvenle yıkılır, yeni modern yapınız taahhüt edilen sürede tamamlanarak teslim edilir."
+    },
+    "form": {
+      "title": "Ücretsiz Keşif ve Ön Başvuru Formu",
+      "subtitle": "Binanızın Yarısı Bizden kampanyasına uygunluğunu öğrenmek için formu doldurun, uzman ekibimiz sizi arasına katılsın.",
+      "fullName": "Adınız Soyadınız",
+      "phone": "Telefon Numaranız",
+      "location": "İlçe / Mahalle",
+      "buildingAge": "Bina Yaşı",
+      "flatCount": "Daire Sayısı",
+      "notes": "Eklemek İstediğiniz Notlar",
+      "btnSubmit": "Ücretsiz Keşif Talebi Gönder",
+      "successMsg": "Talebiniz başarıyla alındı! Uzman mühendis ekibimiz en kısa sürede sizinle iletişime geçecektir."
+    },
+    "faq": {
+      "title": "Sıkça Sorulan Sorular",
+      "subtitle": "Yarısı Bizden kampanyası ve kentsel dönüşüm hakkında merak edilenler",
+      "q1": "Yarısı Bizden kampanyasından kimler yararlanabilir?",
+      "a1": "İstanbul sınırları içerisinde yer alan, riskli yapı tespiti yapılmış veya yenilenmesi gereken tüm konut ve iş yeri sahipleri yararlanabilir.",
+      "q2": "Hibe ve kredi ödemeleri nasıl yapılıyor?",
+      "a2": "Hibe ve kredi tutarları bina hakediş seviyesine göre müteahhit firmanın hesabına Bakanlık tarafından kademeli olarak aktarılır.",
+      "q3": "Gülmetay İnşaat başvuru sürecini yönetiyor mu?",
+      "a3": "Evet, risk tespit raporundan Bakanlık hibe başvurularına, mimari projelendirmeden anahtar teslimine kadar tüm süreci Gülmetay İnşaat olarak ücretsiz danışmanlığımızla yürütüyoruz."
+    }
+  },
   "home": {
     "hero": {
       "eyebrow": "2009'dan Beri Güvenilir İnşaat",
@@ -36,6 +99,20 @@
       "scrollHint": "Kaydır",
       "frameTitle": "Gülmetay İnşaat",
       "frameSub": "Mimarlık & Mühendislik"
+    },
+    "campaign": {
+      "badge": "Devlet Destekli Kentsel Dönüşüm Fırsatı",
+      "titleMain": "Kentsel Dönüşümde ",
+      "titleAccent": "'Yarısı Bizden'",
+      "titleSub": " Kampanyasından Yararlanın",
+      "desc": "T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı hibeleri ve Gülmetay İnşaat'ın uzman mühendislik güvencesiyle evinizi depreme dayanıklı, modern yapılara dönüştürüyoruz.",
+      "grant": "700 BİN ₺ HİBE",
+      "grantDesc": "Geri ödemesiz devlet desteği",
+      "loan": "700 BİN ₺ KREDİ",
+      "loanDesc": "Uygun ödeme ve faiz oranlarıyla",
+      "relocation": "100 BİN ₺ TAŞINMA",
+      "relocationDesc": "Ev sahipleri ve kiracılara karşılıksız destek",
+      "btnAction": "Ücretsiz Keşif & Başvuru Bilgisi Alın"
     },
     "services": {
       "label": "Hizmetlerimiz",

@@ -42,9 +42,9 @@ export default function PageLoader() {
         <div className="page-loader__logo-wrapper">
           <div className="page-loader__logo-container">
             <Image
-              src="/gulmetay-logo.jpg"
+              src="/logo.svg"
               alt="Gülmetay İnşaat"
-              width={400}
+              width={368}
               height={80}
               priority
               className="page-loader__logo"

@@ -130,6 +130,7 @@ export default function Footer() {
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
                 { href: "/", label: t("common.nav.home") },
+                { href: "/kentsel-donusum-yarisi-bizden", label: "Kentsel Dönüşüm (Yarısı Bizden)" },
                 { href: "/hizmetlerimiz", label: t("common.nav.services") },
                 { href: "/projects", label: t("common.nav.projects") },
                 { href: "/about", label: t("common.nav.about") },

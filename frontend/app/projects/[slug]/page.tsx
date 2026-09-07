@@ -101,7 +101,7 @@ export default async function ProjectDetailPage({
   return (
     <>
       {projectJsonLd && <JsonLd data={projectJsonLd} />}
-      <ProjectDetailClient />
+      <ProjectDetailClient initialProject={project} slug={slug} />
     </>
   );
 }

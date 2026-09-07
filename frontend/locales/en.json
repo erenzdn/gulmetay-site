@@ -25,6 +25,69 @@
       "counter": "{current} / {total}"
     }
   },
+  "kentselDonusum": {
+    "seoTitle": "Urban Transformation 'Half is From Us' Campaign | Gülmetay Construction",
+    "seoDesc": "Renovate your building with Ministry grants under the Half is From Us campaign with Gülmetay Construction's engineering assurance. 700K Grant, 700K Loan, and 100K Relocation Support.",
+    "hero": {
+      "badge": "State-Supported Urban Transformation",
+      "title": "Urban Transformation 'Half is From Us' Campaign",
+      "subtitle": "We transform your building into earthquake-resistant, modern living spaces with Ministry grants and Gülmetay Construction engineering assurance.",
+      "btnApply": "Request Free Assessment",
+      "btnDetails": "Explore Support Package"
+    },
+    "features": {
+      "title": "Campaign Support Package Details",
+      "subtitle": "Financial supports provided by the Ministry to property owners",
+      "grantTitle": "700,000 ₺ Grant Support",
+      "grantDesc": "Non-refundable direct state grant provided for each eligible independent unit.",
+      "loanTitle": "700,000 ₺ Favorable Loan",
+      "loanDesc": "10-year term, low-interest state-backed financing with grace period options.",
+      "relocationTitle": "100,000 ₺ Relocation Support",
+      "relocationDesc": "One-off financial aid provided to property owners and tenants during transformation."
+    },
+    "engineering": {
+      "badge": "High Engineering & Safety",
+      "title": "Earthquake-Resistant Modern Construction Standards",
+      "desc": "At Gülmetay Construction, we don't just renovate buildings; we build the future using raft foundations, seismic isolators, and high-strength reinforced concrete systems.",
+      "point1": "Raft foundations and C35/40 high-durability concrete",
+      "point2": "Engineering-inspected earthquake safety standards",
+      "point3": "On-time turnkey delivery and transparent process management"
+    },
+    "process": {
+      "title": "Step-by-Step Urban Transformation Process",
+      "subtitle": "Our transparent and secure process when renovating your building",
+      "step1Title": "1. Free Inspection & Building Analysis",
+      "step1Desc": "Our expert engineers inspect your building on-site for risk assessment and preliminary project drafting.",
+      "step2Title": "2. Owners Agreement (50%+1)",
+      "step2Desc": "Once majority agreement is reached among owners, official transformation contracts are signed.",
+      "step3Title": "3. Ministry Application & Projecting",
+      "step3Desc": "Campaign grant applications are submitted to Ministry systems, and architectural projects are approved.",
+      "step4Title": "4. Construction & Turnkey Delivery",
+      "step4Desc": "The old building is safely demolished and your new modern building is constructed and delivered on schedule."
+    },
+    "form": {
+      "title": "Free Inspection & Application Form",
+      "subtitle": "Fill out the form to find out if your building is eligible for the Half is From Us campaign.",
+      "fullName": "Full Name",
+      "phone": "Phone Number",
+      "location": "District / Neighborhood",
+      "buildingAge": "Building Age",
+      "flatCount": "Number of Units",
+      "notes": "Additional Notes",
+      "btnSubmit": "Submit Free Inspection Request",
+      "successMsg": "Your request has been received! Our engineering team will contact you shortly."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about the campaign and urban transformation",
+      "q1": "Who can benefit from the Half is From Us campaign?",
+      "a1": "All residential and commercial property owners in Istanbul whose buildings require renovation or risk assessment.",
+      "q2": "How are grant and loan payments distributed?",
+      "a2": "Grants and loans are paid directly to the contractor's account by the Ministry according to construction progress stages.",
+      "q3": "Does Gülmetay Construction manage the application process?",
+      "a3": "Yes, we handle the entire lifecycle from risk report filing to Ministry grant approval and turnkey construction free of charge."
+    }
+  },
   "home": {
     "hero": {
       "eyebrow": "Reliable Construction Since 2009",
@@ -36,6 +99,20 @@
       "scrollHint": "Scroll",
       "frameTitle": "Gülmetay Construction",
       "frameSub": "Architecture & Engineering"
+    },
+    "campaign": {
+      "badge": "State-Supported Urban Transformation Opportunity",
+      "titleMain": "Take Advantage of the ",
+      "titleAccent": "'Half is From Us'",
+      "titleSub": " Campaign in Urban Transformation",
+      "desc": "Transform your building into modern, earthquake-resistant living spaces with Ministry grants and Gülmetay Construction's engineering assurance.",
+      "grant": "700K ₺ GRANT",
+      "grantDesc": "Non-refundable state support",
+      "loan": "700K ₺ LOAN",
+      "loanDesc": "With low interest and favorable terms",
+      "relocation": "100K ₺ RELOCATION",
+      "relocationDesc": "Financial aid for owners & tenants",
+      "btnAction": "Get Free Assessment & Details"
     },
     "services": {
       "label": "Our Services",

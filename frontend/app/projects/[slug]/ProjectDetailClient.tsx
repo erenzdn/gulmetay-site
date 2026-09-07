@@ -74,15 +74,28 @@ function getGalleryImages(project: Project): ProjectImage[] {
   );
 }
 
-export default function ProjectDetailClient() {
+interface Props {
+  initialProject?: Project | null;
+  slug?: string;
+}
+
+export default function ProjectDetailClient({ initialProject, slug: initialSlug }: Props) {
   const { t, locale } = useTranslation();
-  const { slug } = useParams();
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
+  const params = useParams();
+  const slug = params?.slug || initialSlug;
+
+  const [project, setProject] = useState<Project | null>(initialProject ?? null);
+  const [loading, setLoading] = useState(initialProject ? false : true);
   const [selectedImage, setSelectedImage] = useState<ProjectImage | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   useEffect(() => {
+    if (initialProject && initialProject.slug === slug) {
+      setProject(initialProject);
+      setLoading(false);
+      return;
+    }
+
     async function fetchProject() {
       if (!slug) return;
       const slugStr =
@@ -101,14 +114,14 @@ export default function ProjectDetailClient() {
       }
     }
     fetchProject();
-  }, [slug]);
+  }, [slug, initialProject]);
 
   useEffect(() => {
     if (!loading && project) {
       const timer = setTimeout(() => {
         gsap.fromTo(
-          ".project-detail-hero__back, .project-detail-hero__label, .project-detail-hero__title, .project-detail-hero__meta",
-          { opacity: 0, y: 20 },
+          ".project-detail-header__back, .project-detail-header__category, .project-detail-header__title, .project-detail-showcase",
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
@@ -120,7 +133,7 @@ export default function ProjectDetailClient() {
         );
 
         gsap.fromTo(
-          ".project-detail-about, .project-detail-gallery, .project-detail-cta",
+          ".project-detail-info, .project-detail-gallery, .project-detail-cta",
           { opacity: 0, y: 32 },
           {
             opacity: 1,
@@ -130,7 +143,7 @@ export default function ProjectDetailClient() {
             ease: "power3.out",
             scrollTrigger: {
               trigger: ".project-detail-body",
-              start: "top 80%",
+              start: "top 85%",
             },
           }
         );
@@ -198,6 +211,21 @@ export default function ProjectDetailClient() {
     project.description?.[0]?.children?.[0]?.text ||
     t("projectDetail.about.descFallback");
 
+  // Editorial quote extractor
+  let leadText = "";
+  let remainingText = descriptionText;
+  const paragraphs = descriptionText.split(/\n+/).filter(Boolean);
+  if (paragraphs.length > 1) {
+    leadText = paragraphs[0];
+    remainingText = paragraphs.slice(1).join("\n\n");
+  } else if (descriptionText.length > 120) {
+    const dotIdx = descriptionText.indexOf(".", 80);
+    if (dotIdx !== -1 && dotIdx < descriptionText.length - 20) {
+      leadText = descriptionText.substring(0, dotIdx + 1);
+      remainingText = descriptionText.substring(dotIdx + 1).trim();
+    }
+  }
+
   const hasMeta =
     project.status_deneme || project.startDate || project.endDate;
 
@@ -210,86 +238,109 @@ export default function ProjectDetailClient() {
 
   return (
     <article className="project-detail-page">
-      <header className="project-detail-hero">
-        <div
-          className={`project-detail-hero__image${
-            !project.mainImage ? " project-detail-hero__image--empty" : ""
-          }`}
-        >
-          {project.mainImage ? (
-            <Image
-              src={`${STRAPI_URL}${project.mainImage.url}`}
-              alt={project.title}
-              fill
-              sizes="(max-width: 992px) 100vw, 60vw"
-              priority
-              style={{ objectFit: "cover" }}
-            />
-          ) : (
-            <span>{t("projectDetail.placeholder")}</span>
-          )}
-        </div>
-
-        <div className="project-detail-hero__panel">
-          <Link href="/projects" className="project-detail-hero__back">
+      <header className="project-detail-header">
+        <div className="container">
+          <Link href="/projects" className="project-detail-header__back">
             <ArrowLeft size={14} />
             {t("projectDetail.btnBack")}
           </Link>
 
           {project.category?.name && (
-            <p className="project-detail-hero__label">{project.category.name}</p>
+            <p className="project-detail-header__category">{project.category.name}</p>
           )}
 
-          <h1 className="project-detail-hero__title">{project.title}</h1>
-
-          {hasMeta && (
-            <dl className="project-detail-hero__meta">
-              {project.status_deneme && (
-                <div className="project-detail-hero__meta-item">
-                  <dt className="project-detail-hero__meta-key">{t("projectDetail.meta.status")}</dt>
-                  <dd
-                    className={`project-detail-hero__meta-val ${getStatusClass(project.status_deneme)}`}
-                  >
-                    <StatusIcon status={project.status_deneme} />
-                    {getStatusLabel(project.status_deneme, t)}
-                  </dd>
-                </div>
-              )}
-              {project.startDate && (
-                <div className="project-detail-hero__meta-item">
-                  <dt className="project-detail-hero__meta-key">{t("projectDetail.meta.start")}</dt>
-                  <dd className="project-detail-hero__meta-val">
-                    <Calendar size={14} strokeWidth={1.8} />
-                    {project.startDate}
-                  </dd>
-                </div>
-              )}
-              {project.endDate && (
-                <div className="project-detail-hero__meta-item">
-                  <dt className="project-detail-hero__meta-key">{t("projectDetail.meta.end")}</dt>
-                  <dd className="project-detail-hero__meta-val">
-                    <Flag size={14} strokeWidth={1.8} />
-                    {project.endDate}
-                  </dd>
-                </div>
-              )}
-            </dl>
-          )}
+          <h1 className="project-detail-header__title">{project.title}</h1>
         </div>
       </header>
 
+      <section className="project-detail-showcase">
+        <div className="container">
+          <div
+            className={`project-detail-showcase__frame${
+              !project.mainImage ? " project-detail-showcase__frame--empty" : ""
+            }`}
+          >
+            {project.mainImage ? (
+              <>
+                <Image
+                  src={`${STRAPI_URL}${project.mainImage.url}`}
+                  alt={project.title}
+                  fill
+                  sizes="100vw"
+                  priority
+                  style={{ objectFit: "cover" }}
+                  className="project-detail-showcase__img"
+                />
+                <div className="project-detail-showcase__art-frame" aria-hidden="true" />
+              </>
+            ) : (
+              <span>{t("projectDetail.placeholder")}</span>
+            )}
+          </div>
+        </div>
+      </section>
+
       <div className="project-detail-body">
         <div className="container">
-          <section className="project-detail-about" aria-label={t("projectDetail.about.title")}>
-            <aside className="project-detail-about__sidebar">
-              <p className="project-detail-about__sidebar-label">{t("projectDetail.about.label")}</p>
-              <h2 className="project-detail-about__sidebar-title">
-                {t("projectDetail.about.title")}
-              </h2>
-              <span className="project-detail-about__sidebar-line" aria-hidden="true" />
+          <section className="project-detail-info" aria-label={t("projectDetail.about.title")}>
+            <aside className="project-detail-info__sidebar">
+              <div className="project-detail-card">
+                <h3 className="project-detail-card__title">{t("projectDetail.about.title")}</h3>
+                <span className="project-detail-card__divider" />
+                
+                <div className="project-detail-card__specs">
+                  {project.category?.name && (
+                    <div className="project-detail-card__spec">
+                      <span className="project-detail-card__spec-label">Kategori</span>
+                      <span className="project-detail-card__spec-value">
+                        {project.category.name}
+                      </span>
+                    </div>
+                  )}
+                  {project.status_deneme && (
+                    <div className="project-detail-card__spec">
+                      <span className="project-detail-card__spec-label">{t("projectDetail.meta.status")}</span>
+                      <span
+                        className={`project-detail-card__spec-value project-detail-card__spec-value--status ${getStatusClass(project.status_deneme)}`}
+                      >
+                        <StatusIcon status={project.status_deneme} />
+                        {getStatusLabel(project.status_deneme, t)}
+                      </span>
+                    </div>
+                  )}
+                  {project.startDate && (
+                    <div className="project-detail-card__spec">
+                      <span className="project-detail-card__spec-label">{t("projectDetail.meta.start")}</span>
+                      <span className="project-detail-card__spec-value">
+                        <Calendar size={14} strokeWidth={1.8} />
+                        {project.startDate}
+                      </span>
+                    </div>
+                  )}
+                  {project.endDate && (
+                    <div className="project-detail-card__spec">
+                      <span className="project-detail-card__spec-label">{t("projectDetail.meta.end")}</span>
+                      <span className="project-detail-card__spec-value">
+                        <Flag size={14} strokeWidth={1.8} />
+                        {project.endDate}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
             </aside>
-            <div className="project-detail-about__content">
-              <p className="project-detail-about__text">{descriptionText}</p>
+            <div className="project-detail-info__content">
+              <h2 className="project-detail-info__subtitle">{t("projectDetail.about.title")}</h2>
+              {leadText ? (
+                <>
+                  <p className="project-detail-info__lead">{leadText}</p>
+                  {remainingText.split(/\n+/).filter(Boolean).map((pText, i) => (
+                    <p key={i} className="project-detail-info__text">{pText}</p>
+                  ))}
+                </>
+              ) : (
+                <p className="project-detail-info__text">{descriptionText}</p>
+              )}
             </div>
           </section>
 
@@ -306,31 +357,42 @@ export default function ProjectDetailClient() {
               </div>
 
               <div className="project-detail-gallery__grid">
-                {galleryImages.map((img, index) => (
-                  <button
-                    key={img.id}
-                    type="button"
-                    className="project-detail-gallery__item"
-                    onClick={() => openLightbox(img, index)}
-                    aria-label={`${project.title} — galeri görseli ${index + 1}`}
-                  >
-                    <Image
-                      src={`${STRAPI_URL}${img.url}`}
-                      alt={`${project.title} — ${index + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      style={{ objectFit: "cover" }}
-                      loading="lazy"
-                    />
-                    <span className="project-detail-gallery__item-overlay">
-                      <ZoomIn
-                        size={28}
-                        strokeWidth={1.5}
-                        className="project-detail-gallery__item-icon"
-                      />
-                    </span>
-                  </button>
-                ))}
+                {galleryImages.map((img, index) => {
+                  const countStr = String(index + 1).padStart(2, "0");
+                  return (
+                    <button
+                      key={img.id}
+                      type="button"
+                      className="project-detail-gallery__item"
+                      onClick={() => openLightbox(img, index)}
+                      aria-label={`${project.title} — galeri görseli ${index + 1}`}
+                    >
+                      <div className="project-detail-gallery__image-wrapper">
+                        <Image
+                          src={`${STRAPI_URL}${img.url}`}
+                          alt={`${project.title} — ${index + 1}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: "cover" }}
+                          loading="lazy"
+                          className="project-detail-gallery__img"
+                        />
+                        <div className="project-detail-gallery__badge">
+                          <span>[ {countStr} / GÜLMETAY ]</span>
+                        </div>
+                      </div>
+                      <span className="project-detail-gallery__item-overlay">
+                        <span className="project-detail-gallery__item-btn">
+                          <ZoomIn
+                            size={20}
+                            strokeWidth={2}
+                            className="project-detail-gallery__item-icon"
+                          />
+                        </span>
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </section>
           )}

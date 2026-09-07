@@ -9,6 +9,10 @@ import {
   PenTool,
   Building,
   BriefcaseBusiness,
+  ShieldCheck,
+  CheckCircle2,
+  Coins,
+  Truck,
   type LucideIcon,
 } from "lucide-react";
 import { gsap } from "gsap";
@@ -84,6 +88,21 @@ export default function HomeClient() {
         ".home-hero__visual",
         { opacity: 0, scale: 1.04 },
         { opacity: 1, scale: 1, duration: 1.4, ease: "power3.out", delay: 0.2 }
+      );
+
+      gsap.fromTo(
+        ".home-campaign-banner",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".home-campaign-banner",
+            start: "top 85%",
+          },
+        }
       );
 
       gsap.fromTo(
@@ -339,6 +358,96 @@ export default function HomeClient() {
           <span className="home-hero__scroll-text">{t("home.hero.scrollHint")}</span>
         </div>
       </header>
+
+      {/* CAMPAIGN BANNER - YARISI BİZDEN */}
+      <section className="home-campaign-banner" aria-label={t("home.campaign.badge")}>
+        <div className="container">
+          <div className="home-campaign-banner__card">
+            <div className="home-campaign-banner__visual">
+              <Image
+                src="/urban-transformation.jpg"
+                alt="Kentsel Dönüşüm Yarısı Bizden Kampanyası - Gülmetay İnşaat"
+                fill
+                sizes="(max-width: 992px) 100vw, 45vw"
+                className="home-campaign-banner__img"
+              />
+              <div className="home-campaign-banner__overlay" aria-hidden="true" />
+              <div className="home-campaign-banner__badge">
+                <ShieldCheck size={16} strokeWidth={2.2} />
+                <span>{t("home.campaign.badge")}</span>
+              </div>
+            </div>
+
+            <div className="home-campaign-banner__content">
+              <h2 className="home-campaign-banner__title">
+                {t("home.campaign.titleMain")}
+                <span className="home-campaign-banner__title-accent">
+                  {t("home.campaign.titleAccent")}
+                </span>
+                {t("home.campaign.titleSub")}
+              </h2>
+
+              <p className="home-campaign-banner__desc">
+                {t("home.campaign.desc")}
+              </p>
+
+              <div className="home-campaign-banner__highlights">
+                <div className="home-campaign-banner__highlight">
+                  <div className="home-campaign-banner__highlight-icon">
+                    <Coins size={20} strokeWidth={1.8} />
+                  </div>
+                  <div className="home-campaign-banner__highlight-text">
+                    <span className="home-campaign-banner__highlight-val">
+                      {t("home.campaign.grant")}
+                    </span>
+                    <span className="home-campaign-banner__highlight-sub">
+                      {t("home.campaign.grantDesc")}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="home-campaign-banner__highlight">
+                  <div className="home-campaign-banner__highlight-icon">
+                    <CheckCircle2 size={20} strokeWidth={1.8} />
+                  </div>
+                  <div className="home-campaign-banner__highlight-text">
+                    <span className="home-campaign-banner__highlight-val">
+                      {t("home.campaign.loan")}
+                    </span>
+                    <span className="home-campaign-banner__highlight-sub">
+                      {t("home.campaign.loanDesc")}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="home-campaign-banner__highlight">
+                  <div className="home-campaign-banner__highlight-icon">
+                    <Truck size={20} strokeWidth={1.8} />
+                  </div>
+                  <div className="home-campaign-banner__highlight-text">
+                    <span className="home-campaign-banner__highlight-val">
+                      {t("home.campaign.relocation")}
+                    </span>
+                    <span className="home-campaign-banner__highlight-sub">
+                      {t("home.campaign.relocationDesc")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="home-campaign-banner__actions">
+                <Link
+                  href="/kentsel-donusum-yarisi-bizden"
+                  className="home-campaign-banner__btn"
+                >
+                  <span>{t("home.campaign.btnAction")}</span>
+                  <ArrowRight size={16} strokeWidth={2.4} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* SERVICES */}
       <section className="home-services" aria-label={t("home.services.label")}>
