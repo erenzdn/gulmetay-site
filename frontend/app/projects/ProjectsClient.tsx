@@ -124,7 +124,9 @@ export default function ProjectsClient() {
             </div>
             <h1 className="projects-hero__title">
               {t("projects.hero.title")}
-              <em>{t("projects.hero.titleAccent")}</em>
+              <span className="projects-hero__title-accent">
+                {t("projects.hero.titleAccent")}
+              </span>
             </h1>
             <p className="projects-hero__desc">
               {t("projects.hero.desc")}

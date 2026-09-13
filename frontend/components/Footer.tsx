@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Globe,
   Camera,
@@ -52,17 +53,35 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div style={{ marginBottom: "20px" }}>
-              <div
+              <Link
+                href="/"
                 style={{
-                  fontSize: "21px",
-                  fontWeight: "700",
-                  color: "#D4A373",
-                  marginBottom: "6px",
-                  letterSpacing: "-0.5px"
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "10px 18px",
+                  borderRadius: "12px",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
+                  border: "1px solid rgba(212, 163, 115, 0.3)",
+                  marginBottom: "16px",
+                  transition: "transform 0.3s ease"
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
               >
-                Gülmetay İnşaat
-              </div>
+                <Image
+                  src="/logo-cropped.png"
+                  alt="Gülmetay İnşaat Logo"
+                  width={220}
+                  height={40}
+                  style={{
+                    height: "38px",
+                    width: "auto",
+                    objectFit: "contain"
+                  }}
+                />
+              </Link>
               <p
                 style={{
                   color: "#b0b0b0",

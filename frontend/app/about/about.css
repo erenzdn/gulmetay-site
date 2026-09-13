@@ -102,12 +102,14 @@
   margin-bottom: 16px;
 }
 
-.about-hero__title em {
+.about-hero__title em,
+.about-hero__title-accent {
   display: block;
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
   color: var(--primary-gold);
   margin-top: 0.1em;
+  font-family: var(--font-heading);
 }
 
 .about-hero__desc {

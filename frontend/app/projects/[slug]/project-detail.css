@@ -348,7 +348,7 @@
   font-size: clamp(1.1rem, 1.5vw, 1.25rem);
   line-height: 1.8;
   color: var(--primary-dark);
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   margin-bottom: 32px;
   padding-left: 24px;

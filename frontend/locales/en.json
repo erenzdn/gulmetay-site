@@ -27,7 +27,7 @@
   },
   "kentselDonusum": {
     "seoTitle": "Urban Transformation 'Half is From Us' Campaign | Gülmetay Construction",
-    "seoDesc": "Renovate your building with Ministry grants under the Half is From Us campaign with Gülmetay Construction's engineering assurance. 700K Grant, 700K Loan, and 100K Relocation Support.",
+    "seoDesc": "Renovate your building with Ministry grants under the Half is From Us campaign with Gülmetay Construction's engineering assurance. 875K Grant, 875K Loan, and 125K Relocation Support.",
     "hero": {
       "badge": "State-Supported Urban Transformation",
       "title": "Urban Transformation 'Half is From Us' Campaign",
@@ -38,11 +38,11 @@
     "features": {
       "title": "Campaign Support Package Details",
       "subtitle": "Financial supports provided by the Ministry to property owners",
-      "grantTitle": "700,000 ₺ Grant Support",
+      "grantTitle": "875,000 ₺ Grant Support",
       "grantDesc": "Non-refundable direct state grant provided for each eligible independent unit.",
-      "loanTitle": "700,000 ₺ Favorable Loan",
+      "loanTitle": "875,000 ₺ Favorable Loan",
       "loanDesc": "10-year term, low-interest state-backed financing with grace period options.",
-      "relocationTitle": "100,000 ₺ Relocation Support",
+      "relocationTitle": "125,000 ₺ Relocation Support",
       "relocationDesc": "One-off financial aid provided to property owners and tenants during transformation."
     },
     "engineering": {
@@ -90,7 +90,7 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Reliable Construction Since 2009",
+      "eyebrow": "Reliable Construction Since 2004",
       "titleMain": "Building Strong Foundations,",
       "titleAccent": "Creating Lasting Value",
       "desc": "Leveraging engineering precision and architectural vision, we deliver modern, sustainable, and aesthetic living spaces built to the highest industry standards.",
@@ -106,11 +106,11 @@
       "titleAccent": "'Half is From Us'",
       "titleSub": " Campaign in Urban Transformation",
       "desc": "Transform your building into modern, earthquake-resistant living spaces with Ministry grants and Gülmetay Construction's engineering assurance.",
-      "grant": "700K ₺ GRANT",
+      "grant": "875K ₺ GRANT",
       "grantDesc": "Non-refundable state support",
-      "loan": "700K ₺ LOAN",
+      "loan": "875K ₺ LOAN",
       "loanDesc": "With low interest and favorable terms",
-      "relocation": "100K ₺ RELOCATION",
+      "relocation": "125K ₺ RELOCATION",
       "relocationDesc": "Financial aid for owners & tenants",
       "btnAction": "Get Free Assessment & Details"
     },
@@ -282,76 +282,77 @@
           }
         ]
       },
-      "mimari-tasarim": {
-        "title": "Architectural Design",
-        "shortDescription": "Modern and aesthetic architectural drawings, 3D modeling, and expert project consulting.",
-        "heroTagline": "Aesthetics, functionality, and engineering aligned",
-        "intro": "During our architectural design process, we address your lifestyle habits, site conditions, and local zoning codes as a cohesive unit. We produce clear, practical, and highly aesthetic design packages from initial concept to construction drawings.",
+      "statik-proje": {
+        "title": "Structural Engineering Project",
+        "shortDescription": "Structural calculations, reinforced concrete, steel, and masonry engineering design services compliant with building codes.",
+        "heroTagline": "High engineering precision, earthquake-resilient structures",
+        "intro": "In our structural project design process, we ensure full compliance with current Turkish Building Earthquake Codes (TBDY 2018), TS500, and Eurocodes. We execute load analyses, seismic modeling, and rebar detailing using advanced structural software.",
         "highlights": [
-          "Concept and schematic design studies",
-          "Construction documents and detailing",
-          "3D modeling and photorealistic visualization",
-          "Permitting and building code consulting"
+          "Reinforced concrete & structural steel design",
+          "TBDY 2018 compliant seismic & dynamic analysis",
+          "Structural performance assessment of existing buildings",
+          "Municipal permit & structural calculation documentation"
         ],
         "features": [
           {
-            "title": "Concept Design",
-            "description": "We create a strong architectural identity and spatial flow tailored to your project brief."
+            "title": "Advanced Seismic Analysis",
+            "description": "We compute structural responses under earthquake actions via 3D dynamic simulations, ensuring maximum safety."
           },
           {
-            "title": "3D Modeling",
-            "description": "We render the project in 3D prior to construction, clarifying the decision-making process for you."
+            "title": "Optimized & Safe Structural Framing",
+            "description": "We balance construction costs with optimal cross-sections and reinforcement without compromising safety standards."
           },
           {
-            "title": "Feasibility & Detailing",
-            "description": "We draft drawings that match real-world construction techniques, minimizing unexpected issues in the field."
+            "title": "Permit & Construction Detailing",
+            "description": "We produce formwork, rebar layouts, and steel connection drawings designed for error-free site execution."
           }
         ],
         "process": [
           {
             "step": "01",
-            "title": "Brief & Analysis",
-            "description": "Your project objectives, site survey details, and legal codes are evaluated together."
+            "title": "Architectural Review",
+            "description": "Architectural plans are evaluated to establish the structural framing grid (columns, walls, beams)."
           },
           {
             "step": "02",
-            "title": "Schematic Concept",
-            "description": "The design aesthetic is established through mass, facade, and floor plan options."
+            "title": "Load & Seismic Modeling",
+            "description": "3D structural calculations and dynamic analysis are performed based on geotechnical survey data."
           },
           {
             "step": "03",
-            "title": "Project Design",
-            "description": "Construction drawings, detailed sections, and final 3D visuals are completed."
+            "title": "Detail Drawings",
+            "description": "Formwork plans, rebar schedules, beam-column joints, and foundation details are produced."
           },
           {
             "step": "04",
-            "title": "Approval & Support",
-            "description": "We provide technical support during municipal permitting and field execution."
+            "title": "Permitting & Engineering Support",
+            "description": "Structural calculation reports are submitted for approval, with technical field support provided."
           }
         ],
         "keywords": [
-          "architectural design",
-          "3D modeling",
-          "construction drawings",
-          "architectural consulting"
+          "structural project",
+          "structural calculation",
+          "seismic analysis",
+          "civil engineering",
+          "concrete design"
         ],
         "stats": [
-          "60+ Custom Projects",
-          "12+ Design Awards",
-          "100% Realistic 3D Models"
+          "100+ Structural Projects",
+          "100% Code Compliance",
+          "Zero Tolerance for Error"
         ],
         "faqs": [
           {
-            "question": "What are the main stages of the design process?",
-            "answer": "The process consists of basic phases: needs assessment (brief), concept development, 3D modeling/rendering, permit application documentation, and detailed construction drawings."
+            "question": "What is a structural project and why is it mandatory?",
+            "answer": "A structural project defines the load-bearing elements (foundation, columns, beams, shear walls) ensuring a building withstands gravity and seismic loads safely. It is legally mandatory for municipal building permits and occupant safety."
           },
           {
-            "question": "Do you offer 3D visualizations and virtual walk-throughs?",
-            "answer": "Yes, we build near-reality models of our projects before construction. Upon request, we can also prepare a 3D virtual tour of the designed space."
+            "question": "How long does structural project design take?",
+            "answer": "Depending on building footprint, story count, and architectural complexity, structural calculations and drawings typically take 1 to 3 weeks."
           },
           {
-            "question": "How many revisions do we get during the design stage?",
-            "answer": "We provide reasonable iterations during the concept phase until we reach mutual agreement. Once construction drawings start, we focus on technical details."
+            "question": "Do you perform structural performance assessments and seismic retrofitting?",
+            "answer": "Yes, we conduct seismic risk audits, core sampling, and rebar scanning for existing buildings to produce structural evaluation reports and retrofitting designs when needed."
           }
         ]
       },
@@ -626,7 +627,7 @@
       "subjectSelect": "Select one",
       "subjects": {
         "taahhut": "Contracting & Construction",
-        "mimari": "Architectural Design & Concepts",
+        "mimari": "Structural Engineering & Projects",
         "donusum": "Urban Renewal Program",
         "yonetim": "Project Management & Advising",
         "teklif": "General Estimate Inquiry",

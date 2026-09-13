@@ -76,10 +76,12 @@ export default function Navbar() {
             <Image 
               src="/logo.svg" 
               alt="Gülmetay İnşaat Logo" 
-              width={170}
+              width={240}
               height={36}
               style={{ 
                 objectFit: "contain",
+                height: scrolled ? "36px" : "42px",
+                width: "auto",
                 transition: "all 0.3s ease"
               }}
               priority

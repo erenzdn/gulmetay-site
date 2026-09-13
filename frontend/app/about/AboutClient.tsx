@@ -99,7 +99,9 @@ export default function AboutClient() {
             </div>
             <h1 className="about-hero__title">
               {t("about.hero.title")}
-              <em>{t("about.hero.titleAccent")}</em>
+              <span className="about-hero__title-accent">
+                {t("about.hero.titleAccent")}
+              </span>
             </h1>
             <p className="about-hero__desc">
               {t("about.hero.desc")}

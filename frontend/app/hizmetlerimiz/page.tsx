@@ -5,11 +5,11 @@ import HizmetlerClient from "./HizmetlerClient";
 export const metadata: Metadata = createMetadata({
   title: "Hizmetlerimiz",
   description:
-    "İnşaat & taahhüt, mimari tasarım, kentsel dönüşüm ve proje yönetimi — Gülmetay İnşaat'ın kapsamlı hizmetleri.",
+    "İnşaat & taahhüt, statik proje, kentsel dönüşüm ve proje yönetimi — Gülmetay İnşaat'ın kapsamlı hizmetleri.",
   keywords: [
     "Gülmetay İnşaat hizmetleri",
     "inşaat taahhüt",
-    "mimari tasarım",
+    "statik proje",
     "kentsel dönüşüm",
     "proje yönetimi",
   ],

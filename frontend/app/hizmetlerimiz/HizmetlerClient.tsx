@@ -114,7 +114,9 @@ export default function HizmetlerClient() {
               </div>
               <h1 className="hizmetler-hero__title">
                 {t("services.hero.title")}
-                <em>{t("services.hero.titleAccent")}</em>
+                <span className="hizmetler-hero__title-accent">
+                  {t("services.hero.titleAccent")}
+                </span>
               </h1>
               <p className="hizmetler-hero__desc">
                 {t("services.hero.desc")}

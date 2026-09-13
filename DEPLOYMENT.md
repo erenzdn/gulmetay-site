@@ -42,7 +42,8 @@ Internet
 |---|---|---|
 | `/api/*` | `gulmetay-backend:1337` | Strapi REST API |
 | `/admin/*` | `gulmetay-backend:1337` | Strapi Admin Paneli |
-| `/uploads/*` | `gulmetay-backend:1337` | Yuklenen gorseller |
+| `/upload/*` | `gulmetay-backend:1337` | Strapi Upload Plugin API (Medya yukleme & Medya Kutuphanesi) |
+| `/uploads/*` | `gulmetay-backend:1337` | Yuklenen gorseller static dosyalar |
 | `/i18n/*` | `gulmetay-backend:1337` | Strapi dil dosyalari |
 | `/content-manager/*` | `gulmetay-backend:1337` | Strapi icerik yonetimi |
 | `/content-type-builder/*` | `gulmetay-backend:1337` | Strapi icerik tipi olusturucu |

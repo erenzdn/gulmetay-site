@@ -115,90 +115,91 @@ export const SERVICES: ServiceItem[] = [
     ],
   },
   {
-    slug: "mimari-tasarim",
+    slug: "statik-proje",
     number: "02",
-    title: "Mimari Tasarım",
+    title: "Statik Proje",
     shortDescription:
-      "Modern ve estetik mimari çizimler, 3D modelleme ve profesyonel proje danışmanlığı hizmetleri.",
-    heroTagline: "Estetik, işlev ve mühendislik bir arada",
+      "Güvenli ve mevzuata uygun betonarme, çelik ve yığma yapı statik proje, hesap ve mühendislik hizmetleri.",
+    heroTagline: "Yüksek mühendislik hassasiyeti, depreme dayanıklı yapılar",
     intro:
-      "Mimari tasarım sürecinde yaşam alışkanlıklarınızı, arsa koşullarını ve yönetmelikleri birlikte ele alıyoruz. Konseptten uygulama projesine kadar her aşamada net, uygulanabilir ve estetik çözümler üretiyoruz.",
+      "Statik proje hazırlama sürecinde güncel Türkiye Bina Deprem Yönetmeliği (TBDY 2018) ve TS500 gibi standartlara tam uyum sağlıyoruz. Yapınızın yük analizleri, sismik modellemesi ve donatı detaylandırmalarını en gelişmiş mühendislik yazılımları ile gerçekleştiriyoruz.",
     highlights: [
-      "Konsept ve ön proje çalışmaları",
-      "Uygulama projeleri ve detay çizimleri",
-      "3D modelleme ve görselleştirme",
-      "Ruhsat ve mevzuat danışmanlığı",
+      "Betonarme ve çelik yapı statik projeleri",
+      "TBDY 2018 uyumlu sismik ve dinamik analizler",
+      "Mevcut bina taşıyıcı sistem ve performans analizi",
+      "Belediye ve imar ruhsatı statik dosya hazırlığı",
     ],
     features: [
       {
-        title: "Konsept Tasarım",
+        title: "İleri Sismik Analiz",
         description:
-          "İhtiyaç programınıza uygun, güçlü bir mimari dil ve mekân kurgusu oluşturuyoruz.",
+          "Binaların deprem yükleri altındaki davranışlarını 3D dinamik simülasyonlarla hesaplıyor ve maksimum güvenlik sağlıyoruz.",
       },
       {
-        title: "3D Modelleme",
+        title: "Ekonomik & Güvenli Kesitler",
         description:
-          "Projeyi inşa öncesi üç boyutlu olarak görmenizi sağlayarak karar sürecini netleştiriyoruz.",
+          "Yapı dayanımından ve emniyetten taviz vermeden optimum donatı ve kesit tasarımları ile yapım maliyetini dengeliyoruz.",
       },
       {
-        title: "Uygulanabilirlik",
+        title: "Ruhsat ve Uygulama Çizimleri",
         description:
-          "Çizimleri saha gerçekleriyle uyumlu hazırlayarak uygulama aşamasında sürprizleri azaltıyoruz.",
+          "Kalıp, donatı ve çelik birleşim detaylarını şantiyede hatasız uygulanabilecek netlikte hazırlıyoruz.",
       },
     ],
     process: [
       {
         step: "01",
-        title: "Brief & Analiz",
+        title: "Mimari Proje İncelemesi",
         description:
-          "İhtiyaçlar, arsa verileri ve yasal çerçeve birlikte değerlendirilir.",
+          "Mimari plan ve kesitler incelenerek taşıyıcı sistem kurgusu (kolon-perde aksları) oluşturulur.",
       },
       {
         step: "02",
-        title: "Konsept",
+        title: "Yük & Sismik Analiz",
         description:
-          "Kütle, cephe ve plan alternatifleri üzerinden tasarım dili belirlenir.",
+          "Zemin etüt verileri doğrultusında düşey ve yanal yük hesapları ile 3D statik analizler yapılır.",
       },
       {
         step: "03",
-        title: "Projelendirme",
+        title: "Detay Çizimleri",
         description:
-          "Uygulama projeleri, detaylar ve görseller tamamlanır.",
+          "Kalıp planları, donatı açılımları, kiriş-kolon birleşim ve temel detayları hazırlanır.",
       },
       {
         step: "04",
-        title: "Onay & Destek",
+        title: "Ruhsat & Teknik Destek",
         description:
-          "Ruhsat süreçlerinde ve uygulama sırasında teknik destek sağlanır.",
+          "Statik hesap raporları ruhsat onayına sunulur, şantiye sürecinde mühendislik desteği verilir.",
       },
     ],
     iconName: "PenTool",
     keywords: [
-      "mimari tasarım",
-      "3D modelleme",
-      "uygulama projesi",
-      "mimarlık danışmanlığı",
+      "statik proje",
+      "statik hesap",
+      "deprem analizi",
+      "inşaat mühendisliği",
+      "betonarme proje",
     ],
     stats: [
-      "60+ Özgün Proje",
-      "12+ Tasarım Ödülü",
-      "100% Gerçekçi 3D Model",
+      "100+ Statik Proje",
+      "100% TBDY 2018 Uyumu",
+      "0 Hata Toleransı",
     ],
     faqs: [
       {
-        question: "Tasarım süreci nasıl ilerliyor ve adımları nelerdir?",
+        question: "Statik proje nedir ve neden zorunludur?",
         answer:
-          "Süreç; ihtiyaç analizi (brief), konsept geliştirme, 3D modelleme/görselleştirme, ruhsat projesi hazırlığı ve son olarak detaylı uygulama projelerinin çizimi olmak üzere temel aşamalardan oluşur.",
+          "Statik proje, yapının kendi ağırlığı, hareketli yükler ve deprem/rüzgar gibi dış etkilere karşı güvenle ayakta kalmasını sağlayan taşıyıcı sistem (temel, kolon, kiriş, perde) hesap ve çizimleridir. Yapı ruhsatı alınması ve can güvenliği için yasal zorunluluktur.",
       },
       {
-        question: "3D görselleştirme ve sanal tur hizmeti sunuyor musunuz?",
+        question: "Statik proje hazırlığı ne kadar sürer?",
         answer:
-          "Evet, projelerimizi hayata geçmeden önce bilgisayar ortamında gerçeğe en yakın şekilde modelliyoruz. İsteğe bağlı olarak projenin içinde 3D sanal tur deneyimi de hazırlamaktayız.",
+          "Yapının büyüklüğü, kat sayısı ve mimari detaylarına bağlı olarak statik hesap ve çizim süreci genellikle 1 ila 3 hafta arasında tamamlanmaktadır.",
       },
       {
-        question: "Tasarım aşamasında revizyon hakkımız bulunuyor mu?",
+        question: "Mevcut binalar için statik performans analizi ve güçlendirme projesi yapıyor musunuz?",
         answer:
-          "Konsept aşamasında sizinle tam mutabık kalana kadar makul ölçüde revizyonlar gerçekleştiriyoruz. Uygulama projesine geçildikten sonra ise teknik detay düzenlemelerini yapıyoruz.",
+          "Evet, mevcut binaların deprem risk analizlerini, karot ve demir donatı tespitlerini yaparak bina performans raporu ve gerekiyorsa statik güçlendirme projesi hazırlıyoruz.",
       },
     ],
   },

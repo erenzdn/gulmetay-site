@@ -62,10 +62,10 @@ export default function KentselDonusumClient() {
     }
   };
 
-  const totalGrant = unitCount * 700000;
-  const totalLoan = unitCount * 700000;
-  const totalRelocation = unitCount * 100000;
-  const totalSupport = unitCount * 1500000;
+  const totalGrant = unitCount * 875000;
+  const totalLoan = unitCount * 875000;
+  const totalRelocation = unitCount * 125000;
+  const totalSupport = unitCount * 1875000;
 
   return (
     <div className="kd-page">
@@ -225,13 +225,13 @@ export default function KentselDonusumClient() {
               <div className="kd-calc-result-box">
                 <span className="kd-calc-result-title">Geri Ödemesiz Hibe</span>
                 <span className="kd-calc-result-amount">{formatCurrency(totalGrant)}</span>
-                <span className="kd-calc-result-desc">Daire başı 700 Bin ₺</span>
+                <span className="kd-calc-result-desc">Daire başı 875 Bin ₺</span>
               </div>
 
               <div className="kd-calc-result-box">
                 <span className="kd-calc-result-title">Uygun Faizli Kredi</span>
                 <span className="kd-calc-result-amount">{formatCurrency(totalLoan)}</span>
-                <span className="kd-calc-result-desc">Daire başı 700 Bin ₺</span>
+                <span className="kd-calc-result-desc">Daire başı 875 Bin ₺</span>
               </div>
 
               <div className="kd-calc-result-box">

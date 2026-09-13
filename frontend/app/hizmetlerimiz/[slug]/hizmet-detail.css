@@ -114,14 +114,15 @@
   margin-bottom: 20px;
 }
 
-.hizmet-detail-hero__title em {
+.hizmet-detail-hero__title em,
+.hizmet-detail-hero__title-accent {
   display: block;
-  font-style: italic;
-  font-weight: 500;
+  font-style: normal;
+  font-weight: 600;
   color: var(--primary-gold);
   margin-top: 0.12em;
   font-size: 0.7em;
-  font-family: var(--font-accent);
+  font-family: var(--font-heading);
 }
 
 .hizmet-detail-hero__desc {

@@ -50,11 +50,11 @@ export default function HizmetDetailClient({ service, allServices }: Props) {
           model: t("contact.items.hours") === "Working Hours" ? "Turnkey Construction" : "Anahtar Teslim İnşaat",
           standard: t("contact.items.hours") === "Working Hours" ? "Seismic Code Compliance" : "Deprem Yönetmeliği Uyumu"
         };
-      case "mimari-tasarim":
+      case "statik-proje":
         return {
-          category: t("contact.items.hours") === "Working Hours" ? "Design & Modeling" : "Tasarım & Modelleme",
-          model: t("contact.items.hours") === "Working Hours" ? "3D Concept & Permit" : "3D Konsept & Ruhsat",
-          standard: t("contact.items.hours") === "Working Hours" ? "Zoning Code Compliance" : "İmar Mevzuatı Uyumu"
+          category: t("contact.items.hours") === "Working Hours" ? "Structural Calculation & Analysis" : "Statik Hesap & Analiz",
+          model: t("contact.items.hours") === "Working Hours" ? "Reinforced Concrete & Steel" : "Betonarme & Çelik Proje",
+          standard: t("contact.items.hours") === "Working Hours" ? "TBDY 2018 & Eurocode Compliance" : "TBDY 2018 & Eurocode Uyumu"
         };
       case "kentsel-donusum":
         return {
@@ -112,31 +112,48 @@ export default function HizmetDetailClient({ service, allServices }: Props) {
             <text x="260" y="360" fill="rgba(212, 163, 115, 0.4)" fontSize="9" fontFamily="var(--font-geist-mono)">C25/30 ELEMANLAR</text>
           </svg>
         );
-      case "mimari-tasarim":
+      case "statik-proje":
         return (
           <svg className="hizmet-detail-hero__svg" viewBox="0 0 400 400" fill="none">
-            {/* Circle grid lines */}
-            <circle cx="200" cy="200" r="140" stroke="rgba(212, 163, 115, 0.08)" strokeWidth="1" />
-            <circle cx="200" cy="200" r="100" stroke="rgba(212, 163, 115, 0.1)" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx="200" cy="200" r="60" stroke="rgba(212, 163, 115, 0.06)" strokeWidth="1" />
+            {/* Coordinate Grid */}
+            <rect x="50" y="50" width="300" height="300" stroke="rgba(212, 163, 115, 0.08)" strokeWidth="1" strokeDasharray="4 4" />
+            <line x1="200" y1="40" x2="200" y2="360" stroke="rgba(212, 163, 115, 0.12)" strokeWidth="1" strokeDasharray="2 2" />
+            <line x1="40" y1="200" x2="360" y2="200" stroke="rgba(212, 163, 115, 0.12)" strokeWidth="1" strokeDasharray="2 2" />
             
-            {/* Isometric architectural block */}
-            <path d="M 200 110 L 290 160 L 290 260 L 200 310 L 110 260 L 110 160 Z" stroke="rgba(212, 163, 115, 0.25)" strokeWidth="1" />
+            {/* Structural Frame Portal (Beam & Columns) */}
+            <rect x="100" y="120" width="200" height="200" fill="rgba(212, 163, 115, 0.02)" stroke="rgba(212, 163, 115, 0.25)" strokeWidth="2" />
             
-            {/* Inner sections */}
-            <path d="M 200 110 L 200 310" stroke="rgba(212, 163, 115, 0.2)" strokeWidth="1.5" />
-            <path d="M 110 160 L 200 210 L 290 160" stroke="rgba(212, 163, 115, 0.2)" strokeWidth="1.5" />
+            {/* Columns (Reinforced) */}
+            <rect x="90" y="120" width="20" height="200" fill="rgba(212, 163, 115, 0.06)" stroke="var(--primary-gold)" strokeWidth="1.5" />
+            <line x1="100" y1="120" x2="100" y2="320" stroke="rgba(212, 163, 115, 0.3)" strokeWidth="1" strokeDasharray="6 3" />
             
-            {/* Gold highlight facade */}
-            <path d="M 200 210 L 290 160 L 290 260 L 200 310 Z" fill="rgba(212, 163, 115, 0.04)" stroke="var(--primary-gold)" strokeWidth="2.5" />
+            <rect x="290" y="120" width="20" height="200" fill="rgba(212, 163, 115, 0.06)" stroke="var(--primary-gold)" strokeWidth="1.5" />
+            <line x1="300" y1="120" x2="300" y2="320" stroke="rgba(212, 163, 115, 0.3)" strokeWidth="1" strokeDasharray="6 3" />
             
-            {/* Dimension indicators */}
-            <line x1="310" y1="160" x2="310" y2="260" stroke="rgba(212, 163, 115, 0.4)" strokeWidth="1" />
-            <line x1="305" y1="160" x2="315" y2="160" stroke="rgba(212, 163, 115, 0.4)" strokeWidth="1" />
-            <line x1="305" y1="260" x2="315" y2="260" stroke="rgba(212, 163, 115, 0.4)" strokeWidth="1" />
+            {/* Beam with Bending Moment Diagram (Parabola curve) */}
+            <path d="M 100 120 Q 200 170 300 120" fill="rgba(212, 163, 115, 0.08)" stroke="var(--primary-gold)" strokeWidth="2" />
+            <line x1="100" y1="120" x2="300" y2="120" stroke="rgba(212, 163, 115, 0.4)" strokeWidth="2" />
             
-            <text x="325" y="215" fill="rgba(212, 163, 115, 0.6)" fontSize="10" fontFamily="var(--font-geist-mono)">H = 14.50m</text>
-            <text x="120" y="290" fill="rgba(212, 163, 115, 0.4)" fontSize="8" fontFamily="var(--font-geist-mono)">PLAN ZEMİN KAT</text>
+            {/* Moment load hatch lines */}
+            <line x1="150" y1="120" x2="150" y2="148" stroke="rgba(212, 163, 115, 0.25)" strokeWidth="1" />
+            <line x1="200" y1="120" x2="200" y2="168" stroke="rgba(212, 163, 115, 0.35)" strokeWidth="1.5" />
+            <line x1="250" y1="120" x2="250" y2="148" stroke="rgba(212, 163, 115, 0.25)" strokeWidth="1" />
+            
+            {/* Foundation / Base Supports (Fixed Joint Symbols) */}
+            <path d="M 75 320 L 125 320" stroke="rgba(212, 163, 115, 0.5)" strokeWidth="2" />
+            <path d="M 80 320 L 70 335 M 95 320 L 85 335 M 110 320 L 100 335 M 125 320 L 115 335" stroke="rgba(212, 163, 115, 0.3)" strokeWidth="1.5" />
+            
+            <path d="M 275 320 L 325 320" stroke="rgba(212, 163, 115, 0.5)" strokeWidth="2" />
+            <path d="M 280 320 L 270 335 M 295 320 L 285 335 M 310 320 L 300 335 M 325 320 L 315 335" stroke="rgba(212, 163, 115, 0.3)" strokeWidth="1.5" />
+            
+            {/* Seismic Vector Force Arrow */}
+            <path d="M 30 120 L 80 120" stroke="var(--primary-gold)" strokeWidth="2" />
+            <path d="M 72 114 L 82 120 L 72 126 Z" fill="var(--primary-gold)" />
+            <text x="35" y="108" fill="var(--primary-gold)" fontSize="10" fontWeight="bold" fontFamily="var(--font-geist-mono)">Fx (TBDY)</text>
+
+            <text x="145" y="195" fill="rgba(212, 163, 115, 0.6)" fontSize="9" fontFamily="var(--font-geist-mono)">Mmax = qL²/8</text>
+            <text x="60" y="355" fill="rgba(212, 163, 115, 0.4)" fontSize="8" fontFamily="var(--font-geist-mono)">SİSMİK ÇERÇEVE MODELLERİ</text>
+            <text x="250" y="355" fill="rgba(212, 163, 115, 0.4)" fontSize="8" fontFamily="var(--font-geist-mono)">C35/40 & B450C</text>
           </svg>
         );
       case "kentsel-donusum":
@@ -281,7 +298,9 @@ export default function HizmetDetailClient({ service, allServices }: Props) {
               </div>
               <h1 className="hizmet-detail-hero__title">
                 {t(`services.items.${service.slug}.title`)}
-                <em>{t(`services.items.${service.slug}.heroTagline`)}</em>
+                <span className="hizmet-detail-hero__title-accent">
+                  {t(`services.items.${service.slug}.heroTagline`)}
+                </span>
               </h1>
               <p className="hizmet-detail-hero__desc">
                 {t(`services.items.${service.slug}.shortDescription`)}
