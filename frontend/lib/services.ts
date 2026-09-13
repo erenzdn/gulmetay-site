@@ -181,7 +181,7 @@ export const SERVICES: ServiceItem[] = [
       "betonarme proje",
     ],
     stats: [
-      "100+ Statik Proje",
+      "1000+ Statik Proje",
       "100% TBDY 2018 Uyumu",
       "0 Hata Toleransı",
     ],

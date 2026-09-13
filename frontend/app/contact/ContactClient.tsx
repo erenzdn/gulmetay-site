@@ -38,15 +38,15 @@ export default function ContactClient() {
       icon: MapPin,
       title: t("contact.items.address"),
       content: t("contact.items.hours") === "Working Hours"
-        ? "Bahçeşehir 2nd Stage District 12th Street\nCihan Doga Sitesi, Villa No: 8/A\nBasaksehir / Istanbul / Turkey"
-        : "Bahçeşehir 2. Kısım Mah. 12. Cadde\nCihan Doğa Sitesi, Villa No: 8/A\nBaşakşehir / İstanbul / Türkiye",
+        ? "Islambey Dist. 1st Bulbuldere Cik. No: 2\nEyupsultan / Istanbul / Turkey"
+        : "İslambey Mah. 1. Bülbüldere Çık. No: 2\nEyüpsultan / İstanbul / Türkiye",
       link: null
     },
     {
       icon: Phone,
       title: t("contact.items.phone"),
-      content: "+90 212 418 09 09",
-      link: "tel:+902124180909"
+      content: "+90 533 581 36 39",
+      link: "tel:+905335813639"
     },
     {
       icon: Smartphone,
@@ -812,7 +812,7 @@ export default function ContactClient() {
             border: "1px solid rgba(12, 27, 51, 0.08)",
           }}>
             <iframe
-              src="https://www.openstreetmap.org/export/embed.html?bbox=28.66%2C41.06%2C28.69%2C41.075&layer=mapnik&marker=41.0675%2C28.675"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=28.92%2C41.04%2C28.95%2C41.06&layer=mapnik&marker=41.0485%2C28.9355"
               style={{
                 width: "100%",
                 height: "100%",
@@ -820,7 +820,7 @@ export default function ContactClient() {
                 display: "block",
               }}
               loading="lazy"
-              title={`${t("common.title")} — Başakşehir`}
+              title={`${t("common.title")} — Eyüpsultan`}
             />
           </div>
           <p
@@ -834,7 +834,7 @@ export default function ContactClient() {
             }}
           >
             <a
-              href="https://www.openstreetmap.org/?mlat=41.0675&mlon=28.675#map=17/41.0675/28.675"
+              href="https://www.openstreetmap.org/?mlat=41.0485&mlon=28.9355#map=17/41.0485/28.9355"
               target="_blank"
               rel="noopener noreferrer"
               style={{

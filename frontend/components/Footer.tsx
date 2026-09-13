@@ -245,15 +245,13 @@ export default function Footer() {
                 <div style={{ color: "#b0b0b0", fontSize: "14px", lineHeight: "1.6" }}>
                   {t("contact.items.hours") === "Working Hours" ? (
                     <>
-                      Bahçeşehir 2nd Stage Dist. 12th St.<br />
-                      Cihan Doga Sitesi, Villa No: 8/A<br />
-                      Basaksehir / Istanbul / Turkey
+                      Islambey Dist. 1st Bulbuldere Cik. No: 2<br />
+                      Eyupsultan / Istanbul / Turkey
                     </>
                   ) : (
                     <>
-                      Bahçeşehir 2. Kısım Mah. 12. Cadde<br />
-                      Cihan Doğa Sitesi, Villa No: 8/A<br />
-                      Başakşehir / İstanbul / Türkiye
+                      İslambey Mah. 1. Bülbüldere Çık. No: 2<br />
+                      Eyüpsultan / İstanbul / Türkiye
                     </>
                   )}
                 </div>
@@ -261,7 +259,7 @@ export default function Footer() {
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 <Phone color="#D4A373" size={18} />
                 <a
-                  href="tel:+902124180909"
+                  href="tel:+905335813639"
                   style={{
                     color: "#b0b0b0",
                     textDecoration: "none",
@@ -271,7 +269,7 @@ export default function Footer() {
                   onMouseOver={(e) => (e.currentTarget.style.color = "#D4A373")}
                   onMouseOut={(e) => (e.currentTarget.style.color = "#b0b0b0")}
                 >
-                  +90 212 418 09 09
+                  +90 533 581 36 39
                 </a>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

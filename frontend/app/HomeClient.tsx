@@ -340,17 +340,13 @@ export default function HomeClient() {
           <div className="home-hero__image-wrap">
             <Image
               src="/hero-architecture.png"
-              alt={`${t("home.hero.frameTitle")} — ${t("home.hero.frameSub")}`}
+              alt="Gülmetay İnşaat — Mimarlık & Mühendislik"
               fill
               priority
               sizes="(max-width: 992px) 100vw, 55vw"
             />
           </div>
           <div className="home-hero__image-overlay" aria-hidden="true" />
-          <div className="home-hero__frame">
-            <p className="home-hero__frame-title">{t("home.hero.frameTitle")}</p>
-            <p className="home-hero__frame-sub">{t("home.hero.frameSub")}</p>
-          </div>
         </div>
 
         <div className="home-hero__scroll-hint" aria-hidden="true">
@@ -597,8 +593,8 @@ export default function HomeClient() {
               </p>
 
               <div className="home-cta__contact">
-                <Link href="tel:+902124180909" className="home-cta__contact-link">
-                  +90 212 418 09 09
+                <Link href="tel:+905335813639" className="home-cta__contact-link">
+                  +90 533 581 36 39
                 </Link>
                 <span className="home-cta__contact-sep" aria-hidden="true" />
                 <Link

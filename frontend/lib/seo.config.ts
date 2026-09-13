@@ -33,16 +33,15 @@ export const ORGANIZATION_JSONLD = {
   description: SITE_DESCRIPTION,
   address: {
     "@type": "PostalAddress",
-    streetAddress:
-      "Bahçeşehir 2. Kısım Mah. 12. Cadde, Cihan Doğa Sitesi, Villa No: 8/A",
-    addressLocality: "Başakşehir",
+    streetAddress: "İslambey Mah. 1. Bülbüldere Çık. No: 2",
+    addressLocality: "Eyüpsultan",
     addressRegion: "İstanbul",
     addressCountry: "TR",
   },
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+90-212-418-09-09",
+      telephone: "+90-533-581-36-39",
       contactType: "customer service",
       availableLanguage: "Turkish",
     },

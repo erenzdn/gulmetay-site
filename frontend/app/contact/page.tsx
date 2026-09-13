@@ -5,11 +5,11 @@ import ContactClient from "./ContactClient";
 export const metadata: Metadata = createMetadata({
   title: "İletişim",
   description:
-    "Gülmetay İnşaat ile iletişime geçin. Başakşehir, İstanbul merkezli ofisimizi ziyaret edin veya ücretsiz proje danışmanlığı için formu doldurun.",
+    "Gülmetay İnşaat ile iletişime geçin. Eyüpsultan, İstanbul merkezli ofisimizi ziyaret edin veya ücretsiz proje danışmanlığı için formu doldurun.",
   keywords: [
     "Gülmetay İnşaat iletişim",
     "inşaat firması iletişim",
-    "Başakşehir inşaat",
+    "Eyüpsultan inşaat",
     "ücretsiz proje danışmanlığı",
     "İstanbul inşaat teklif",
   ],
